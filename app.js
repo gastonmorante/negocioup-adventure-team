@@ -1720,7 +1720,8 @@ function filterLocations(cat) {
   // Update UI buttons
   const buttons = document.querySelectorAll('.filter-btn');
   buttons.forEach(btn => {
-    if (btn.getAttribute('onclick').includes(cat)) {
+    const clickAttr = btn.getAttribute('onclick');
+    if (clickAttr && String(clickAttr).includes(cat)) {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
@@ -2282,7 +2283,8 @@ function selectSymptom(symptom) {
   // Highlight card
   const cards = document.querySelectorAll('.symptom-card');
   cards.forEach(c => {
-    if (c.getAttribute('onclick').includes(symptom)) {
+    const clickAttr = c.getAttribute('onclick');
+    if (clickAttr && String(clickAttr).includes(symptom)) {
       c.classList.add('selected');
     } else {
       c.classList.remove('selected');
@@ -2395,7 +2397,8 @@ function showTriage(type) {
   // Update Tabs
   const buttons = document.querySelectorAll('.triage-tab');
   buttons.forEach(btn => {
-    if (btn.getAttribute('onclick').includes(type)) {
+    const clickAttr = btn.getAttribute('onclick');
+    if (clickAttr && String(clickAttr).includes(type)) {
       btn.classList.add('active');
     } else {
       btn.classList.remove('active');
