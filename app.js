@@ -1261,6 +1261,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize Route Planner Dropdowns
   initRoutePlanner();
+
+  // Attach radio track changer programmatically
+  const radioSelect = document.getElementById('radio-track-select');
+  if (radioSelect) {
+    radioSelect.addEventListener('change', onRadioTrackChange);
+  }
   
   // Render Locations List
   renderLocations('ALL');
@@ -3569,4 +3575,5 @@ window.triggerWelcomeSpeech = triggerWelcomeSpeech;
 window.dialSelectedContact = dialSelectedContact;
 window.onRouteCategoryChange = onRouteCategoryChange;
 window.onRouteLocationChange = onRouteLocationChange;
+window.onRadioTrackChange = onRadioTrackChange;
 
