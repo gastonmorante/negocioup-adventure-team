@@ -2009,54 +2009,92 @@ function calculateExpeditionRoute() {
   document.getElementById('cue-evening-golden').textContent = `${eveningGoldenStart} PM to ${eveningGoldenEnd} PM`;
   document.getElementById('cue-blue-hour').textContent = `${blueHourStart} PM to ${blueHourEnd} PM`;
 
-  // 4. Weather & Rain Alert
-  let humidity = 75 + Math.round(Math.sin(destCoords[0] * 5) * 10);
-  let temp = 30 + Math.round(Math.cos(destCoords[1] * 5) * 3);
-  let rainProb = 20;
+  // 4. Weather & Rain Alert - Fetch live forecast from keyless Open-Meteo API
+  const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${destCoords[0]}&longitude=${destCoords[1]}&current=temperature_2m,relative_humidity_2m&hourly=precipitation_probability&forecast_days=1&timezone=auto`;
+  
+  fetch(weatherUrl)
+    .then(res => res.json())
+    .then(wData => {
+      const temp = wData.current.temperature_2m;
+      const humidity = wData.current.relative_humidity_2m;
+      const rainProb = Math.max(...(wData.hourly.precipitation_probability || [25]));
 
-  if (cat === 'CAT_B') {
-    rainProb = 80;
-    humidity = 92;
-  } else if (cat === 'CAT_D') {
-    rainProb = 65;
-    humidity = 84;
-  } else if (cat === 'CAT_A') {
-    rainProb = 25;
-    humidity = 70;
-  } else if (cat === 'CAT_E') {
-    rainProb = 45;
-    humidity = 78;
-  } else {
-    rainProb = 35;
-    humidity = 72;
-  }
+      document.getElementById('weather-temp').textContent = `${temp.toFixed(1)}°C`;
+      document.getElementById('weather-humidity').textContent = `${humidity}%`;
+      document.getElementById('weather-rain-prob').textContent = `${rainProb}%`;
 
-  document.getElementById('weather-temp').textContent = `${temp}°C`;
-  document.getElementById('weather-humidity').textContent = `${humidity}%`;
-  document.getElementById('weather-rain-prob').textContent = `${rainProb}%`;
+      let weatherDesc = currentLanguage === 'es' ? "Cielo despejado" : "Clear skies";
+      if (rainProb > 70) weatherDesc = currentLanguage === 'es' ? "Lluvias intensas" : "Heavy downpours";
+      else if (rainProb > 40) weatherDesc = currentLanguage === 'es' ? "Chubascos tropicales" : "Tropical showers";
+      else if (rainProb > 20) weatherDesc = currentLanguage === 'es' ? "Parcialmente nublado" : "Partly cloudy";
+      document.getElementById('weather-desc').textContent = weatherDesc;
 
-  let weatherDesc = currentLanguage === 'es' ? "Cielo despejado" : "Clear skies";
-  if (rainProb > 70) weatherDesc = currentLanguage === 'es' ? "Lluvias intensas" : "Heavy downpours";
-  else if (rainProb > 40) weatherDesc = currentLanguage === 'es' ? "Chubascos tropicales" : "Tropical showers";
-  else if (rainProb > 20) weatherDesc = currentLanguage === 'es' ? "Parcialmente nublado" : "Partly cloudy";
-  document.getElementById('weather-desc').textContent = weatherDesc;
+      // Toggle Rain Alert Banner and Alert Pill in top bar
+      const rainBanner = document.getElementById('weather-rain-alert');
+      const alertBadge = document.getElementById('header-alert-badge');
+      const alertText = document.getElementById('header-alert-text');
 
-  // Toggle Rain Alert Banner and Alert Pill in top bar
-  const rainBanner = document.getElementById('weather-rain-alert');
-  const alertBadge = document.getElementById('header-alert-badge');
-  const alertText = document.getElementById('header-alert-text');
+      if (rainProb > 40) {
+        if (rainBanner) rainBanner.style.display = 'block';
+        if (alertBadge && alertText) {
+          alertBadge.style.display = 'flex';
+          alertBadge.className = 'telemetry-pill warning-glow';
+          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${state.activeLocation.name.toUpperCase()}` : `RAIN WARNING // ${state.activeLocation.name.toUpperCase()}`;
+        }
+      } else {
+        if (rainBanner) rainBanner.style.display = 'none';
+        if (alertBadge) alertBadge.style.display = 'none';
+      }
+    })
+    .catch(err => {
+      console.warn("Weather fetch failed, running fallback calculations:", err);
+      let humidityFallback = 75 + Math.round(Math.sin(destCoords[0] * 5) * 10);
+      let tempFallback = 30 + Math.round(Math.cos(destCoords[1] * 5) * 3);
+      let rainProbFallback = 20;
 
-  if (rainProb > 40) {
-    if (rainBanner) rainBanner.style.display = 'block';
-    if (alertBadge && alertText) {
-      alertBadge.style.display = 'flex';
-      alertBadge.className = 'telemetry-pill warning-glow';
-      alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${state.activeLocation.name.toUpperCase()}` : `RAIN WARNING // ${state.activeLocation.name.toUpperCase()}`;
-    }
-  } else {
-    if (rainBanner) rainBanner.style.display = 'none';
-    if (alertBadge) alertBadge.style.display = 'none';
-  }
+      if (cat === 'CAT_B') {
+        rainProbFallback = 80;
+        humidityFallback = 92;
+      } else if (cat === 'CAT_D') {
+        rainProbFallback = 65;
+        humidityFallback = 84;
+      } else if (cat === 'CAT_A') {
+        rainProbFallback = 25;
+        humidityFallback = 70;
+      } else if (cat === 'CAT_E') {
+        rainProbFallback = 45;
+        humidityFallback = 78;
+      } else {
+        rainProbFallback = 35;
+        humidityFallback = 72;
+      }
+
+      document.getElementById('weather-temp').textContent = `${tempFallback}°C`;
+      document.getElementById('weather-humidity').textContent = `${humidityFallback}%`;
+      document.getElementById('weather-rain-prob').textContent = `${rainProbFallback}%`;
+
+      let weatherDesc = currentLanguage === 'es' ? "Cielo despejado" : "Clear skies";
+      if (rainProbFallback > 70) weatherDesc = currentLanguage === 'es' ? "Lluvias intensas" : "Heavy downpours";
+      else if (rainProbFallback > 40) weatherDesc = currentLanguage === 'es' ? "Chubascos tropicales" : "Tropical showers";
+      else if (rainProbFallback > 20) weatherDesc = currentLanguage === 'es' ? "Parcialmente nublado" : "Partly cloudy";
+      document.getElementById('weather-desc').textContent = weatherDesc;
+
+      const rainBanner = document.getElementById('weather-rain-alert');
+      const alertBadge = document.getElementById('header-alert-badge');
+      const alertText = document.getElementById('header-alert-text');
+
+      if (rainProbFallback > 40) {
+        if (rainBanner) rainBanner.style.display = 'block';
+        if (alertBadge && alertText) {
+          alertBadge.style.display = 'flex';
+          alertBadge.className = 'telemetry-pill warning-glow';
+          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${state.activeLocation.name.toUpperCase()}` : `RAIN WARNING // ${state.activeLocation.name.toUpperCase()}`;
+        }
+      } else {
+        if (rainBanner) rainBanner.style.display = 'none';
+        if (alertBadge) alertBadge.style.display = 'none';
+      }
+    });
 
   // Update hospital dispatch as well
   updateHospitalDispatchUI();
@@ -2749,7 +2787,7 @@ function loadGoogleLibraries(callback) {
   gisScript.onload = () => {
     tokenClient = google.accounts.oauth2.initTokenClient({
       client_id: GOOGLE_CLIENT_ID,
-      scope: 'https://www.googleapis.com/auth/calendar.events.readonly',
+      scope: 'https://www.googleapis.com/auth/calendar.events.readonly https://www.googleapis.com/auth/youtube.readonly',
       callback: '', // defined dynamically
     });
     gisInited = true;
@@ -2822,6 +2860,9 @@ function simulateGoogleLogin() {
           playSynthBeep(440, 'sine', 0.15);
           addAiMessage('system', currentLanguage === 'es' ? "Calendario de Google real vinculado." : "Real Google Calendar successfully synced.");
           
+          // Fetch real YouTube playlists
+          fetchUserYoutubePlaylists();
+          
         } catch (err) {
           console.error("Google Calendar list error: ", err);
           addAiMessage('system', `Error de API de Google Calendar: ${err.message}`);
@@ -2887,6 +2928,13 @@ function simulateGoogleLogin() {
           addAiMessage('system', currentLanguage === 'es'
             ? "Licencia de YouTube Music enlazada a NegocioUp Radio de forma exitosa."
             : "YouTube Music license linked to NegocioUp Radio successfully.");
+          
+          const gastonMockPlaylists = [
+            { id: "PLofht4PTc7ysV867zV5Z5yOep_P1E9M68", title: "La Súper Catarina Mix (Gastón's Choice)" },
+            { id: "PLr7wK_1wK5NlJ2_Qv9i7qTjF56rN3xO90", title: "Tulum Sunset Chill vol.4 - gastonmorante@gmail.com" },
+            { id: "PLhSZ95G2C5WqR7lQ7O1z-Ysh6a2H5C05n", title: "Rock ADV Offroad Mix (Gastón Morante)" }
+          ];
+          populateRadioPlaylists(gastonMockPlaylists);
         }
       }
     };
@@ -2921,6 +2969,14 @@ function simulateGoogleLoginAny() {
       list.style.display = 'flex';
       list.innerHTML = '';
       
+      // Populate custom playlists with Gaston's mock lists
+      const gastonMockPlaylists = [
+        { id: "PLofht4PTc7ysV867zV5Z5yOep_P1E9M68", title: "La Súper Catarina Mix (Gastón's Choice)" },
+        { id: "PLr7wK_1wK5NlJ2_Qv9i7qTjF56rN3xO90", title: "Tulum Sunset Chill vol.4 - gastonmorante@gmail.com" },
+        { id: "PLhSZ95G2C5WqR7lQ7O1z-Ysh6a2H5C05n", title: "Rock ADV Offroad Mix (Gastón Morante)" }
+      ];
+      populateRadioPlaylists(gastonMockPlaylists);
+
       gastonCalendarEvents.forEach(ev => {
         const item = document.createElement('div');
         item.className = 'calendar-event-item';
@@ -3528,6 +3584,42 @@ function generateCompanionRemark() {
   const cl = closings[Math.floor(Math.random() * closings.length)];
 
   return op + bd + cl;
+}
+
+async function fetchUserYoutubePlaylists() {
+  try {
+    const response = await gapi.client.youtube.playlists.list({
+      mine: true,
+      part: 'snippet',
+      maxResults: 10
+    });
+    const playlists = response.result.items.map(item => ({
+      id: item.id,
+      title: item.snippet.title
+    }));
+    populateRadioPlaylists(playlists);
+  } catch (err) {
+    console.warn("YouTube API playlists fetch failed, loading default mixes:", err);
+  }
+}
+
+function populateRadioPlaylists(playlists) {
+  const select = document.getElementById('radio-track-select');
+  if (!select) return;
+
+  // Clear existing default options
+  select.innerHTML = '';
+
+  // Add the synced playlists
+  playlists.forEach(pl => {
+    const opt = document.createElement('option');
+    opt.value = `https://www.youtube.com/embed/videoseries?list=${pl.id}`;
+    opt.textContent = pl.title.includes(' - ') ? pl.title : `🎵 ${pl.title}`;
+    select.appendChild(opt);
+  });
+
+  // Automatically trigger the first playlist update
+  onRadioTrackChange();
 }
 
 // HOLOGRAPHIC WAVEFORM CANVAS ANIMATION
