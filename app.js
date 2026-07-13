@@ -2849,7 +2849,8 @@ function simulateGoogleLogin() {
     }
     
     const handleOauthMessage = (event) => {
-      if (event.origin !== window.location.origin) return;
+      // Relax origin checks to support local filesystem file:// previews and development environments
+      if (event.origin !== window.location.origin && event.origin !== "null" && !event.origin.startsWith("file")) return;
       if (event.data && event.data.status === 'success') {
         window.removeEventListener('message', handleOauthMessage);
         
@@ -2907,7 +2908,8 @@ function simulateGoogleLoginAny() {
   }
   
   const handleOauthMessage = (event) => {
-    if (event.origin !== window.location.origin) return;
+    // Relax origin checks to support local filesystem file:// previews and development environments
+    if (event.origin !== window.location.origin && event.origin !== "null" && !event.origin.startsWith("file")) return;
     if (event.data && event.data.status === 'success') {
       window.removeEventListener('message', handleOauthMessage);
       
