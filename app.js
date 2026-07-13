@@ -1743,6 +1743,7 @@ function filterLocations(cat) {
 
 function renderLocations(cat) {
   const container = document.getElementById('locations-list');
+  if (!container) return;
   container.innerHTML = '';
 
   const filtered = locations.filter(l => cat === 'ALL' || l.category === cat);
@@ -2527,6 +2528,8 @@ function calculateGoldenHour() {
   const startEl = document.getElementById('val-golden-start');
   const sunsetEl = document.getElementById('val-sunset-time');
 
+  if (!countdown || !startEl || !sunsetEl) return;
+
   // Hardcode beautiful Yucatan golden hour times for simulated calendar
   const goldenHourStart = 18; // 6 PM
   const goldenHourMin = 14;
@@ -3141,11 +3144,12 @@ function sendAiTextQuery() {
 
 // Initialize Speech Recognition
 function initSpeechRecognition() {
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!SpeechRecognition) {
-    console.warn("Speech recognition is not supported in this browser.");
-    return;
-  }
+  try {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.warn("Speech recognition is not supported in this browser.");
+      return;
+    }
 
   recognition = new SpeechRecognition();
   recognition.lang = 'es-MX'; // Mexican Spanish
@@ -3179,9 +3183,12 @@ function initSpeechRecognition() {
     console.error("Speech recognition error: ", event.error);
     addAiMessage('system', `Error de transmisión de voz: ${event.error}`);
     isListening = false;
-    document.getElementById('btn-mic-trigger').classList.remove('recording');
-    document.getElementById('mic-status-label').textContent = "ACTIVAR MICRÓFONO";
-    document.getElementById('holo-core-orb').classList.remove('holo-listening');
+    const btn = document.getElementById('btn-mic-trigger');
+    if (btn) btn.classList.remove('recording');
+    const label = document.getElementById('mic-status-label');
+    if (label) label.textContent = "ACTIVAR MICRÓFONO";
+    const orb = document.getElementById('holo-core-orb');
+    if (orb) orb.classList.remove('holo-listening');
     stopWaveformAnimation();
   };
 
@@ -3190,6 +3197,10 @@ function initSpeechRecognition() {
     addAiMessage('user', speechResult);
     processAiTextQuery(speechResult);
   };
+  } catch (err) {
+    console.warn("Speech recognition initialization failed:", err);
+    recognition = null;
+  }
 }
 
 function toggleVoiceSpeech() {
@@ -3203,12 +3214,24 @@ function toggleVoiceSpeech() {
   }
 
   if (isListening) {
-    recognition.stop();
+    if (recognition) {
+      try {
+        recognition.stop();
+      } catch (e) {}
+    }
   } else {
     // Stop speaking if AI is talking
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
     isSpeaking = false;
-    recognition.start();
+    if (recognition) {
+      try {
+        recognition.start();
+      } catch (e) {}
+    }
   }
 }
 
@@ -3219,7 +3242,11 @@ function toggleVoiceMute() {
   if (speechMute) {
     muteBtn.classList.add('muted');
     label.textContent = "VOZ MUTED";
-    window.speechSynthesis.cancel();
+    if (window.speechSynthesis) {
+      try {
+        window.speechSynthesis.cancel();
+      } catch (e) {}
+    }
     isSpeaking = false;
   } else {
     muteBtn.classList.remove('muted');
@@ -3385,7 +3412,13 @@ function speakAiResponseGoogleCloud(text) {
   startWaveformAnimation();
 
   // Cancel any active Web Speech synthesis
-  window.speechSynthesis.cancel();
+  if (window.speechSynthesis) {
+    try {
+      window.speechSynthesis.cancel();
+    } catch (e) {
+      console.warn(e);
+    }
+  }
 
   const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${GOOGLE_API_KEY}`;
   const requestData = {
@@ -3437,7 +3470,7 @@ function speakAiResponseGoogleCloud(text) {
 }
 
 function speakAiResponseNative(text) {
-  if (typeof window === 'undefined' || !window.speechSynthesis) {
+  if (typeof window === 'undefined' || !window.speechSynthesis || typeof SpeechSynthesisUtterance === 'undefined') {
     console.warn("Web SpeechSynthesis is not supported in this browser.");
     return;
   }
@@ -3522,7 +3555,15 @@ function speakAiResponseNative(text) {
     stopWaveformAnimation();
   };
 
-  window.speechSynthesis.speak(utterance);
+  try {
+    window.speechSynthesis.speak(utterance);
+  } catch (e) {
+    console.warn("speechSynthesis.speak failed: ", e);
+    isSpeaking = false;
+    const orb = document.getElementById('holo-core-orb');
+    if (orb) orb.classList.remove('holo-speaking');
+    stopWaveformAnimation();
+  }
 }
 
 function generateCompanionRemark() {
