@@ -1267,6 +1267,24 @@ document.addEventListener('DOMContentLoaded', () => {
   if (radioSelect) {
     radioSelect.addEventListener('change', onRadioTrackChange);
   }
+
+  const loadBtn = document.getElementById('load-playlist-btn');
+  if (loadBtn) {
+    loadBtn.addEventListener('click', loadCustomPlaylist);
+  }
+
+  // Load custom playlist if saved in local storage
+  const savedPlaylist = localStorage.getItem('negocioup_custom_playlist');
+  if (savedPlaylist) {
+    const iframe = document.getElementById('radio-iframe');
+    if (iframe) {
+      iframe.src = `https://www.youtube.com/embed/videoseries?list=${savedPlaylist}&enablejsapi=1&controls=1`;
+    }
+    const customInput = document.getElementById('custom-playlist-input');
+    if (customInput) {
+      customInput.placeholder = "Playlist activa...";
+    }
+  }
   
   // Render Locations List
   renderLocations('ALL');
@@ -3013,6 +3031,34 @@ function onRadioTrackChange() {
   }
 }
 
+function loadCustomPlaylist() {
+  const input = document.getElementById('custom-playlist-input');
+  const iframe = document.getElementById('radio-iframe');
+  if (!input || !iframe) return;
+
+  const urlText = input.value.trim();
+  if (!urlText) return;
+
+  // Extract playlist ID from URL (e.g. list=PL...)
+  let playlistId = "";
+  if (urlText.includes("list=")) {
+    const parts = urlText.split("list=");
+    playlistId = parts[1].split("&")[0];
+  } else {
+    // Treat the whole input as the ID if it looks like a playlist ID
+    playlistId = urlText;
+  }
+
+  if (playlistId) {
+    iframe.src = `https://www.youtube.com/embed/videoseries?list=${playlistId}&enablejsapi=1&controls=1`;
+    playSynthBeep(659.25, 'sine', 0.1); // Play high confirmation beep
+    input.value = "";
+    input.placeholder = "Playlist activa...";
+    // Save to localStorage so it persists across reloads!
+    localStorage.setItem('negocioup_custom_playlist', playlistId);
+  }
+}
+
 // TEXT ENTRY SUBMISSIONS FOR GEMINI AI AGENT
 function sendAiTextQuery() {
   const input = document.getElementById('ai-text-input');
@@ -3576,4 +3622,5 @@ window.dialSelectedContact = dialSelectedContact;
 window.onRouteCategoryChange = onRouteCategoryChange;
 window.onRouteLocationChange = onRouteLocationChange;
 window.onRadioTrackChange = onRadioTrackChange;
+window.loadCustomPlaylist = loadCustomPlaylist;
 
