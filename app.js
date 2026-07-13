@@ -3026,7 +3026,9 @@ function onRadioTrackChange() {
   const select = document.getElementById('radio-track-select');
   const iframe = document.getElementById('radio-iframe');
   if (select && iframe) {
-    iframe.src = `${select.value}?enablejsapi=1&controls=1`;
+    const baseUrl = select.value;
+    const delimiter = baseUrl.includes('?') ? '&' : '?';
+    iframe.src = `${baseUrl}${delimiter}enablejsapi=1&controls=1`;
     playSynthBeep(523.25, 'sine', 0.1);
   }
 }
