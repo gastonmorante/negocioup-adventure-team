@@ -2638,12 +2638,12 @@ function toggleLanguage() {
   const lblFuel = document.getElementById('lbl-fuel-needed');
 
   if (teleTitle) teleTitle.textContent = currentLanguage === 'es' ? 'Métricas de Telemetría' : 'Expedition Telemetry Metrics';
-  if (teleSub) teleSub.textContent = currentLanguage === 'es' ? 'Cálculos de ruta en tiempo real y rendimiento' : 'Real-time route calculations & V-Strom performance';
+  if (teleSub) teleSub.textContent = currentLanguage === 'es' ? 'Cálculos de ruta en tiempo real y rendimiento' : 'Real-time route calculations & Super Catarina performance';
   if (lblDist) lblDist.textContent = currentLanguage === 'es' ? 'Distancia' : 'En-Route Distance';
   if (lblDur) lblDur.textContent = currentLanguage === 'es' ? 'Tiempo Estimado' : 'Travel Time';
   if (lblTraveled) lblTraveled.textContent = currentLanguage === 'es' ? 'Km Recorridos' : 'Km Traveled';
   if (lblRemaining) lblRemaining.textContent = currentLanguage === 'es' ? 'Km Faltantes' : 'Km Remaining';
-  if (lblPerf) lblPerf.textContent = currentLanguage === 'es' ? 'Rendimiento V-Strom' : 'V-Strom Performance';
+  if (lblPerf) lblPerf.textContent = currentLanguage === 'es' ? 'Rendimiento Súper Catarina' : 'Super Catarina Performance';
   if (lblAlt) lblAlt.textContent = currentLanguage === 'es' ? 'Altitud' : 'Altitude';
   if (lblSpeed) lblSpeed.textContent = currentLanguage === 'es' ? 'Velocidad Promedio' : 'Average Speed';
   if (lblFuel) lblFuel.textContent = currentLanguage === 'es' ? 'Gasolina Necesaria' : 'Fuel Required';
@@ -2651,7 +2651,7 @@ function toggleLanguage() {
   // Translate UI elements
   const breadcrumb = document.querySelector('.breadcrumb');
   if (breadcrumb) {
-    breadcrumb.textContent = currentLanguage === 'es' ? 'V-STROM 250 SX // SISTEMAS INTERACTIVOS' : 'V-STROM 250 SX // INTERACTIVE SYSTEMS';
+    breadcrumb.textContent = currentLanguage === 'es' ? 'SÚPER CATARINA // SISTEMAS INTERACTIVOS' : 'SUPER CATARINA // INTERACTIVE SYSTEMS';
   }
   
   const pageTitle = document.getElementById('page-title');
