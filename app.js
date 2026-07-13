@@ -1763,6 +1763,13 @@ function initRoutePlanner() {
     });
   }
 
+  // Attach change listeners programmatically
+  const locSelect = document.getElementById('route-location-select');
+  if (catSelect && locSelect) {
+    catSelect.addEventListener('change', onRouteCategoryChange);
+    locSelect.addEventListener('change', onRouteLocationChange);
+  }
+
   // Populate Destinations Select based on first Category
   onRouteCategoryChange();
 }
