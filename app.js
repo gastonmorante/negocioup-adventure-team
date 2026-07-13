@@ -1852,6 +1852,7 @@ function calculateExpeditionRoute() {
 
   const startCoords = state.userGpsCoords || [20.6274, -87.0799];
   const destCoords = state.activeLocation.geo;
+  const cat = state.activeLocation.category;
 
   // 1. Fetch exact road routing from free OSRM driving service
   const startLng = startCoords[1];
@@ -1917,7 +1918,6 @@ function calculateExpeditionRoute() {
       document.getElementById('metric-altitude').textContent = `${altVal} m`;
       
       let avgSpeed = 60;
-      const cat = state.activeLocation.category;
       if (cat === 'CAT_A') avgSpeed = 48;
       else if (cat === 'CAT_B') avgSpeed = 40;
       else if (cat === 'CAT_C') avgSpeed = 68;
@@ -1932,7 +1932,6 @@ function calculateExpeditionRoute() {
       document.getElementById('metric-distance').textContent = `${distance.toFixed(1)} km`;
 
       let speed = 60;
-      const cat = state.activeLocation.category;
       if (cat === 'CAT_A') speed = 45;
       else if (cat === 'CAT_B') speed = 35;
       else if (cat === 'CAT_C') speed = 60;
@@ -1970,9 +1969,7 @@ function calculateExpeditionRoute() {
       }
     });
 
-  // 2. Average travel speed by category description
   let roadType = "High-speed road";
-  const cat = state.activeLocation.category;
   if (cat === 'CAT_A') {
     roadType = currentLanguage === 'es' ? "Sendas de costa y arena profunda" : "Coastal dirt & sand tracks";
   } else if (cat === 'CAT_B') {
@@ -3050,7 +3047,7 @@ function startAppWelcome() {
 
   // Backup listener to ensure audio plays when autoplay policy is active
   const speakOnInteraction = () => {
-    if (window.speechSynthesis.speaking) {
+    if (window.speechSynthesis && window.speechSynthesis.speaking) {
       // Autoplay succeeded or speech is already running, clean up
       document.removeEventListener('click', speakOnInteraction);
       document.removeEventListener('keydown', speakOnInteraction);
@@ -3063,9 +3060,11 @@ function startAppWelcome() {
     document.removeEventListener('touchstart', speakOnInteraction);
   };
 
-  document.addEventListener('click', speakOnInteraction);
-  document.addEventListener('keydown', speakOnInteraction);
-  document.addEventListener('touchstart', speakOnInteraction);
+  if (window.speechSynthesis) {
+    document.addEventListener('click', speakOnInteraction);
+    document.addEventListener('keydown', speakOnInteraction);
+    document.addEventListener('touchstart', speakOnInteraction);
+  }
 
   // Fade out preloader
   const preloader = document.getElementById('app-preloader');
@@ -3435,8 +3434,16 @@ function speakAiResponseGoogleCloud(text) {
 }
 
 function speakAiResponseNative(text) {
+  if (typeof window === 'undefined' || !window.speechSynthesis) {
+    console.warn("Web SpeechSynthesis is not supported in this browser.");
+    return;
+  }
   // Cancel any active speech
-  window.speechSynthesis.cancel();
+  try {
+    window.speechSynthesis.cancel();
+  } catch (e) {
+    console.warn(e);
+  }
 
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = currentLanguage === 'es' ? 'es-ES' : 'en-US'; // Set Spain Spanish (es-ES) for Spain voice accent
