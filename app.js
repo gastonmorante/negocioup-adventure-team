@@ -1580,6 +1580,24 @@ function selectLocation(id) {
 
   state.activeLocation = loc;
 
+  // Sync Route Planner dropdowns with selected location
+  const catSelect = document.getElementById('route-category-select');
+  const locSelect = document.getElementById('route-location-select');
+  if (catSelect && locSelect) {
+    catSelect.value = loc.category;
+    
+    // Repopulate locSelect with the locations in this category
+    locSelect.innerHTML = '';
+    const filteredLocs = locations.filter(l => l.category === loc.category);
+    filteredLocs.forEach(l => {
+      const opt = document.createElement('option');
+      opt.value = l.id;
+      opt.textContent = `${l.name} (${l.distance_km}km from baseline)`;
+      locSelect.appendChild(opt);
+    });
+    locSelect.value = loc.id;
+  }
+
   // Highlight list item
   const items = document.querySelectorAll('.location-item');
   items.forEach(item => {
@@ -1620,49 +1638,54 @@ function selectLocation(id) {
 
   // Update Detail Card
   const detailsContainer = document.getElementById('active-location-card');
-  detailsContainer.innerHTML = `
-    <div class="location-detail-content">
-      <div class="detail-header-row">
-        <div>
-          <h3>${loc.name}</h3>
-          <span>ID: ${loc.id} • Coords: ${loc.geo[0]}, ${loc.geo[1]}</span>
+  if (detailsContainer) {
+    detailsContainer.innerHTML = `
+      <div class="location-detail-content">
+        <div class="detail-header-row">
+          <div>
+            <h3>${loc.name}</h3>
+            <span>ID: ${loc.id} • Coords: ${loc.geo[0]}, ${loc.geo[1]}</span>
+          </div>
+          <span class="risk-pill risk-${loc.risk_level}">${labels.risk}: ${loc.risk_level}</span>
         </div>
-        <span class="risk-pill risk-${loc.risk_level}">${labels.risk}: ${loc.risk_level}</span>
-      </div>
-      <div class="detail-body-grid">
-        <div class="detail-block">
-          <h5>${labels.alert}</h5>
-          <p>${loc.vstrom_risk}</p>
+        <div class="detail-body-grid">
+          <div class="detail-block">
+            <h5>${labels.alert}</h5>
+            <p>${loc.vstrom_risk}</p>
+          </div>
+          <div class="detail-block">
+            <h5>${labels.earth}</h5>
+            <p>${loc.earth_prompt}</p>
+          </div>
+          <div class="detail-block col-span-2">
+            <h5>${labels.Mayan}</h5>
+            <p><strong>${loc.story_hook}</strong> ${loc.historical_notes}</p>
+          </div>
         </div>
-        <div class="detail-block">
-          <h5>${labels.earth}</h5>
-          <p>${loc.earth_prompt}</p>
-        </div>
-        <div class="detail-block col-span-2">
-          <h5>${labels.Mayan}</h5>
-          <p><strong>${loc.story_hook}</strong> ${loc.historical_notes}</p>
-        </div>
-      </div>
-      <div style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
-        <div>
-          <h5 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;">${labels.photosTitle}</h5>
-          ${galleryHtml}
-        </div>
-        <div>
-          <h5 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;">Google Street View 360°</h5>
-          <div style="width: 100%; height: 90px; border-radius: 6px; border: 1px solid var(--border-color); overflow: hidden; background: #000;">
-            <iframe src="https://maps.google.com/maps?q=${loc.geo[0]},${loc.geo[1]}&cbll=${loc.geo[0]},${loc.geo[1]}&layer=c&cbp=12,0,0,0,0&output=embed" width="100%" height="100%" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+        <div style="margin-top: 14px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <div>
+            <h5 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;">${labels.photosTitle}</h5>
+            ${galleryHtml}
+          </div>
+          <div>
+            <h5 style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-bottom: 6px;">Google Street View 360°</h5>
+            <div style="width: 100%; height: 90px; border-radius: 6px; border: 1px solid var(--border-color); overflow: hidden; background: #000;">
+              <iframe src="https://maps.google.com/maps?q=${loc.geo[0]},${loc.geo[1]}&cbll=${loc.geo[0]},${loc.geo[1]}&layer=c&cbp=12,0,0,0,0&output=embed" width="100%" height="100%" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  `;
+    `;
+  }
 
   // Update YouTube Selector
   const scriptSelect = document.getElementById('script-location');
   if (scriptSelect) {
     scriptSelect.value = loc.name;
   }
+
+  // Draw route and calculate stats
+  calculateExpeditionRoute();
 }
 
 // LOCATION FILTERING
