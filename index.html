@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NegocioUp Adventure Team - Suzuki V-Strom 250 SX Command Center</title>
+  <!-- Google Fonts: Inter & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+  <!-- PRELOADER SPLASH SCREEN -->
+  <div id="app-preloader" class="preloader-overlay">
+    <div class="preloader-content" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; gap: 20px;">
+      <!-- Animated Logo Container -->
+      <div class="preloader-logo-wrap" style="width: 320px; height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative;">
+        <!-- Neon Radar Ring Scan -->
+        <div class="preloader-radar-ring"></div>
+        <!-- Scanning Laser Line -->
+        <div class="preloader-scan-line"></div>
+        <!-- The Main GoogleUp Logo -->
+        <img src="logo.png?v=3" class="preloader-logo-img" alt="GoogleUp Logo" style="width: 260px; height: 140px; object-fit: contain; z-index: 2;">
+        <!-- adventures logo styling badge -->
+        <div class="logo-adventures-badge">ADVENTURES</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <h1>NegocioUp</h1>
+          <span>Adventure Team</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-item active" data-tab="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/>
+          </svg>
+          <span id="nav-lbl-dashboard">Dashboard</span>
+        </button>
+        <button class="nav-item" data-tab="locations">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span id="nav-lbl-map">Yucatan Map</span>
+        </button>
+        <button class="nav-item" data-tab="content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/>
+          </svg>
+          <span id="nav-lbl-studio">YouTube Studio</span>
+        </button>
+        <button class="nav-item" data-tab="ai-deck">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+          </svg>
+          <span id="nav-lbl-ai">AI Comm Deck</span>
+        </button>
+        <button class="nav-item" data-tab="smartwatch">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="7"/><rect x="11" y="2" width="2" height="3"/><rect x="11" y="19" width="2" height="3"/><path d="M5 12h2m10 0h2"/>
+          </svg>
+          <span id="nav-lbl-smartwatch">OnePlus Watch</span>
+        </button>
+        <button class="nav-item" data-tab="mechanics">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+          <span id="nav-lbl-mechanics">Mechanics</span>
+        </button>
+        <button class="nav-item" data-tab="safety">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+          </svg>
+          <span id="nav-lbl-safety">First Aid</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator">
+          <span class="pulse-dot"></span>
+          <span class="status-text" id="sidebar-foot-status">System Active (Pro)</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="main-content">
+      
+      <!-- TOP HEADER -->
+      <header class="top-header">
+        <div class="header-left">
+          <span class="breadcrumb">V-STROM 250 SX // INTERACTIVE SYSTEMS</span>
+          <h2 id="page-title">Command Dashboard</h2>
+        </div>
+        <div class="header-right">
+          <div class="telemetry-pill warning-glow" id="header-alert-badge" style="display: none;">
+            <svg viewBox="0 0 24 24" class="icon-warning" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+              <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+            </svg>
+            <span id="header-alert-text">ALERT STATUS</span>
+          </div>
+          <div class="header-widget">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span id="current-time">13:17:11</span>
+          </div>
+          <div class="header-widget">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/>
+            </svg>
+            <span id="gps-coords">YUCATAN, MX</span>
+          </div>
+          <button class="header-widget lang-toggle-btn" id="lang-btn" onclick="toggleLanguage()" style="cursor: pointer; background: none; border: 1px solid var(--border-color); color: var(--text-main); font-weight: 700; border-radius: 6px; padding: 4px 10px;">
+            <span>🌐</span>
+            <span id="lang-label">ESP</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINERS -->
+      <div class="view-content">
+
+        <!-- TAB: DASHBOARD -->
+        <section class="tab-pane active" id="tab-dashboard">
+          <div class="dashboard-grid">
+            
+            <!-- ROUTE SELECTOR PANEL -->
+            <div class="grid-card control-card">
+              <div class="card-header">
+                <h3>Expedition Route Planner</h3>
+                <span class="card-subtitle">Select your category and target destination</span>
+              </div>
+              <div class="control-inputs">
+                <!-- Dropdown: Category -->
+                <div class="control-group">
+                  <label for="route-category-select">Select Category</label>
+                  <select id="route-category-select" class="custom-select" onchange="onRouteCategoryChange()">
+                    <option value="CAT_A">Secret Beaches & Coasts</option>
+                    <option value="CAT_B">Cenotes, Caves & Wetlands</option>
+                    <option value="CAT_C">Ancestral & Traditional Gastronomy</option>
+                    <option value="CAT_D">Archaeology & Living Ecosystems</option>
+                    <option value="CAT_E">History, Colony & Caste War</option>
+                  </select>
+                </div>
+
+                <!-- Dropdown: Destination -->
+                <div class="control-group">
+                  <label for="route-location-select">Select Destination</label>
+                  <select id="route-location-select" class="custom-select" onchange="onRouteLocationChange()">
+                    <!-- Populated dynamically via JS -->
+                  </select>
+                </div>
+
+                <!-- Start position display with Mini Google Map -->
+                <div class="gps-start-status" style="margin-top: 15px;">
+                  <div class="status-indicator" style="margin-bottom: 8px;">
+                    <span class="pulse-dot" style="background-color: var(--primary); box-shadow: 0 0 8px var(--primary-glow);"></span>
+                    <span id="start-location-text">GPS Tracker (Google Maps)</span>
+                  </div>
+                  <div style="width: 100%; height: 110px; border-radius: 6px; border: 1px solid var(--border-color); overflow: hidden; background: #000; margin-bottom: 6px;">
+                    <iframe id="dashboard-mini-map" src="https://maps.google.com/maps?q=20.6274,-87.0799&z=12&output=embed" width="100%" height="100%" style="border: 0;" allowfullscreen="" loading="lazy"></iframe>
+                  </div>
+                  <div class="gps-start-coords" id="gps-coords-start">20.6274, -87.0799</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- EXPEDITION STATISTICS & METRICS -->
+            <div class="grid-card col-span-2 telemetry-card">
+              <div class="card-header">
+                <h3 id="lbl-telemetry-title">Expedition Telemetry Metrics</h3>
+                <span class="card-subtitle" id="lbl-telemetry-subtitle">Real-time route calculations & V-Strom performance</span>
+              </div>
+              <div class="route-metrics-container">
+                <div class="metric-big-grid">
+                  <div class="metric-large-box">
+                    <span class="metric-label" id="lbl-route-dist">En-Route Distance</span>
+                    <span class="metric-val" id="metric-distance">0.0 km</span>
+                  </div>
+                  <div class="metric-large-box">
+                    <span class="metric-label" id="lbl-route-dur">Travel Time</span>
+                    <span class="metric-val" id="metric-duration">0h 0m</span>
+                  </div>
+                  <div class="metric-large-box">
+                    <span class="metric-label" id="lbl-route-traveled">Km Traveled</span>
+                    <span class="metric-val" id="metric-km-traveled">0.0 km</span>
+                  </div>
+                  <div class="metric-large-box">
+                    <span class="metric-label" id="lbl-route-remaining">Km Remaining</span>
+                    <span class="metric-val" id="metric-km-remaining">0.0 km</span>
+                  </div>
+                </div>
+
+                <div class="gauge-stats-grid" style="margin-top: 20px;">
+                  <div class="stat-box">
+                    <span class="stat-label" id="lbl-performance">V-Strom Performance</span>
+                    <span class="stat-value" style="color: var(--primary);">~32 km/L</span>
+                  </div>
+                  <div class="stat-box">
+                    <span class="stat-label" id="lbl-altitude">Altitude</span>
+                    <span class="stat-value" id="metric-altitude">0 m</span>
+                  </div>
+                  <div class="stat-box">
+                    <span class="stat-label" id="lbl-avg-speed">Average Speed</span>
+                    <span class="stat-value" id="metric-avg-speed">0 km/h</span>
+                  </div>
+                  <div class="stat-box">
+                    <span class="stat-label" id="lbl-fuel-needed">Fuel Required</span>
+                    <span class="stat-value" id="metric-fuel-liters" style="font-size: 0.85rem; display: block; font-weight: 800; color: #fff;">0.0 L</span>
+                    <span class="stat-value" id="metric-fuel-cost" style="font-size: 0.72rem; color: var(--text-muted); font-weight: normal; margin-top: 2px; display: block;">$0.00 MXN</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DYNAMIC SUN & PHOTOGRAPHY CUES -->
+            <div class="grid-card col-span-2">
+              <div class="card-header">
+                <h3>Yucatan Solar & Cinema Cues</h3>
+                <span class="card-subtitle">Key times for drone B-Roll & Golden Hour captures</span>
+              </div>
+              <div class="cinema-cues-grid">
+                <div class="sun-times-row">
+                  <div class="sun-item">
+                    <span class="sun-lbl">🌅 Sunrise (Amanecer)</span>
+                    <strong id="cue-sunrise">--:--</strong>
+                  </div>
+                  <div class="sun-item">
+                    <span class="sun-lbl">🌇 Sunset (Atardecer)</span>
+                    <strong id="cue-sunset">--:--</strong>
+                  </div>
+                </div>
+
+                <div class="photography-times-box" style="margin-top: 16px;">
+                  <h4>Key Photography Shooting Windows</h4>
+                  <div class="time-phase">
+                    <span class="phase-name">Morning Golden Hour</span>
+                    <span class="phase-range" id="cue-morning-golden">--:-- to --:--</span>
+                  </div>
+                  <div class="time-phase">
+                    <span class="phase-name">Evening Golden Hour</span>
+                    <span class="phase-range" id="cue-evening-golden">--:-- to --:--</span>
+                  </div>
+                  <div class="time-phase">
+                    <span class="phase-name">Blue Hour (Lagoon Reflection)</span>
+                    <span class="phase-range" id="cue-blue-hour">--:-- to --:--</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- WEATHER & RAIN ALERT CARD -->
+            <div class="grid-card">
+              <div class="card-header">
+                <h3>Weather Forecast Node</h3>
+                <span class="card-subtitle">Real-time local climate & rain warnings</span>
+              </div>
+              <div class="weather-forecast-content">
+                <div class="weather-main-row">
+                  <div class="weather-temp-badge">
+                    <span class="weather-temp-val" id="weather-temp">--°C</span>
+                    <span class="weather-desc" id="weather-desc">Syncing...</span>
+                  </div>
+                </div>
+                
+                <div class="weather-stats-box" style="margin-top: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                  <div class="g-stat">
+                    <span>Humidity</span>
+                    <strong id="weather-humidity">--%</strong>
+                  </div>
+                  <div class="g-stat">
+                    <span>Rain Probability</span>
+                    <strong id="weather-rain-prob">--%</strong>
+                  </div>
+                </div>
+
+                <!-- RAIN ALERT BANNER -->
+                <div class="weather-rain-alert-banner" id="weather-rain-alert" style="display: none; margin-top: 16px;">
+                  <div class="alert-box-info" style="background-color: rgba(226, 27, 27, 0.12); border: 1px solid var(--primary); border-radius: 8px; padding: 10px 12px; font-size: 0.72rem; color: #fff; line-height: 1.4; display: flex; gap: 10px;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon-svg" style="color: var(--primary); width: 24px; height: 24px; flex-shrink: 0;">
+                      <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                      <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span><strong>RAIN ALERT:</strong> Wet limestone/mud trail forecast. Switch tires to <strong>Dirt Mode (22/25 PSI)</strong>.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GOOGLE CALENDAR SYNC NODE -->
+            <div class="grid-card col-span-2 calendar-card" id="calendar-node-card">
+              <div class="card-header">
+                <h3>Expeditions Schedule Sync</h3>
+                <span class="card-subtitle" id="calendar-subtitle">Conecta tu cuenta Google para sincronizar viajes</span>
+              </div>
+              <div class="calendar-disconnected-state" id="calendar-disconnected" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; text-align: center; border: 1.5px dashed var(--border-color); border-radius: 8px; background: rgba(0,0,0,0.15); min-height: 120px;">
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 12px;">Google Calendar desvinculado. Inicia sesión para sincronizar fechas de grabación.</p>
+                <button class="btn btn-outline" onclick="triggerGoogleLoginModal()" style="font-size: 0.72rem; padding: 8px 14px;">Vincular Calendario</button>
+              </div>
+              <div class="calendar-events-list" id="calendar-events" style="display: none; flex-direction: column; gap: 8px;">
+                <!-- Populated dynamically after login -->
+              </div>
+            </div>
+
+            <!-- NEGOCIOUP RADIO MUSIC PLAYER -->
+            <div class="grid-card radio-card">
+              <div class="card-header">
+                <h3>NegocioUp Radio</h3>
+                <span class="card-subtitle">YouTube Music Expedition Mix</span>
+              </div>
+              <div class="radio-interface" style="display: flex; flex-direction: column; gap: 10px;">
+                <div class="radio-iframe-container" style="position: relative; width: 100%; height: 80px; border-radius: 6px; overflow: hidden;">
+                  <iframe id="radio-iframe" src="https://www.youtube.com/embed/5qap5aO4i9A?enablejsapi=1&controls=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"></iframe>
+                </div>
+                <div class="radio-selector">
+                  <select id="radio-track-select" class="custom-select" onchange="onRadioTrackChange()" style="width: 100%; font-size: 0.75rem; padding: 8px;">
+                    <option value="https://www.youtube.com/embed/5qap5aO4i9A">🔊 Jungle Expedition Beats (Lo-Fi)</option>
+                    <option value="https://www.youtube.com/embed/36YnV9ycB1E">🏍️ Suzuki V-Strom ADV Rock Mix</option>
+                    <option value="https://www.youtube.com/embed/jfKfPfyJRdk">🌴 Tulum Sunset Chill (Deep House)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB: SMARTWATCH ONEPLUS WATCH 4 -->
+        <section class="tab-pane" id="tab-smartwatch">
+          <div class="smartwatch-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; padding: 10px;">
+            
+            <!-- CHRONOGRAPH DIAL -->
+            <div class="grid-card smartwatch-crono-card" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; text-align: center; border-radius: 12px; position: relative; overflow: hidden; background: rgba(0, 0, 0, 0.35);">
+              <div class="card-header" style="margin-bottom: 24px;">
+                <h3 id="lbl-watch-title">OnePlus Watch 4 Crono</h3>
+                <span class="card-subtitle" id="lbl-watch-subtitle">Wearable Satellite Link Active</span>
+              </div>
+              
+              <!-- Crono Circle -->
+              <div class="crono-circle" style="width: 240px; height: 240px; border-radius: 50%; border: 6px double var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; box-shadow: 0 0 25px rgba(226, 27, 27, 0.25), inset 0 0 25px rgba(226, 27, 27, 0.15); animation: pulseGlow 2s infinite alternate;">
+                <!-- Ring ticking border -->
+                <div class="pulse-dot" style="position: absolute; top: 12px; background-color: var(--primary); box-shadow: 0 0 10px var(--primary-glow); width: 8px; height: 8px;"></div>
+                
+                <span style="font-size: 0.65rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px;">HEART RATE</span>
+                <span id="watch-heart-rate" style="font-family: var(--font-display); font-size: 3rem; font-weight: 900; color: #fff; margin: 4px 0; text-shadow: 0 0 15px rgba(226, 27, 27, 0.45); animation: heartPulse 0.8s infinite;">82 <span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">BPM</span></span>
+                
+                <span id="watch-crono-time" style="font-family: monospace; font-size: 1.1rem; color: var(--primary); font-weight: bold; letter-spacing: 1px;">00:45:18</span>
+                <span style="font-size: 0.55rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 0.5px; margin-top: 4px;">ACTIVE EXPEDITION TIME</span>
+              </div>
+            </div>
+            
+            <!-- HEALTH STATS GRID -->
+            <div class="grid-card smartwatch-stats-card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 25px;">
+              <div class="card-header">
+                <h3 id="lbl-watch-health-title">Biometric Telemetry</h3>
+                <span class="card-subtitle" id="lbl-watch-health-subtitle">Real-time health nodes from OnePlus Health App</span>
+              </div>
+              
+              <div class="smartwatch-stats-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 15px;">
+                <div class="stat-box" style="padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.15);">
+                  <span class="stat-label" id="lbl-spo2">SpO2 Oxygen</span>
+                  <span class="stat-value" id="watch-spo2" style="color: #fff; font-size: 1.4rem;">98%</span>
+                </div>
+                <div class="stat-box" style="padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.15);">
+                  <span class="stat-label" id="lbl-calories">Active Calories</span>
+                  <span class="stat-value" id="watch-calories" style="color: #fff; font-size: 1.4rem;">242 kcal</span>
+                </div>
+                <div class="stat-box" style="padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.15);">
+                  <span class="stat-label" id="lbl-stress">Stress Level</span>
+                  <span class="stat-value" id="watch-stress" style="color: var(--primary); font-size: 1.4rem;">Low (24)</span>
+                </div>
+                <div class="stat-box" style="padding: 16px; border-radius: 8px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.15);">
+                  <span class="stat-label" id="lbl-watch-gps">Watch GPS Lock</span>
+                  <span class="stat-value" id="watch-gps" style="color: var(--success); font-size: 0.95rem; font-weight: bold; margin-top: 4px;">🛰️ LOCKED (3D)</span>
+                </div>
+              </div>
+              
+              <!-- Heart Pulse animation canvas/diagram -->
+              <div style="margin-top: 20px; border: 1px solid var(--border-color); border-radius: 8px; padding: 10px; background: rgba(0, 0, 0, 0.4); display: flex; align-items: center; gap: 15px;">
+                <div style="flex: 1;">
+                  <span style="font-size: 0.65rem; color: var(--text-muted); display: block; text-transform: uppercase;">Real-time ECG (Sim)</span>
+                  <span id="watch-ecg-status" style="font-size: 0.72rem; color: #fff; font-weight: bold;">Sinus Rhythm (Normal)</span>
+                </div>
+                <svg width="120" height="30" viewBox="0 0 120 30" style="stroke: var(--primary); stroke-width: 1.5; fill: none; overflow: visible;">
+                  <path d="M 0 15 L 20 15 L 25 15 L 30 5 L 35 25 L 40 15 L 45 15 L 60 15 L 80 15 L 85 15 L 90 5 L 95 25 L 100 15 L 105 15 L 120 15" stroke-dasharray="240" stroke-dashoffset="0">
+                    <animate attributeName="stroke-dashoffset" values="240;0" dur="2s" repeatCount="indefinite"/>
+                  </path>
+                </svg>
+              </div>
+            </div>
+            
+          </div>
+        </section>
+
+        <!-- TAB: MECHANICS -->
+        <section class="tab-pane" id="tab-mechanics">
+          <div class="mechanics-grid">
+            
+            <!-- BIKE MANUAL DETAILS -->
+            <div class="grid-card spec-card">
+              <div class="card-header">
+                <h3>Suzuki V-Strom 250 SX Specs</h3>
+                <span class="card-subtitle">Core specifications for Yucatan rugged exploration</span>
+              </div>
+              <div class="spec-list">
+                <div class="spec-item">
+                  <span class="spec-title">Engine Type</span>
+                  <span class="spec-val">249cc, 4-stroke, 1-cylinder, Oil-cooled (SOCS), SOHC</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-title">Oil Capacity</span>
+                  <span class="spec-val">1.2 Liters (With oil filter replacement)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-title">Seat Height</span>
+                  <span class="spec-val">835 mm (Requires surface scans before stopping)</span>
+                </div>
+                <div class="spec-item">
+                  <span class="spec-title">Fuel Type</span>
+                  <span class="spec-val">Premium (91+ Octane) recommended in remote areas. Avoid 'Magna' if possible.</span>
+                </div>
+              </div>
+
+              <!-- Tire Pressure Quick Change -->
+              <div class="tire-pressures-box">
+                <h4>Tire Pressure Configuration</h4>
+                <div class="tire-toggle-group">
+                  <button class="tire-btn active" id="tire-road" onclick="setTireMode('road')">
+                    <span class="mode-title">Road Mode</span>
+                    <span class="pressures">F: 29 PSI | R: 33 PSI</span>
+                  </button>
+                  <button class="tire-btn" id="tire-dirt" onclick="setTireMode('dirt')">
+                    <span class="mode-title">Dirt Mode</span>
+                    <span class="pressures">F: 22 PSI | R: 25 PSI</span>
+                  </button>
+                </div>
+                <div class="alert-box-info">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="alert-icon-svg">
+                    <circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>
+                  </svg>
+                  <span>Salinity alert: Lubricate drive chain every 500km due to coastal air exposure.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- SCHEMATIC VISUALIZER -->
+            <div class="grid-card schematic-card">
+              <div class="card-header">
+                <h3>V-Strom Mechanical Interactive Hotspots</h3>
+                <span class="card-subtitle">Click markers to check emergency diagnostic access</span>
+              </div>
+              <div class="schematic-container">
+                <!-- Fallback premium vector dashboard engine art -->
+                <div class="bike-svg-container">
+                  <svg viewBox="0 0 800 450" class="bike-schematic">
+                    <defs>
+                      <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#E21B1B" />
+                        <stop offset="100%" stop-color="#3c0000" />
+                      </linearGradient>
+                      <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#ffffff" />
+                        <stop offset="100%" stop-color="#777777" />
+                      </linearGradient>
+                    </defs>
+                    
+                    <!-- Background Grid -->
+                    <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
+                      <line x1="0" y1="50" x2="800" y2="50" />
+                      <line x1="0" y1="100" x2="800" y2="100" />
+                      <line x1="0" y1="150" x2="800" y2="150" />
+                      <line x1="0" y1="200" x2="800" y2="200" />
+                      <line x1="0" y1="250" x2="800" y2="250" />
+                      <line x1="0" y1="300" x2="800" y2="300" />
+                      <line x1="0" y1="350" x2="800" y2="350" />
+                      <line x1="0" y1="400" x2="800" y2="400" />
+                      
+                      <line x1="100" y1="0" x2="100" y2="450" />
+                      <line x1="200" y1="0" x2="200" y2="450" />
+                      <line x1="300" y1="0" x2="300" y2="450" />
+                      <line x1="400" y1="0" x2="400" y2="450" />
+                      <line x1="500" y1="0" x2="500" y2="450" />
+                      <line x1="600" y1="0" x2="600" y2="450" />
+                      <line x1="700" y1="0" x2="700" y2="450" />
+                    </g>
+                    
+                    <!-- Ground Line -->
+                    <line x1="50" y1="380" x2="750" y2="380" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-dasharray="10 5" />
+                    
+                    <!-- Wheels (Interactive targets) -->
+                    <!-- Rear Wheel -->
+                    <circle cx="200" cy="300" r="80" stroke="#444" stroke-width="24" fill="none" />
+                    <circle cx="200" cy="300" r="68" stroke="#ffffff22" stroke-width="2" fill="none" />
+                    <circle cx="200" cy="300" r="45" stroke="#777" stroke-width="8" fill="none" />
+                    <!-- Spokes -->
+                    <path class="rear-spokes" d="M 200 220 L 200 380 M 120 300 L 280 300 M 143 243 L 257 357 M 143 357 L 257 243" stroke="#888" stroke-width="2" />
+                    <circle cx="200" cy="300" r="20" fill="#222" stroke="#444" stroke-width="3" />
+                    
+                    <!-- Front Wheel (19-inch dynamics) -->
+                    <circle cx="600" cy="285" r="95" stroke="#444" stroke-width="20" fill="none" />
+                    <circle cx="600" cy="285" r="85" stroke="#ffffff22" stroke-width="2" fill="none" />
+                    <circle cx="600" cy="285" r="55" stroke="#777" stroke-width="8" fill="none" />
+                    <path class="front-spokes" d="M 600 190 L 600 380 M 505 285 L 695 285 M 533 218 L 667 352 M 533 352 L 667 218" stroke="#888" stroke-width="2" />
+                    <circle cx="600" cy="285" r="24" fill="#222" stroke="#444" stroke-width="3" />
+                    
+                    <!-- Chassis and Swingarm -->
+                    <path d="M 200 300 L 320 280 L 400 180 L 580 150 M 320 280 L 380 320 L 480 320 L 520 200" stroke="#555" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    
+                    <!-- Monoshock -->
+                    <line x1="320" y1="280" x2="360" y2="200" stroke="#EA4335" stroke-width="14" stroke-linecap="round" />
+                    
+                    <!-- Engine Block (SOCS Single Cylinder) -->
+                    <rect class="engine-block-glow" x="360" y="220" width="120" height="90" rx="15" fill="#333" stroke="#555" stroke-width="4" />
+                    <!-- Cooling fins -->
+                    <line x1="375" y1="240" x2="465" y2="240" stroke="#666" stroke-width="4" />
+                    <line x1="375" y1="255" x2="465" y2="255" stroke="#666" stroke-width="4" />
+                    <line x1="375" y1="270" x2="465" y2="270" stroke="#666" stroke-width="4" />
+                    <line x1="375" y1="285" x2="465" y2="285" stroke="#666" stroke-width="4" />
+                    
+                    <!-- Exhaust Pipe -->
+                    <path d="M 430 290 L 460 350 L 300 360 L 160 270" fill="none" stroke="#666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 220 305 L 150 260" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round" />
+                    
+                    <!-- Fuel Tank & Fairings V-Strom Shape -->
+                    <path d="M 330 180 C 330 180 360 110 440 110 C 490 110 520 140 550 140 C 570 140 590 120 620 150 L 530 200 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="3" />
+                    <!-- Front Beak -->
+                    <path d="M 550 140 L 650 160 L 610 185 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="2" />
+                    
+                    <!-- Seat -->
+                    <path d="M 250 200 Q 290 200 340 180 L 330 230 L 260 230 Z" fill="#1b1b1b" stroke="#333" stroke-width="2" />
+                    
+                    <!-- Front Forks -->
+                    <line x1="580" y1="130" x2="600" y2="285" stroke="#777" stroke-width="10" stroke-linecap="round" />
+                    <line x1="570" y1="120" x2="590" y2="285" stroke="#999" stroke-width="6" stroke-linecap="round" />
+                    
+                    <!-- Handlebars -->
+                    <path d="M 560 100 L 530 110 M 560 100 L 570 90 L 590 105" fill="none" stroke="#222" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  
+                  <!-- Hotspot: Battery Under Seat -->
+                  <div class="hotspot pulse-glow" style="top: 42%; left: 37%;" onclick="showHotspot('battery')">
+                    <span class="hotspot-number">1</span>
+                    <span class="hotspot-tooltip">Seat Battery Access</span>
+                  </div>
+                  
+                  <!-- Hotspot: Clutch Adjuster -->
+                  <div class="hotspot pulse-glow" style="top: 21%; left: 63%;" onclick="showHotspot('clutch')">
+                    <span class="hotspot-number">2</span>
+                    <span class="hotspot-tooltip">Clutch Adjustment</span>
+                  </div>
+                  
+                  <!-- Hotspot: Drive Chain -->
+                  <div class="hotspot pulse-glow" style="top: 67%; left: 32%;" onclick="showHotspot('chain')">
+                    <span class="hotspot-number">3</span>
+                    <span class="hotspot-tooltip">Drive Chain Play</span>
+                  </div>
+                  
+                  <!-- Hotspot: SOCS Cooler -->
+                  <div class="hotspot pulse-glow" style="top: 50%; left: 54%;" onclick="showHotspot('cooling')">
+                    <span class="hotspot-number">4</span>
+                    <span class="hotspot-tooltip">Suzuki Oil Cooler</span>
+                  </div>
+                </div>
+
+                <!-- Hotspot details popup inside container -->
+                <div class="hotspot-details-panel" id="hotspot-details">
+                  <h4 id="hotspot-title">Click a hotspot on the motorcycle</h4>
+                  <p id="hotspot-desc">Select one of the numbered glowing locations to inspect maintenance procedures and manual specs.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- EMERGENCY TROUBLESHOOTING WIZARD -->
+            <div class="grid-card col-span-2 troubleshooter-card">
+              <div class="card-header">
+                <h3>Jungle Emergency Troubleshooting Wizard</h3>
+                <span class="card-subtitle">Expert steps for humid jungle breakdowns</span>
+              </div>
+              <div class="wizard-interface">
+                <div class="wizard-steps-sidebar">
+                  <button class="wz-tab active" onclick="setWizardStep(1)">
+                    <span class="wz-num">01</span>
+                    <span class="wz-lbl">Select Symptom</span>
+                  </button>
+                  <button class="wz-tab" id="wz-btn-triage" onclick="setWizardStep(2)">
+                    <span class="wz-num">02</span>
+                    <span class="wz-lbl">Run Triage</span>
+                  </button>
+                  <button class="wz-tab" id="wz-btn-remedy" onclick="setWizardStep(3)">
+                    <span class="wz-num">03</span>
+                    <span class="wz-lbl">View Mechanics Guide</span>
+                  </button>
+                </div>
+                
+                <div class="wizard-content-container">
+                  <!-- Step 1 -->
+                  <div class="wizard-step-pane active" id="wz-step-1">
+                    <h4>What symptom is the motorcycle exhibiting?</h4>
+                    <div class="symptom-options">
+                      <button class="symptom-card" onclick="selectSymptom('temp_alert')">
+                        <div class="sym-icon">🌡️</div>
+                        <h5>High-Temperature Alert (SOCS)</h5>
+                        <p>Oil cooling high-temperature indicator flashing, engine power restricted.</p>
+                      </button>
+                      
+                      <button class="symptom-card" onclick="selectSymptom('elec_fail')">
+                        <div class="sym-icon">⚡</div>
+                        <h5>Sudden Electrical Failure</h5>
+                        <p>Instrument cluster dark, engine cranking slowly or refusing to spark in high humidity.</p>
+                      </button>
+                      
+                      <button class="symptom-card" onclick="selectSymptom('low_octane')">
+                        <div class="sym-icon">⛽</div>
+                        <h5>FI Knocking & Low Octane Fuel</h5>
+                        <p>Engine misfire or rattling under acceleration after filling with remote low-octane gasoline.</p>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Step 2 -->
+                  <div class="wizard-step-pane" id="wz-step-2">
+                    <h4 id="wizard-triage-title">Running Diagnostics...</h4>
+                    <div class="triage-status-list" id="triage-checklists">
+                      <!-- Populated via JS -->
+                    </div>
+                    <button class="btn btn-primary" onclick="proceedToWizardStep3()">Generate Technical Recovery Steps</button>
+                  </div>
+
+                  <!-- Step 3 -->
+                  <div class="wizard-step-pane" id="wz-step-3">
+                    <h4 id="wizard-remedy-title">Technical Mechanical Guide</h4>
+                    <div class="remedy-content-body" id="wizard-remedy-body">
+                      <!-- Populated via JS -->
+                    </div>
+                    <div class="wizard-action-footer">
+                      <button class="btn btn-secondary" onclick="setWizardStep(1)">Start Over</button>
+                      <button class="btn btn-danger-glow" onclick="activateMechanicDialer()">Escalate to Team Support (078)</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB: SAFETY & FIRST AID -->
+        <section class="tab-pane" id="tab-safety">
+          <div class="safety-grid">
+            
+            <!-- WILDERNESS FIRST AID TRIAGE -->
+            <div class="grid-card first-aid-card">
+              <div class="card-header">
+                <h3>Wilderness First Aid (WFA) Specialists</h3>
+                <span class="card-subtitle">Immediate response guidelines in 90% humidity</span>
+              </div>
+              <div class="triage-tabs">
+                <button class="triage-tab active" onclick="showTriage('heatstroke')">Heatstroke Protocol</button>
+                <button class="triage-tab" onclick="showTriage('jellyfish')">Jellyfish Stings</button>
+                <button class="triage-tab" onclick="showTriage('limestone')">Limestone Abrasions</button>
+              </div>
+              
+              <div class="triage-content-box" id="triage-content">
+                <!-- Populated dynamically via app.js -->
+              </div>
+              
+              <div class="kit-checklist-box">
+                <h4>Mandatory Survival Gear Check</h4>
+                <div class="checklist-items-grid">
+                  <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Tourniquet (CAT-1)</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Antihistamines</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Rehydration Salts</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Burn Gel</span>
+                  </label>
+                  <label class="check-item">
+                    <input type="checkbox" checked disabled>
+                    <span>Mylar Space Blanket</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- EMERGENCY DIALER & HOSPITAL ROUTING -->
+            <div class="grid-card dialer-card">
+              <div class="card-header">
+                <h3>Emergency Contacts & Rapid Dispatch</h3>
+                <span class="card-subtitle">Yucatan regional emergency infrastructure</span>
+              </div>
+              <div class="dialer-container">
+                <div class="contacts-list">
+                  <div class="contact-card-item" onclick="initiateCall('911', 'Mexico Emergency Services')">
+                    <div class="contact-num">911</div>
+                    <div class="contact-details">
+                      <h5>Mexico General Emergency</h5>
+                      <p>Active nationwide routing</p>
+                    </div>
+                  </div>
+
+                  <div class="contact-card-item" onclick="initiateCall('078', 'Green Angels Road Assistance')">
+                    <div class="contact-num">078</div>
+                    <div class="contact-details">
+                      <h5>Green Angels Patrol</h5>
+                      <p>Bilingual highway mechanical help</p>
+                    </div>
+                  </div>
+
+                  <div class="contact-card-item" onclick="initiateCall('+52 984 873 1233', 'Red Cross Playa del Carmen')">
+                    <div class="contact-num">Red Cross</div>
+                    <div class="contact-details">
+                      <h5>Red Cross Playa</h5>
+                      <p>Playa del Carmen Trauma Dispatch</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Call Simulator Panel -->
+                <div class="phone-simulator-panel" id="phone-sim">
+                  <div class="phone-screen">
+                    <div class="calling-status">IDLE</div>
+                    <div class="calling-name">No Active Dispatch</div>
+                    <div class="calling-number">-- -- --</div>
+                    <div class="call-timer" style="display: none;">00:00</div>
+                  </div>
+                  <div class="phone-controls" style="display: flex; gap: 10px; width: 100%; margin-top: 10px;">
+                    <button class="btn btn-success-glow" id="dial-btn" disabled onclick="dialSelectedContact()" style="flex: 1; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 0.75rem;">CALL</button>
+                    <button class="btn btn-danger-glow" id="hangup-btn" disabled onclick="endCall()" style="flex: 1; padding: 10px; font-weight: bold; border-radius: 6px; cursor: pointer; font-size: 0.75rem;">HANG UP</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Hospital Dispatch Routing -->
+              <div class="nearest-hospital-box">
+                <h4>Nearest Medical Facilities Dispatch</h4>
+                <div id="hospital-routing-status">
+                  <p>Current telemetry location requires no medical dispatch routing.</p>
+                </div>
+                <div class="dispatch-action" id="dispatch-action-box" style="display: none;">
+                  <button class="btn btn-primary" onclick="simulateMedicalRoute()">Plot Hospital GPS Route</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB: YUCATAN MAP & INTELLIGENCE -->
+        <section class="tab-pane" id="tab-locations">
+          <div class="locations-grid">
+            
+            <!-- LIST AND FILTERS -->
+            <div class="grid-card locations-list-card">
+              <div class="card-header">
+                <h3>Yucatan Terrain Intelligence</h3>
+                <span class="card-subtitle">V-Strom 250 SX Risk Levels & Mayan History</span>
+              </div>
+              
+              <div class="filter-bar" style="flex-wrap: wrap; gap: 8px;">
+                <button class="filter-btn active" onclick="filterLocations('ALL')">All</button>
+                <button class="filter-btn" onclick="filterLocations('CAT_A')">Coasts</button>
+                <button class="filter-btn" onclick="filterLocations('CAT_B')">Cenotes</button>
+                <button class="filter-btn" onclick="filterLocations('CAT_C')">Gastronomy</button>
+                <button class="filter-btn" onclick="filterLocations('CAT_D')">Archeology</button>
+                <button class="filter-btn" onclick="filterLocations('CAT_E')">History</button>
+              </div>
+
+              <div class="locations-list-scrollable" id="locations-list">
+                <!-- Location Items Rendered by JS -->
+              </div>
+            </div>
+
+            <!-- INTERACTIVE MAP AND DETAILS -->
+            <div class="grid-card map-card col-span-2" style="position: relative; padding: 0;">
+              <div class="map-layer-selector">
+                <button class="layer-btn active" id="btn-layer-hybrid" onclick="switchMapLayer('hybrid')">Google Earth</button>
+                <button class="layer-btn" id="btn-layer-roads" onclick="switchMapLayer('roads')">Google Roads</button>
+                <button class="layer-btn" id="btn-layer-dark" onclick="switchMapLayer('dark')">Dark Command</button>
+              </div>
+              <div id="leaflet-map-element" style="height: 100%; min-height: 480px; width: 100%; z-index: 1;"></div>
+            </div>
+
+            <!-- LOCATION DETAILED SUMMARY -->
+            <div class="grid-card col-span-3 location-details-view" id="active-location-card">
+              <div class="detail-placeholder">
+                <p>Select a location on the list or click a map marker to display Earth Vision and Storytelling hooks.</p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB: YOUTUBE STUDIO -->
+        <section class="tab-pane" id="tab-content">
+          <div class="youtube-grid">
+            
+            <!-- GOLDEN HOUR CALCULATOR -->
+            <div class="grid-card golden-hour-card">
+              <div class="card-header">
+                <h3>Yucatan 'Golden Hour' Tracker</h3>
+                <span class="card-subtitle">Sun position & drone planning via Google Weather API (Sim)</span>
+              </div>
+              <div class="golden-hour-content">
+                <div class="sunset-countdown">
+                  <span class="countdown-label">TIME UNTIL GOLDEN HOUR</span>
+                  <span class="countdown-clock" id="sunset-timer">03:42:18</span>
+                </div>
+                
+                <div class="golden-stats">
+                  <div class="g-stat">
+                    <span>Current Sun Angle</span>
+                    <strong id="val-sun-angle">42°</strong>
+                  </div>
+                  <div class="g-stat">
+                    <span>Golden Hour Start</span>
+                    <strong id="val-golden-start">18:14</strong>
+                  </div>
+                  <div class="g-stat">
+                    <span>Sunset</span>
+                    <strong id="val-sunset-time">19:02</strong>
+                  </div>
+                  <div class="g-stat">
+                    <span>Humidity Impact</span>
+                    <strong id="val-humidity-impact">High Mist (90%)</strong>
+                  </div>
+                </div>
+                
+                <p class="golden-tip">💡 **Cinematic Tip**: Yucatan coastal humidity creates a glowing sunset mist at Boca Paila. Launch your drone at an angle of 15° to capture the orange haze reflecting in the lagoon.</p>
+              </div>
+            </div>
+
+            <!-- SCRIPT GENERATOR -->
+            <div class="grid-card script-card col-span-2">
+              <div class="card-header">
+                <h3>YOUTUBER_PRO Script & Hooks Engine</h3>
+                <span class="card-subtitle">Generate SEO-optimized hooks with Caste War and Cenote context</span>
+              </div>
+              <div class="script-creator-panel">
+                <div class="input-row">
+                  <label for="script-location">Select Location context:</label>
+                  <select id="script-location" class="custom-select">
+                    <option value="Boca Paila">Boca Paila (Coastal lagoon meets Caribbean)</option>
+                    <option value="Taak Bi Ha">Taak Bi Ha (Subterranean Karst Cenote Cathedral)</option>
+                    <option value="Tihosuco">Tihosuco (Mayan Caste War Rebellion Ruins)</option>
+                  </select>
+                </div>
+                <div class="input-row">
+                  <label for="script-vibe">Creator Style / Vibe:</label>
+                  <select id="script-vibe" class="custom-select">
+                    <option value="epic">Epic Cinematic Adventure</option>
+                    <option value="mechanic">The Rough Mechanic & Solo Survivalist</option>
+                    <option value="historic">The Archeological Explorer</option>
+                  </select>
+                </div>
+                
+                <button class="btn btn-primary" onclick="generateScriptHook()">Generate Script Hook</button>
+
+                <div class="generated-output-box">
+                  <div class="box-header">
+                    <span>Generated Script Script (YOUTUBER_PRO mode)</span>
+                    <button class="btn-copy" onclick="copyScriptText()">Copy Code</button>
+                  </div>
+                  <textarea id="script-output" readonly placeholder="Your generated script will appear here..."></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- B-ROLL CHECKLIST -->
+            <div class="grid-card col-span-3 broll-card">
+              <div class="card-header">
+                <h3>V-Strom 250 SX B-Roll Checklist</h3>
+                <span class="card-subtitle">Must-have frames to tell a compelling Suzuki ADV story</span>
+              </div>
+              <div class="broll-grid">
+                
+                <div class="broll-check-card">
+                  <input type="checkbox" id="broll-1">
+                  <label for="broll-1">
+                    <h5>Exhaust Note Growl</h5>
+                    <p>Low angle camera, start up the V-Strom 250 SX exhaust note with water splashes behind.</p>
+                  </label>
+                </div>
+
+                <div class="broll-check-card">
+                  <input type="checkbox" id="broll-2">
+                  <label for="broll-2">
+                    <h5>19-inch Front Wheel Clearance</h5>
+                    <p>Slow-mo shot crossing wet limestone crevices, showcasing suspension travel and ground clearance.</p>
+                  </label>
+                </div>
+
+                <div class="broll-check-card">
+                  <input type="checkbox" id="broll-3">
+                  <label for="broll-3">
+                    <h5>Rider Silhouette at Golden Hour</h5>
+                    <p>Drone tracking from behind the rider side-view against the burning orange sun.</p>
+                  </label>
+                </div>
+
+                <div class="broll-check-card">
+                  <input type="checkbox" id="broll-4">
+                  <label for="broll-4">
+                    <h5>SOCS Oil Cooling Flow Detail</h5>
+                    <p>Macro shot of oil cooler fins glistening with moisture in the humid jungle environment.</p>
+                  </label>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- TAB: AI COMMUNICATOR DECK -->
+        <section class="tab-pane" id="tab-ai-deck">
+          <div class="ai-deck-grid">
+            
+            <!-- HOLOGRAPHIC AI INTERACTIVE CORE -->
+            <div class="grid-card col-span-2 ai-core-card">
+              <div class="card-header">
+                <h3>Gemini AI Comm Link</h3>
+                <span class="card-subtitle">Secure satellite voice communication node</span>
+              </div>
+              
+              <div class="hologram-container">
+                <div class="holo-emitter">
+                  <div class="holo-ring holo-ring-1"></div>
+                  <div class="holo-ring holo-ring-2"></div>
+                  <div class="holo-ring holo-ring-3"></div>
+                  <div class="holo-orb" id="holo-core-orb">
+                    <svg viewBox="0 0 24 24" class="holo-brain-svg" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+                      <path d="M12 6v12M6 12h12M7.75 7.75l8.5 8.5M7.75 16.25l8.5-8.5"/>
+                    </svg>
+                  </div>
+                </div>
+                
+                <!-- Audio Waveform Visualization -->
+                <div class="waveform-box">
+                  <canvas id="waveform-canvas" width="450" height="100"></canvas>
+                </div>
+              </div>
+              
+              <div class="ai-controls-row">
+                <button class="btn-voice-mic" id="btn-mic-trigger" onclick="toggleVoiceSpeech()">
+                  <svg viewBox="0 0 24 24" class="mic-icon-svg" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle;">
+                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
+                  </svg>
+                  <span id="mic-status-label" style="margin-left: 6px;">ACTIVAR MICRÓFONO</span>
+                </button>
+
+                <button class="btn-voice-mute" id="btn-voice-mute" onclick="toggleVoiceMute()">
+                  <svg viewBox="0 0 24 24" class="speaker-icon-svg" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px; display: inline-block; vertical-align: middle;">
+                    <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                    <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+                  </svg>
+                  <span id="mute-status-label" style="margin-left: 6px;">VOZ ACTIVADA</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- CHAT LOG CONSOLE -->
+            <div class="grid-card ai-console-card">
+              <div class="card-header">
+                <h3>Console Transcripts</h3>
+                <span class="card-subtitle">Real-time transcription & diagnostic logging</span>
+              </div>
+              <div class="ai-chat-scrollable" id="ai-chat-log">
+                <div class="chat-msg system">
+                  <span class="msg-time">SYSTEM STATUS</span>
+                  <p>Enlace satelital de voz Gemini establecido. Listo para traducción e interacción por voz (Di: 'presión de llantas', 'holgura de cadena' o 'golpe de calor').</p>
+                </div>
+              </div>
+              
+              <!-- Text input for typing to AI -->
+              <div class="ai-text-input-row" style="display: flex; gap: 8px; margin-top: 12px; padding: 0 4px; margin-bottom: 12px;">
+                <input type="text" id="ai-text-input" class="custom-input" placeholder="Escribe aquí tu consulta..." style="flex: 1; padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border-color); background: rgba(0,0,0,0.4); color: #fff; font-size: 0.8rem;" onkeydown="if(event.key === 'Enter') sendAiTextQuery()">
+                <button class="btn btn-primary" onclick="sendAiTextQuery()" style="padding: 10px 16px; font-size: 0.8rem; font-family: var(--font-display); font-weight: 700;">Enviar</button>
+              </div>
+
+              <!-- Quick Action Query Prompts -->
+              <div class="ai-quick-actions">
+                <h4 id="lbl-quick-actions">Acciones de Voz Inteligentes</h4>
+                <div class="quick-btns-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                  <button class="btn btn-outline" onclick="triggerQuickAiQuery('vendedor')" style="font-size: 0.72rem; padding: 10px 4px; text-align: center;">🔥 Script Vendedor</button>
+                  <button class="btn btn-outline" onclick="triggerQuickAiQuery('diagnostico_ruta')" style="font-size: 0.72rem; padding: 10px 4px; text-align: center;">📋 Diagnóstico & Paradas</button>
+                  <button class="btn btn-outline" onclick="triggerQuickAiQuery('ruta')" style="font-size: 0.72rem; padding: 10px 4px; text-align: center;">🗺️ Reporte Ruta</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- GOOGLE CONNECT MODAL OVERLAY -->
+  <div id="google-login-modal" class="modal-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #030306; z-index: 10000; align-items: center; justify-content: center;">
+    <div class="modal-card" style="background: var(--bg-sidebar); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 30px; max-width: 420px; width: 90%; text-align: center; box-shadow: 0 10px 30px rgba(226, 27, 27, 0.25);">
+      <div class="modal-header" style="margin-bottom: 16px;">
+        <svg viewBox="0 0 24 24" class="modal-logo-svg" fill="none" stroke="currentColor" stroke-width="2" style="width: 48px; height: 48px; color: var(--primary); margin: 0 auto 12px; filter: drop-shadow(0 0 8px var(--primary-glow));">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <h3 style="font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: #fff;">Google Satellite Network</h3>
+      </div>
+      <p class="modal-desc" style="font-size: 0.82rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px;">Inicia sesión con tu cuenta de Gmail para vincular los accesos a YouTube Music con tu radio de expedición, autenticar licencias y sincronizar los permisos de Google.</p>
+      
+      <div class="modal-actions" style="display: flex; flex-direction: column; gap: 12px;">
+        <button class="btn btn-primary" onclick="simulateGoogleLogin()" style="width: 100%; display: flex; align-items: center; justify-content: center; padding: 12px 20px; font-weight: 700;">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width: 14px; height: 14px; margin-right: 8px;">
+            <path d="M12.24 10.285V13.4h6.887c-.275 1.565-1.88 4.604-6.887 4.604-4.33 0-7.866-3.577-7.866-8s3.536-8 7.866-8c2.46 0 4.105 1.025 5.047 1.926l2.427-2.334C17.955 2.192 15.34 1 12.24 1 6.12 1 1.16 5.92 1.16 12s4.96 11 11.08 11c6.39 0 10.63-4.5 10.63-10.84 0-.73-.08-1.285-.18-1.875h-10.45z"/>
+          </svg>
+          Iniciar Sesión con Google
+        </button>
+        <button class="btn btn-secondary" onclick="closeGoogleLoginModal()" style="width: 100%; padding: 12px 20px; border: 1px solid var(--border-color); background: none; color: var(--text-muted);">Omitir / Modo Offline</button>
+        <button class="btn btn-outline" onclick="simulateGoogleLoginAny()" style="width: 100%; padding: 12px 20px; border: 1px dashed rgba(226, 27, 27, 0.4); background: none; color: var(--text-muted); font-size: 0.8rem; cursor: pointer; border-radius: var(--border-radius); transition: all 0.2s ease;">Iniciar sesión con otra cuenta de Gmail</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet Map JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Custom JS -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>

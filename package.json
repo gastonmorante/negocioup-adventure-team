@@ -1,0 +1,14 @@
+{
+  "name": "negocioup-adventure-team",
+  "version": "1.0.0",
+  "description": "Premium Adventure Dashboard for Suzuki V-Strom 250 SX in the Yucatan",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^4.5.0"
+  }
+}
