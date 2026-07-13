@@ -3452,13 +3452,17 @@ function speakAiResponseNative(text) {
   utterance.pitch = 1.12; // Warmer tone
   utterance.rate = 0.98;  // Slightly more relaxed speed for natural delivery
   
-  // Prioritized search for sensual, friendly female voices
-  let voices = speechVoices;
+  let voices = speechVoices || [];
   if (voices.length === 0) {
-    voices = window.speechSynthesis.getVoices();
+    try {
+      voices = window.speechSynthesis.getVoices() || [];
+    } catch (err) {
+      console.warn("getVoices failed:", err);
+      voices = [];
+    }
   }
   const langMatch = currentLanguage === 'es' ? 'es' : 'en';
-  const langVoices = voices.filter(v => v.lang.toLowerCase().includes(langMatch));
+  const langVoices = (voices || []).filter(v => v && v.lang && v.lang.toLowerCase().includes(langMatch));
   
   // First priority: Check if the user has a custom voice selected as default on their phone/OS
   let targetVoice = langVoices.find(v => v.default);
