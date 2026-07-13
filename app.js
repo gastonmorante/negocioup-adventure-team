@@ -1482,6 +1482,9 @@ function initMap() {
 
     // Start live Geolocation tracking
     startLiveGpsTracking();
+
+    // Trigger initial route draw and weather fetch after map is ready
+    calculateExpeditionRoute();
   } catch (err) {
     console.warn("Map initialization encountered an error:", err);
   }
@@ -1845,7 +1848,7 @@ function onRouteLocationChange() {
 }
 
 function calculateExpeditionRoute() {
-  if (!map || !state.activeLocation) return;
+  if (!state.activeLocation) return;
 
   const startCoords = state.userGpsCoords || [20.6274, -87.0799];
   const destCoords = state.activeLocation.geo;
@@ -2568,28 +2571,28 @@ function generateScriptHook() {
 
   if (vibe === 'epic') {
     script = `[SCENE START]
-(DRONE SHOT: Smoothly flying over Yucatan's thick jungle canopy, catching the distant reflection of coastal turquoise water. Cut to low, wide angle of a Suzuki V-Strom 250 SX kicking up white sand sprays).
+(DRONE SHOT: Smoothly flying over Yucatan's thick jungle canopy, catching the distant reflection of coastal turquoise water. Cut to low, wide angle of La Súper Catarina kicking up white sand sprays).
 
 RIDER (VOICE OVER):
-"This isn't just an adventure. It's a journey into history. Riding the legendary Suzuki V-Strom 250 SX through ${locName}, we're standing right where ${selectedLoc.story_hook.toLowerCase()}... but the terrain isn't friendly. Underneath this beauty is slick karst limestone and deep coastal sands that can trap a 250cc bike in seconds. Today, we conquer the wilderness!"
+"This isn't just an adventure. It's a journey into history. Riding the legendary La Súper Catarina through ${locName}, we're standing right where ${selectedLoc.story_hook.toLowerCase()}... but the terrain isn't friendly. Underneath this beauty is slick karst limestone and deep coastal sands that can trap a 250cc bike in seconds. Today, we conquer the wilderness!"
 
 [CUT TO: Exhaust note growl close up, followed by a wide profile shot of the rider facing the golden hour sun].`;
   } else if (vibe === 'mechanic') {
     script = `[SCENE START]
-(CLOSE UP: A 4mm Allen key twisting battery terminals under a dusty V-Strom seat. Mosquitoes buzz. Perspiration drips in 90% humidity).
+(CLOSE UP: A 4mm Allen key twisting battery terminals under a dusty Súper Catarina seat. Mosquitoes buzz. Perspiration drips in 90% humidity).
 
 HOST (TO CAMERA):
-"What's up ADV family. We are deep in the Yucatan backcountry near ${locName}, and our Suzuki V-Strom is testing the limits of its Oil Cooling System (SOCS). In this heat, one mistake—like letting limestone plaster block your radiator fins, or using contaminated gasoline from a remote village drum—will strand you here. We've got 150km of trail, 29 PSI in the front, and only a tool kit between us and survival. Let's see what this single-cylinder can handle."
+"What's up ADV family. We are deep in the Yucatan backcountry near ${locName}, and our Súper Catarina is testing the limits of its Oil Cooling System (SOCS). In this heat, one mistake—like letting limestone plaster block your radiator fins, or using contaminated gasoline from a remote village drum—will strand you here. We've got 150km of trail, 29 PSI in the front, and only a tool kit between us and survival. Let's see what this single-cylinder can handle."
 
-[CUT TO: V-Strom tire clearance shot as it rolls over a limestone plateau].`;
+[CUT TO: Súper Catarina tire clearance shot as it rolls over a limestone plateau].`;
   } else if (vibe === 'historic') {
     script = `[SCENE START]
 (FADE IN: Golden hour light casting long, haunting shadows through the half-destroyed arches of a colonial stone church).
 
 HOST (TO CAMERA):
-"Look at these stones. This is Tihosuco—the heart of the Caste War, where the Mayan rebellion fought for their freedom. Riding a Suzuki V-Strom 250 SX down these ancient Sacbeob networks makes you appreciate the resilience of this land. But respect the road: these cobbles will rattle your bike to pieces if you don't torque your fairing bolts. Today, we explore the shadows of rebellion."
+"Look at these stones. This is Tihosuco—the heart of the Caste War, where the Mayan rebellion fought for their freedom. Riding La Súper Catarina down these ancient Sacbeob networks makes you appreciate the resilience of this land. But respect the road: these cobbles will rattle your bike to pieces if you don't torque your fairing bolts. Today, we explore the shadows of rebellion."
 
-[CUT TO: Drone B-roll panning down from the church facade to the parked V-Strom silhouette].`;
+[CUT TO: Drone B-roll panning down from the church facade to the parked Súper Catarina silhouette].`;
   }
 
   output.value = script;
