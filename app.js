@@ -31,29 +31,29 @@ let canvasAnimId = null;
 // GOOGLE MAPS PHOTO GALLERY METADATA
 const categoryPhotos = {
   'CAT_A': [
-    'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80',
-    'https://images.unsplash.com/photo-1548574505-5e239809ee19?w=400&q=80',
-    'https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=400&q=80'
+    'https://images.unsplash.com/photo-1504198453319-5ce911bafcde?w=400&q=80',
+    'https://images.unsplash.com/photo-1580977252924-f7b57bfbbd90?w=400&q=80',
+    'https://images.unsplash.com/photo-1600208151241-797746a23617?w=400&q=80'
   ],
   'CAT_B': [
-    'https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=400&q=80',
-    'https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400&q=80',
-    'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=400&q=80'
-  ],
-  'CAT_C': [
-    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80',
-    'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400&q=80',
-    'https://images.unsplash.com/photo-1582234372722-50d7cad30ead?w=400&q=80'
-  ],
-  'CAT_D': [
-    'https://images.unsplash.com/photo-1518638150341-db706e86654e?w=400&q=80',
-    'https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=400&q=80',
+    'https://images.unsplash.com/photo-1518638150341-f70b53c47374?w=400&q=80',
+    'https://images.unsplash.com/photo-1534447677768-be436bb09401?w=400&q=80',
     'https://images.unsplash.com/photo-1568402102990-bc541580b59f?w=400&q=80'
   ],
+  'CAT_C': [
+    'https://images.unsplash.com/photo-1596422846543-75c6fc18a52b?w=400&q=80',
+    'https://images.unsplash.com/photo-1509057091289-40892c53f864?w=400&q=80',
+    'https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&q=80'
+  ],
+  'CAT_D': [
+    'https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=400&q=80',
+    'https://images.unsplash.com/photo-1509057091289-40892c53f864?w=400&q=80',
+    'https://images.unsplash.com/photo-1618330834871-dd22c2c226ca?w=400&q=80'
+  ],
   'CAT_E': [
-    'https://images.unsplash.com/photo-1627896157734-4d7d4388f24b?w=400&q=80',
-    'https://images.unsplash.com/photo-1595166299100-34440bd103b4?w=400&q=80',
-    'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=80'
+    'https://images.unsplash.com/photo-1615870216519-2f9fa575fa5c?w=400&q=80',
+    'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&q=80',
+    'https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?w=400&q=80'
   ]
 };
 
@@ -3560,4 +3560,6 @@ window.closeGoogleLoginModal = closeGoogleLoginModal;
 window.selectLocation = selectLocation;
 window.triggerWelcomeSpeech = triggerWelcomeSpeech;
 window.dialSelectedContact = dialSelectedContact;
+window.onRouteCategoryChange = onRouteCategoryChange;
+window.onRouteLocationChange = onRouteLocationChange;
 
