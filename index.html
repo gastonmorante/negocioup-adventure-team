@@ -64,14 +64,14 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/>
           </svg>
-          <span id="nav-lbl-studio">YouTube Studio</span>
+          <span id="nav-lbl-studio">Shooting Pro</span>
         </button>
         <button class="nav-item" data-tab="ai-deck">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
             <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/>
           </svg>
-          <span id="nav-lbl-ai">AI Comm Deck</span>
+          <span id="nav-lbl-ai">Ai partner</span>
         </button>
         <button class="nav-item" data-tab="smartwatch">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -487,9 +487,7 @@
                         <stop offset="0%" stop-color="#ffffff" />
                         <stop offset="100%" stop-color="#777777" />
                       </linearGradient>
-                    </defs>
-                    
-                    <!-- Background Grid -->
+                                 <!-- Background Grid -->
                     <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
                       <line x1="0" y1="50" x2="800" y2="50" />
                       <line x1="0" y1="100" x2="800" y2="100" />
@@ -499,7 +497,6 @@
                       <line x1="0" y1="300" x2="800" y2="300" />
                       <line x1="0" y1="350" x2="800" y2="350" />
                       <line x1="0" y1="400" x2="800" y2="400" />
-                      
                       <line x1="100" y1="0" x2="100" y2="450" />
                       <line x1="200" y1="0" x2="200" y2="450" />
                       <line x1="300" y1="0" x2="300" y2="450" />
@@ -512,54 +509,86 @@
                     <!-- Ground Line -->
                     <line x1="50" y1="380" x2="750" y2="380" stroke="rgba(255,255,255,0.15)" stroke-width="3" stroke-dasharray="10 5" />
                     
-                    <!-- Wheels (Interactive targets) -->
-                    <!-- Rear Wheel -->
-                    <circle cx="200" cy="300" r="80" stroke="#444" stroke-width="24" fill="none" />
-                    <circle cx="200" cy="300" r="68" stroke="#ffffff22" stroke-width="2" fill="none" />
-                    <circle cx="200" cy="300" r="45" stroke="#777" stroke-width="8" fill="none" />
-                    <!-- Spokes -->
-                    <path class="rear-spokes" d="M 200 220 L 200 380 M 120 300 L 280 300 M 143 243 L 257 357 M 143 357 L 257 243" stroke="#888" stroke-width="2" />
-                    <circle cx="200" cy="300" r="20" fill="#222" stroke="#444" stroke-width="3" />
+                    <!-- WHEELS -->
+                    <!-- Rear Wheel (17-inch cast alloy) -->
+                    <circle cx="200" cy="300" r="80" stroke="#1c1c1f" stroke-width="24" fill="none" />
+                    <circle cx="200" cy="300" r="68" stroke="rgba(226,27,27,0.4)" stroke-width="2.5" fill="none" />
+                    <circle cx="200" cy="300" r="45" stroke="#3a3a3c" stroke-width="8" fill="none" />
+                    <!-- Lightweight Cast Spokes -->
+                    <path class="rear-spokes" d="M 200 220 L 200 380 M 120 300 L 280 300 M 143 243 L 257 357 M 143 357 L 257 243" stroke="#555" stroke-width="3.5" />
+                    <circle cx="200" cy="300" r="22" fill="#111" stroke="#333" stroke-width="3" />
                     
-                    <!-- Front Wheel (19-inch dynamics) -->
-                    <circle cx="600" cy="285" r="95" stroke="#444" stroke-width="20" fill="none" />
-                    <circle cx="600" cy="285" r="85" stroke="#ffffff22" stroke-width="2" fill="none" />
-                    <circle cx="600" cy="285" r="55" stroke="#777" stroke-width="8" fill="none" />
-                    <path class="front-spokes" d="M 600 190 L 600 380 M 505 285 L 695 285 M 533 218 L 667 352 M 533 352 L 667 218" stroke="#888" stroke-width="2" />
-                    <circle cx="600" cy="285" r="24" fill="#222" stroke="#444" stroke-width="3" />
+                    <!-- Front Wheel (19-inch cast alloy - signature ADV size) -->
+                    <circle cx="600" cy="285" r="95" stroke="#1c1c1f" stroke-width="20" fill="none" />
+                    <circle cx="600" cy="285" r="85" stroke="rgba(226,27,27,0.4)" stroke-width="2.5" fill="none" />
+                    <circle cx="600" cy="285" r="55" stroke="#3a3a3c" stroke-width="8" fill="none" />
+                    <!-- Lightweight Cast Spokes -->
+                    <path class="front-spokes" d="M 600 190 L 600 380 M 505 285 L 695 285 M 533 218 L 667 352 M 533 352 L 667 218" stroke="#555" stroke-width="3.5" />
+                    <circle cx="600" cy="285" r="26" fill="#111" stroke="#333" stroke-width="3" />
                     
-                    <!-- Chassis and Swingarm -->
-                    <path d="M 200 300 L 320 280 L 400 180 L 580 150 M 320 280 L 380 320 L 480 320 L 520 200" stroke="#555" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <!-- CHASSIS, FRAME & SWINGARM -->
+                    <path d="M 200 300 L 320 280 L 400 180 L 580 150 M 320 280 L 380 320 L 480 320 L 520 200" stroke="#222" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                    <path d="M 200 300 L 310 285" stroke="#444" stroke-width="14" stroke-linecap="round" />
                     
-                    <!-- Monoshock -->
-                    <line x1="320" y1="280" x2="360" y2="200" stroke="#EA4335" stroke-width="14" stroke-linecap="round" />
+                    <!-- Monoshock suspension -->
+                    <line x1="320" y1="280" x2="360" y2="200" stroke="#E21B1B" stroke-width="14" stroke-linecap="round" />
                     
-                    <!-- Engine Block (SOCS Single Cylinder) -->
-                    <rect class="engine-block-glow" x="360" y="220" width="120" height="90" rx="15" fill="#333" stroke="#555" stroke-width="4" />
+                    <!-- ENGINE BLOCK (SOCS Single Cylinder 249cc) -->
+                    <rect class="engine-block-glow" x="360" y="215" width="115" height="95" rx="12" fill="#1e1e24" stroke="#444" stroke-width="3" />
                     <!-- Cooling fins -->
-                    <line x1="375" y1="240" x2="465" y2="240" stroke="#666" stroke-width="4" />
-                    <line x1="375" y1="255" x2="465" y2="255" stroke="#666" stroke-width="4" />
-                    <line x1="375" y1="270" x2="465" y2="270" stroke="#666" stroke-width="4" />
-                    <line x1="375" y1="285" x2="465" y2="285" stroke="#666" stroke-width="4" />
+                    <line x1="375" y1="230" x2="455" y2="230" stroke="#555" stroke-width="4.5" />
+                    <line x1="375" y1="245" x2="455" y2="245" stroke="#555" stroke-width="4.5" />
+                    <line x1="375" y1="260" x2="455" y2="260" stroke="#555" stroke-width="4.5" />
+                    <line x1="375" y1="275" x2="455" y2="275" stroke="#555" stroke-width="4.5" />
+                    <line x1="375" y1="290" x2="455" y2="290" stroke="#555" stroke-width="4.5" />
                     
-                    <!-- Exhaust Pipe -->
-                    <path d="M 430 290 L 460 350 L 300 360 L 160 270" fill="none" stroke="#666" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M 220 305 L 150 260" fill="none" stroke="#aaa" stroke-width="16" stroke-linecap="round" />
+                    <!-- Front Radiator (Suzuki Oil Cooling System) -->
+                    <rect x="475" y="180" width="18" height="65" fill="#111" stroke="#444" stroke-width="2" />
+                    <line x1="475" y1="190" x2="493" y2="190" stroke="#333" stroke-width="2" />
+                    <line x1="475" y1="200" x2="493" y2="200" stroke="#333" stroke-width="2" />
+                    <line x1="475" y1="210" x2="493" y2="210" stroke="#333" stroke-width="2" />
+                    <line x1="475" y1="220" x2="493" y2="220" stroke="#333" stroke-width="2" />
                     
-                    <!-- Fuel Tank & Fairings V-Strom Shape -->
-                    <path d="M 330 180 C 330 180 360 110 440 110 C 490 110 520 140 550 140 C 570 140 590 120 620 150 L 530 200 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="3" />
-                    <!-- Front Beak -->
-                    <path d="M 550 140 L 650 160 L 610 185 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="2" />
+                    <!-- DUAL-SPORT ENGINE CRASH BARS -->
+                    <path d="M 390 155 L 470 200 L 465 275 L 395 285" fill="none" stroke="#636366" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
                     
-                    <!-- Seat -->
-                    <path d="M 250 200 Q 290 200 340 180 L 330 230 L 260 230 Z" fill="#1b1b1b" stroke="#333" stroke-width="2" />
+                    <!-- EXHAUST PIPE & DETAILED SILENCER -->
+                    <!-- Header pipe -->
+                    <path d="M 450 280 L 475 335 L 320 350 L 220 305" fill="none" stroke="#2c2c2e" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Silencer Muffler -->
+                    <path d="M 230 310 L 135 260" fill="none" stroke="#1c1c1f" stroke-width="22" stroke-linecap="round" />
+                    <!-- Premium Silver Heat Shield (V-Strom dual-outlet look) -->
+                    <rect x="155" y="260" width="70" height="24" rx="6" fill="#8e8e93" stroke="#aeaea2" stroke-width="1.5" transform="rotate(-23 155 260)" />
+                    <circle cx="140" cy="262" r="4" fill="#333" />
+                    <circle cx="148" cy="266" r="4" fill="#333" />
                     
-                    <!-- Front Forks -->
-                    <line x1="580" y1="130" x2="600" y2="285" stroke="#777" stroke-width="10" stroke-linecap="round" />
-                    <line x1="570" y1="120" x2="590" y2="285" stroke="#999" stroke-width="6" stroke-linecap="round" />
+                    <!-- REAR CARGO LUGGAGE CARRIER -->
+                    <path d="M 210 190 L 125 190 L 140 210 Z" fill="#2c2c2e" stroke="#48484a" stroke-width="2.5" />
                     
-                    <!-- Handlebars -->
-                    <path d="M 560 100 L 530 110 M 560 100 L 570 90 L 590 105" fill="none" stroke="#222" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- SPLIT SEAT (Two-level Rider & Pillion design) -->
+                    <path d="M 210 190 C 230 190 260 215 315 210 L 330 180 L 220 180 Z" fill="#141416" stroke="#2c2c2e" stroke-width="2" />
+                    
+                    <!-- FUEL TANK & MUSCULAR ATHLETIC SHROUDS -->
+                    <path d="M 310 180 C 310 180 340 100 440 100 C 490 100 520 120 545 135 L 530 215 L 375 220 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="3" />
+                    
+                    <!-- WINDSHIELD (Tall screen) -->
+                    <path d="M 535 110 L 565 30 L 588 35 L 555 115 Z" fill="rgba(255, 255, 255, 0.15)" stroke="rgba(255, 255, 255, 0.3)" stroke-width="1.5" />
+                    
+                    <!-- HANDGUARDS -->
+                    <path d="M 535 110 L 515 115 L 520 125 Z" fill="#1c1c1f" stroke="#3a3a3c" stroke-width="2" />
+                    
+                    <!-- FRONT BEAK (V-Strom Iconic Adventure Nose) -->
+                    <path d="M 545 135 L 642 158 L 595 182 Z" fill="url(#blueGrad)" stroke="#E21B1B" stroke-width="2.5" />
+                    
+                    <!-- ROUND SIGNATURE LED HEADLIGHT -->
+                    <circle cx="582" cy="115" r="13" fill="#fff" stroke="#ffcc00" stroke-width="3.5" style="filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.8));" />
+                    
+                    <!-- FRONT FORKS (Long Travel Suspension) -->
+                    <line x1="565" y1="110" x2="600" y2="285" stroke="#3a3a3c" stroke-width="12" stroke-linecap="round" />
+                    <line x1="565" y1="110" x2="600" y2="285" stroke="#8e8e93" stroke-width="5" stroke-linecap="round" />
+                    
+                    <!-- HANDLEBARS -->
+                    <path d="M 555 100 L 525 110 M 555 100 L 565 90 L 585 105" fill="none" stroke="#2c2c2e" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
                   </svg>
                   
                   <!-- Hotspot: Battery Under Seat -->
@@ -866,7 +895,7 @@
             <!-- SCRIPT GENERATOR -->
             <div class="grid-card script-card col-span-2">
               <div class="card-header">
-                <h3>YOUTUBER_PRO Script & Hooks Engine</h3>
+                <h3>SHOOTING_PRO Script & Hooks Engine</h3>
                 <span class="card-subtitle">Generate SEO-optimized hooks with Caste War and Cenote context</span>
               </div>
               <div class="script-creator-panel">
@@ -945,14 +974,14 @@
           </div>
         </section>
 
-        <!-- TAB: AI COMMUNICATOR DECK -->
+        <!-- TAB: AI PARTNER -->
         <section class="tab-pane" id="tab-ai-deck">
           <div class="ai-deck-grid">
             
             <!-- HOLOGRAPHIC AI INTERACTIVE CORE -->
             <div class="grid-card col-span-2 ai-core-card">
               <div class="card-header">
-                <h3>Gemini AI Comm Link</h3>
+                <h3>Ai partner satellite link</h3>
                 <span class="card-subtitle">Secure satellite voice communication node</span>
               </div>
               

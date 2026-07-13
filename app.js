@@ -1405,8 +1405,8 @@ function setupTabs() {
           if (map) map.invalidateSize();
         }, 100);
       }
-      else if (targetTab === 'content') pageTitle.textContent = 'YouTube Studio Engine';
-      else if (targetTab === 'ai-deck') pageTitle.textContent = 'Gemini AI Comm Link';
+      else if (targetTab === 'content') pageTitle.textContent = 'Shooting Pro Engine';
+      else if (targetTab === 'ai-deck') pageTitle.textContent = 'Ai partner';
       
       state.activeTab = targetTab;
     });
@@ -2633,8 +2633,8 @@ function toggleLanguage() {
 
   if (navDashboard) navDashboard.textContent = currentLanguage === 'es' ? 'Tablero' : 'Dashboard';
   if (navMap) navMap.textContent = currentLanguage === 'es' ? 'Mapa Yucatán' : 'Yucatan Map';
-  if (navStudio) navStudio.textContent = currentLanguage === 'es' ? 'Estudio YouTube' : 'YouTube Studio';
-  if (navAi) navAi.textContent = currentLanguage === 'es' ? 'Enlace IA' : 'AI Comm Deck';
+  if (navStudio) navStudio.textContent = currentLanguage === 'es' ? 'Grabación Pro' : 'Shooting Pro';
+  if (navAi) navAi.textContent = currentLanguage === 'es' ? 'Asistente IA' : 'Ai partner';
   if (navSmartwatch) navSmartwatch.textContent = currentLanguage === 'es' ? 'Reloj OnePlus' : 'OnePlus Watch';
   if (navMechanics) navMechanics.textContent = currentLanguage === 'es' ? 'Mecánica' : 'Mechanics';
   if (navSafety) navSafety.textContent = currentLanguage === 'es' ? 'Primeros Auxilios' : 'First Aid';
@@ -2701,8 +2701,8 @@ function toggleLanguage() {
     else if (state.activeTab === 'mechanics') pageTitle.textContent = currentLanguage === 'es' ? 'Manual Mecánico' : 'Mechanical Manual';
     else if (state.activeTab === 'safety') pageTitle.textContent = currentLanguage === 'es' ? 'Primeros Auxilios y Emergencia' : 'First Aid & Emergency';
     else if (state.activeTab === 'locations') pageTitle.textContent = currentLanguage === 'es' ? 'Explorador de Rutas' : 'Yucatan Route Explorer';
-    else if (state.activeTab === 'content') pageTitle.textContent = currentLanguage === 'es' ? 'Estudio de Producción YouTube' : 'YouTube Studio Engine';
-    else if (state.activeTab === 'ai-deck') pageTitle.textContent = currentLanguage === 'es' ? 'Enlace de IA Gemini' : 'Gemini AI Comm Link';
+    else if (state.activeTab === 'content') pageTitle.textContent = currentLanguage === 'es' ? 'Módulo Shooting Pro' : 'Shooting Pro Engine';
+    else if (state.activeTab === 'ai-deck') pageTitle.textContent = currentLanguage === 'es' ? 'Asistente Ai partner' : 'Ai partner Link';
   }
 
   // Update speech engine language
