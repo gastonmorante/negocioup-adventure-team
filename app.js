@@ -1248,115 +1248,198 @@ let activeBestRoute = null;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Start dynamic time updater
-  initClock();
+  try {
+    initClock();
+  } catch (e) {
+    console.error("initClock failed:", e);
+  }
   
   // Set default first-aid pane
-  showTriage('heatstroke');
+  try {
+    showTriage('heatstroke');
+  } catch (e) {
+    console.error("showTriage failed:", e);
+  }
   
   // Set default hotspot details
-  showHotspot('cooling');
-
-  // Tab Setup
-  setupTabs();
-
-  // Initialize Route Planner Dropdowns
-  initRoutePlanner();
-
-  // Attach radio track changer programmatically
-  const radioSelect = document.getElementById('radio-track-select');
-  if (radioSelect) {
-    radioSelect.addEventListener('change', onRadioTrackChange);
+  try {
+    showHotspot('cooling');
+  } catch (e) {
+    console.error("showHotspot failed:", e);
   }
 
-  const loadBtn = document.getElementById('load-playlist-btn');
-  if (loadBtn) {
-    loadBtn.addEventListener('click', loadCustomPlaylist);
+  // Tab Setup
+  try {
+    setupTabs();
+  } catch (e) {
+    console.error("setupTabs failed:", e);
+  }
+
+  // Initialize Route Planner Dropdowns
+  try {
+    initRoutePlanner();
+  } catch (e) {
+    console.error("initRoutePlanner failed:", e);
+  }
+
+  // Attach radio track changer programmatically
+  try {
+    const radioSelect = document.getElementById('radio-track-select');
+    if (radioSelect) {
+      radioSelect.addEventListener('change', onRadioTrackChange);
+    }
+  } catch (e) {
+    console.error("radioSelect failed:", e);
+  }
+
+  try {
+    const loadBtn = document.getElementById('load-playlist-btn');
+    if (loadBtn) {
+      loadBtn.addEventListener('click', loadCustomPlaylist);
+    }
+  } catch (e) {
+    console.error("loadBtn failed:", e);
   }
 
   // Load custom playlist if saved in local storage
-  const savedPlaylist = localStorage.getItem('negocioup_custom_playlist');
-  if (savedPlaylist) {
-    const iframe = document.getElementById('radio-iframe');
-    if (iframe) {
-      iframe.src = `https://www.youtube.com/embed/videoseries?list=${savedPlaylist}&enablejsapi=1&controls=1`;
+  try {
+    const savedPlaylist = localStorage.getItem('negocioup_custom_playlist');
+    if (savedPlaylist) {
+      const iframe = document.getElementById('radio-iframe');
+      if (iframe) {
+        iframe.src = `https://www.youtube.com/embed/videoseries?list=${savedPlaylist}&enablejsapi=1&controls=1`;
+      }
+      const customInput = document.getElementById('custom-playlist-input');
+      if (customInput) {
+        customInput.placeholder = "Playlist activa...";
+      }
     }
-    const customInput = document.getElementById('custom-playlist-input');
-    if (customInput) {
-      customInput.placeholder = "Playlist activa...";
-    }
+  } catch (e) {
+    console.error("load custom playlist failed:", e);
   }
   
   // Render Locations List
-  renderLocations('ALL');
+  try {
+    renderLocations('ALL');
+  } catch (e) {
+    console.error("renderLocations failed:", e);
+  }
 
   // Calculate Sun positions
-  calculateGoldenHour();
+  try {
+    calculateGoldenHour();
+  } catch (e) {
+    console.error("calculateGoldenHour failed:", e);
+  }
 
   // Populate YouTube script location selector dynamically
-  const scriptSelect = document.getElementById('script-location');
-  if (scriptSelect) {
-    scriptSelect.innerHTML = '';
-    locations.forEach(loc => {
-      const opt = document.createElement('option');
-      opt.value = loc.name;
-      opt.textContent = `${loc.name} (${loc.id})`;
-      scriptSelect.appendChild(opt);
-    });
+  try {
+    const scriptSelect = document.getElementById('script-location');
+    if (scriptSelect) {
+      scriptSelect.innerHTML = '';
+      locations.forEach(loc => {
+        const opt = document.createElement('option');
+        opt.value = loc.name;
+        opt.textContent = `${loc.name} (${loc.id})`;
+        scriptSelect.appendChild(opt);
+      });
+    }
+  } catch (e) {
+    console.error("scriptSelect failed:", e);
   }
 
   // Initialize speech recognition
-  initSpeechRecognition();
-  setTimeout(() => {
-    const canvas = document.getElementById('waveform-canvas');
-    if (canvas) {
-      const ctx = canvas.getContext('2d');
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(226, 27, 27, 0.15)';
-      ctx.beginPath();
-      ctx.moveTo(0, canvas.height / 2);
-      ctx.lineTo(canvas.width, canvas.height / 2);
-      ctx.stroke();
-    }
-  }, 500);
+  try {
+    initSpeechRecognition();
+  } catch (e) {
+    console.error("initSpeechRecognition failed:", e);
+  }
+  
+  try {
+    setTimeout(() => {
+      const canvas = document.getElementById('waveform-canvas');
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = 'rgba(226, 27, 27, 0.15)';
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+        ctx.lineTo(canvas.width, canvas.height / 2);
+        ctx.stroke();
+      }
+    }, 500);
+  } catch (e) {
+    console.error("waveform canvas failed:", e);
+  }
 
   // Run preloader script
-  runPreloader();
+  try {
+    runPreloader();
+  } catch (e) {
+    console.error("runPreloader failed:", e);
+    // Absolute fallback: remove preloader directly if everything fails
+    const preloader = document.getElementById('app-preloader');
+    if (preloader) {
+      preloader.style.opacity = '0';
+      preloader.style.pointerEvents = 'none';
+      setTimeout(() => preloader.remove(), 600);
+    }
+  }
 
   // Initialize Smartwatch simulation loop
-  let watchSeconds = 2718; // 00:45:18 start
-  let watchCalories = 242;
-  setInterval(() => {
-    watchSeconds++;
-    const hours = String(Math.floor(watchSeconds / 3600)).padStart(2, '0');
-    const mins = String(Math.floor((watchSeconds % 3600) / 60)).padStart(2, '0');
-    const secs = String(watchSeconds % 60).padStart(2, '0');
-    const cronoEl = document.getElementById('watch-crono-time');
-    if (cronoEl) cronoEl.textContent = `${hours}:${mins}:${secs}`;
-    
-    const hrEl = document.getElementById('watch-heart-rate');
-    if (hrEl) {
-      const hr = Math.round(75 + Math.random() * 10);
-      hrEl.innerHTML = `${hr} <span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">BPM</span>`;
-    }
-    
-    if (watchSeconds % 10 === 0) {
-      watchCalories += Math.round(Math.random() * 2);
-      const calEl = document.getElementById('watch-calories');
-      if (calEl) calEl.textContent = `${watchCalories} kcal`;
-    }
-  }, 1000);
+  try {
+    let watchSeconds = 2718; // 00:45:18 start
+    let watchCalories = 242;
+    setInterval(() => {
+      watchSeconds++;
+      const hours = String(Math.floor(watchSeconds / 3600)).padStart(2, '0');
+      const mins = String(Math.floor((watchSeconds % 3600) / 60)).padStart(2, '0');
+      const secs = String(watchSeconds % 60).padStart(2, '0');
+      const cronoEl = document.getElementById('watch-crono-time');
+      if (cronoEl) cronoEl.textContent = `${hours}:${mins}:${secs}`;
+      
+      const hrEl = document.getElementById('watch-heart-rate');
+      if (hrEl) {
+        const hr = Math.round(75 + Math.random() * 10);
+        hrEl.innerHTML = `${hr} <span style="font-size: 1rem; font-weight: normal; color: var(--text-muted);">BPM</span>`;
+      }
+      
+      if (watchSeconds % 10 === 0) {
+        watchCalories += Math.round(Math.random() * 2);
+        const calEl = document.getElementById('watch-calories');
+        if (calEl) calEl.textContent = `${watchCalories} kcal`;
+      }
+    }, 1000);
+  } catch (e) {
+    console.error("smartwatch simulation failed:", e);
+  }
 });
 
 // PRELOADER LOADER SYSTEM & LAZY INITIALIZATION FOR SPEED
 function runPreloader() {
   // Defer map rendering slightly to prevent blocking initial FCP paint
   setTimeout(() => {
-    initMap();
+    try {
+      initMap();
+    } catch (e) {
+      console.error("initMap failed:", e);
+    }
   }, 300);
 
   // Exact 5 seconds animation duration, then automatically enter and speak welcome
   setTimeout(() => {
-    startAppWelcome();
+    try {
+      startAppWelcome();
+    } catch (e) {
+      console.error("startAppWelcome failed:", e);
+      // Absolute fallback: remove preloader directly
+      const preloader = document.getElementById('app-preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+        setTimeout(() => preloader.remove(), 600);
+      }
+    }
   }, 5000);
 }
 
@@ -3048,42 +3131,67 @@ function startAppWelcome() {
   }
 
   // Welcome speech synthesis
-  const welcomeText = projectTranslations[currentLanguage].welcomeText;
-  speakAiResponse(welcomeText);
+  try {
+    const welcomeText = projectTranslations[currentLanguage].welcomeText;
+    speakAiResponse(welcomeText);
+  } catch (e) {
+    console.warn("welcome speak failed:", e);
+  }
 
-  // Backup listener to ensure audio plays when autoplay policy is active
-  const speakOnInteraction = () => {
-    if (window.speechSynthesis && window.speechSynthesis.speaking) {
-      // Autoplay succeeded or speech is already running, clean up
+  try {
+    // Backup listener to ensure audio plays when autoplay policy is active
+    const speakOnInteraction = () => {
+      let isSpeakingCurrently = false;
+      try {
+        isSpeakingCurrently = window.speechSynthesis && window.speechSynthesis.speaking;
+      } catch (e) {
+        console.warn("speechSynthesis.speaking check failed:", e);
+      }
+      if (isSpeakingCurrently) {
+        // Autoplay succeeded or speech is already running, clean up
+        document.removeEventListener('click', speakOnInteraction);
+        document.removeEventListener('keydown', speakOnInteraction);
+        document.removeEventListener('touchstart', speakOnInteraction);
+        return;
+      }
+      try {
+        const welcomeText = projectTranslations[currentLanguage].welcomeText;
+        speakAiResponse(welcomeText);
+      } catch (e) {}
       document.removeEventListener('click', speakOnInteraction);
       document.removeEventListener('keydown', speakOnInteraction);
       document.removeEventListener('touchstart', speakOnInteraction);
-      return;
-    }
-    speakAiResponse(welcomeText);
-    document.removeEventListener('click', speakOnInteraction);
-    document.removeEventListener('keydown', speakOnInteraction);
-    document.removeEventListener('touchstart', speakOnInteraction);
-  };
+    };
 
-  if (window.speechSynthesis) {
-    document.addEventListener('click', speakOnInteraction);
-    document.addEventListener('keydown', speakOnInteraction);
-    document.addEventListener('touchstart', speakOnInteraction);
+    if (window.speechSynthesis) {
+      document.addEventListener('click', speakOnInteraction);
+      document.addEventListener('keydown', speakOnInteraction);
+      document.addEventListener('touchstart', speakOnInteraction);
+    }
+  } catch (e) {
+    console.warn("speech interaction binding failed:", e);
   }
 
   // Fade out preloader
-  const preloader = document.getElementById('app-preloader');
-  if (preloader) {
-    preloader.style.opacity = '0';
-    preloader.style.pointerEvents = 'none';
-    setTimeout(() => {
-      preloader.remove();
-      if (map) map.invalidateSize();
-      
-      // Trigger Google login modal immediately after entrance
-      triggerGoogleLoginModal();
-    }, 600);
+  try {
+    const preloader = document.getElementById('app-preloader');
+    if (preloader) {
+      preloader.style.opacity = '0';
+      preloader.style.pointerEvents = 'none';
+      setTimeout(() => {
+        try {
+          preloader.remove();
+          if (map) map.invalidateSize();
+          
+          // Trigger Google login modal immediately after entrance
+          triggerGoogleLoginModal();
+        } catch (e) {
+          console.error("preloader remove inner failed:", e);
+        }
+      }, 600);
+    }
+  } catch (e) {
+    console.error("preloader fade out failed:", e);
   }
 }
 
