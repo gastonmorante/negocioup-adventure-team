@@ -2066,7 +2066,10 @@ function calculateExpeditionRoute() {
   } else if (cat === 'CAT_E') {
     roadType = currentLanguage === 'es' ? "Caminos empedrados y rurales" : "Cobblestone and rural paths";
   }
-  document.getElementById('metric-road-type').textContent = roadType;
+  const roadTypeEl = document.getElementById('metric-road-type');
+  if (roadTypeEl) {
+    roadTypeEl.textContent = roadType;
+  }
 
   // 3. Sun times & photography cues
   const longitudeOffset = (destCoords[1] - (-87.0799)) * 4; // minutes
