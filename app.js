@@ -1812,7 +1812,7 @@ function onRouteCategoryChange() {
   locSelect.innerHTML = '';
 
   // Filter locations by selected category
-  const filteredLocs = locations.filter(loc => loc.category === selectedCatId);
+  const filteredLocs = locations.filter(loc => loc.category === selectedCatId || selectedCatId === 'ALL');
   filteredLocs.forEach(loc => {
     const opt = document.createElement('option');
     opt.value = loc.id;
@@ -3509,7 +3509,7 @@ function speakAiResponseNative(text) {
       : ['samantha', 'zira', 'hazel', 'siri', 'susan', 'mary', 'karen', 'female', 'google'];
       
     for (let nameKey of preferredNames) {
-      targetVoice = langVoices.find(v => v.name.toLowerCase().includes(nameKey));
+      targetVoice = langVoices.find(v => v && v.name && v.name.toLowerCase().includes(nameKey));
       if (targetVoice) break;
     }
   }
@@ -3518,6 +3518,7 @@ function speakAiResponseNative(text) {
   if (!targetVoice && langVoices.length > 0) {
     const femaleKeywords = ['female', 'zira', 'samantha', 'siri', 'monica', 'paulina', 'sabina', 'helena', 'elena', 'hazel', 'susan', 'mary', 'karen', 'lisa', 'microsoft', 'google'];
     targetVoice = langVoices.find(v => {
+      if (!v || !v.name) return false;
       const name = v.name.toLowerCase();
       if (name.includes('david') || name.includes('male') || name.includes('haruka') || name.includes('ichiro') || name.includes('heera')) return false;
       return femaleKeywords.some(kw => name.includes(kw));
