@@ -2124,7 +2124,8 @@ function calculateExpeditionRoute() {
         if (alertBadge && alertText) {
           alertBadge.style.display = 'flex';
           alertBadge.className = 'telemetry-pill warning-glow';
-          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${state.activeLocation.name.toUpperCase()}` : `RAIN WARNING // ${state.activeLocation.name.toUpperCase()}`;
+          const alertLocName = state.activeLocation ? state.activeLocation.name : "PLAYA DEL CARMEN";
+          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${alertLocName.toUpperCase()}` : `RAIN WARNING // ${alertLocName.toUpperCase()}`;
         }
       } else {
         if (rainBanner) rainBanner.style.display = 'none';
@@ -2173,7 +2174,8 @@ function calculateExpeditionRoute() {
         if (alertBadge && alertText) {
           alertBadge.style.display = 'flex';
           alertBadge.className = 'telemetry-pill warning-glow';
-          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${state.activeLocation.name.toUpperCase()}` : `RAIN WARNING // ${state.activeLocation.name.toUpperCase()}`;
+          const alertLocName = state.activeLocation ? state.activeLocation.name : "PLAYA DEL CARMEN";
+          alertText.textContent = currentLanguage === 'es' ? `ALERTA DE LLUVIA // ${alertLocName.toUpperCase()}` : `RAIN WARNING // ${alertLocName.toUpperCase()}`;
         }
       } else {
         if (rainBanner) rainBanner.style.display = 'none';

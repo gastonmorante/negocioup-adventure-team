@@ -2063,10 +2063,13 @@ body {
     gap: 12px;
   }
   .metric-val {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
   }
   .sun-item strong {
     font-size: 1.1rem !important;
+  }
+  .weather-temp-val {
+    font-size: 2rem !important;
   }
   .broll-grid {
     grid-template-columns: 1fr;
@@ -2099,6 +2102,24 @@ body {
   }
   .dialer-container {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 380px) {
+  .top-header h2 {
+    font-size: 1.1rem !important;
+  }
+  .metric-val {
+    font-size: 1.2rem !important;
+  }
+  .sun-item strong {
+    font-size: 0.95rem !important;
+  }
+  .weather-temp-val {
+    font-size: 1.6rem !important;
+  }
+  .g-stat strong {
+    font-size: 1.05rem !important;
   }
 }
 
