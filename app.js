@@ -82,7 +82,7 @@ const projectTranslations = {
     systemStatus: "ESTADO DEL SISTEMA",
     satLink: "Micrófono abierto. Esperando transmisión de voz...",
     satelliteActive: "Enlace satelital de voz Gemini establecido. Listo para traducción e interacción por voz (Di: 'presión de llantas', 'holgura de cadena' o 'golpe de calor').",
-    welcomeText: "¡Hola Gastón! Qué emoción volver a subirme contigo en la Súper Catarina. Ya tengo el mapa satelital listo y tu YouTube Music enlazado. ¿Nos vamos ya a explorar la selva o vas a seguir contemplando el mapa? ¡Arranca ese motor, guapo, que la aventura nos espera!",
+    welcomeText: "Bienvenido a la aventura",
     calendarSyncTitle: "Sincronización de Expediciones Google",
     calendarSyncSub: "Sincroniza tus fechas de filmación y rutas",
     calendarDisconnected: "Google Calendar desvinculado. Inicia sesión para sincronizar fechas de grabación.",
@@ -102,7 +102,7 @@ const projectTranslations = {
     systemStatus: "SYSTEM STATUS",
     satLink: "Microphone open. Waiting for voice transmission...",
     satelliteActive: "Gemini satellite voice link established. Ready for translation & voice interaction (Say: 'tire pressure', 'chain slack' or 'heatstroke').",
-    welcomeText: "Hey Gaston! So excited to jump on the Super Catarina with you again. I've got our satellite maps ready and your YouTube Music connected. Are we heading into the jungle now, or are you just gonna keep staring at the map? Let's start the engine, handsome, our next adventure is waiting!",
+    welcomeText: "Welcome to the adventure",
     calendarSyncTitle: "Google Expeditions Schedule Sync",
     calendarSyncSub: "Sync your recording dates and routes",
     calendarDisconnected: "Google Calendar disconnected. Log in to sync recording dates.",
@@ -154,58 +154,58 @@ const locations = [
   { id: "1.4", name: "Paamul", category: "CAT_A", geo: [20.52, -87.19], distance_km: 30, risk_level: "low", story_hook: "Reef macro", vstrom_risk: "Rocky", gallery: ["pm1", "pm2"] },
   { id: "1.5", name: "Chemuyil", category: "CAT_A", geo: [20.35, -87.35], distance_km: 70, risk_level: "low", story_hook: "Jungle-sea", vstrom_risk: "Hidden", gallery: ["cm1", "cm2"] },
   { id: "1.6", name: "Xcalacoco", category: "CAT_A", geo: [20.67, -87.03], distance_km: 8, risk_level: "low", story_hook: "Ancient port", vstrom_risk: "Sunset", gallery: ["xl1", "xl2"] },
-  { id: "1.7", name: "Xpu-Ha S.", category: "CAT_A", geo: [20.47, -87.25], distance_km: 40, risk_level: "low", story_hook: "White sand", vstrom_risk: "Grazing light", gallery: ["xp1", "xp2"] },
+  { id: "1.7", name: "Xpu-Ha S.", category: "CAT_A", geo: [20.47, -87.25], distance_km: 40, risk_level: "low", story_hook: "White sand", vstrom_risk: "Grazing", gallery: ["xp1", "xp2"] },
   { id: "1.8", name: "Boca Paila", category: "CAT_A", geo: [20.10, -87.48], distance_km: 95, risk_level: "medium", story_hook: "Bridge POV", vstrom_risk: "Deep sand", gallery: ["bp1", "bp2"] },
-  { id: "1.9", name: "Punta Allen", category: "CAT_A", geo: [19.79, -87.48], distance_km: 140, risk_level: "high", story_hook: "End of road", vstrom_risk: "Fuel req", gallery: ["pa1", "pa2"] },
-  { id: "1.10", name: "I. Blanca", category: "CAT_A", geo: [21.37, -86.81], distance_km: 90, risk_level: "high", story_hook: "Dual water", vstrom_risk: "Lagoon mud", gallery: ["ib1", "ib2"] },
+  { id: "1.9", name: "Punta Allen", category: "CAT_A", geo: [19.79, -87.48], distance_km: 140, risk_level: "high", story_hook: "Expedition", vstrom_risk: "Fuel critical", gallery: ["pa1", "pa2"] },
+  { id: "1.10", name: "I. Blanca", category: "CAT_A", geo: [21.37, -86.81], distance_km: 90, risk_level: "high", story_hook: "Dual water", vstrom_risk: "Mud", gallery: ["ib1", "ib2"] },
 
   // Cenotes (CAT_B)
-  { id: "2.1", name: "Taak Bi Ha", category: "CAT_B", geo: [20.31, -87.38], distance_km: 48, risk_level: "medium", story_hook: "Roots frame", vstrom_risk: "Slippery", gallery: ["th1"] },
-  { id: "2.2", name: "Tajma Ha", category: "CAT_B", geo: [20.48, -87.23], distance_km: 44, risk_level: "high", story_hook: "Light rays", vstrom_risk: "Cold water", gallery: ["tj1"] },
-  { id: "2.3", name: "Zapote", category: "CAT_B", geo: [20.84, -87.04], distance_km: 55, risk_level: "high", story_hook: "Hells Bells", vstrom_risk: "Deep jump", gallery: ["zp1"] },
-  { id: "2.4", name: "Escondido", category: "CAT_B", geo: [20.18, -87.49], distance_km: 68, risk_level: "medium", story_hook: "Jungle GoPro", vstrom_risk: "Off-road", gallery: ["es1"] },
+  { id: "2.1", name: "Taak Bi Ha", category: "CAT_B", geo: [20.31, -87.38], distance_km: 48, risk_level: "medium", story_hook: "Root frame", vstrom_risk: "Slippery", gallery: ["th1"] },
+  { id: "2.2", name: "Tajma Ha", category: "CAT_B", geo: [20.48, -87.23], distance_km: 44, risk_level: "high", story_hook: "Light rays", vstrom_risk: "Advanced", gallery: ["tj1"] },
+  { id: "2.3", name: "Zapote", category: "CAT_B", geo: [20.84, -87.04], distance_km: 55, risk_level: "high", story_hook: "Action jump", vstrom_risk: "Bells formation", gallery: ["zp1"] },
+  { id: "2.4", name: "Escondido", category: "CAT_B", geo: [20.18, -87.49], distance_km: 68, risk_level: "medium", story_hook: "Jungle POV", vstrom_risk: "Trek req", gallery: ["es1"] },
   { id: "2.5", name: "Kin-Ha", category: "CAT_B", geo: [20.85, -87.03], distance_km: 56, risk_level: "medium", story_hook: "Zenith beam", vstrom_risk: "Dark cave", gallery: ["kh1"] },
-  { id: "2.6", name: "Chikin Ha", category: "CAT_B", geo: [20.49, -87.22], distance_km: 45, risk_level: "medium", story_hook: "Mixed biome", vstrom_risk: "Humidity", gallery: ["ch1"] },
-  { id: "2.7", name: "Nicte-Ha", category: "CAT_B", geo: [20.31, -87.36], distance_km: 47, risk_level: "low", story_hook: "Water lily", vstrom_risk: "Shallow", gallery: ["nh1"] },
-  { id: "2.8", name: "Calavera", category: "CAT_B", geo: [20.22, -87.46], distance_km: 62, risk_level: "low", story_hook: "Vertical Reel", vstrom_risk: "Small park", gallery: ["cv1"] },
+  { id: "2.6", name: "Chikin Ha", category: "CAT_B", geo: [20.49, -87.22], distance_km: 45, risk_level: "medium", story_hook: "Triple biome", vstrom_risk: "Humid", gallery: ["ch1"] },
+  { id: "2.7", name: "Nicte-Ha", category: "CAT_B", geo: [20.31, -87.36], distance_km: 47, risk_level: "low", story_hook: "Water lily", vstrom_risk: "Clean", gallery: ["nh1"] },
+  { id: "2.8", name: "Calavera", category: "CAT_B", geo: [20.22, -87.46], distance_km: 62, risk_level: "low", story_hook: "Vertical Shorts", vstrom_risk: "No parking", gallery: ["cv1"] },
   { id: "2.9", name: "Carwash", category: "CAT_B", geo: [20.21, -87.48], distance_km: 64, risk_level: "low", story_hook: "U-water garden", vstrom_risk: "Algae", gallery: ["cw1"] },
-  { id: "2.10", name: "Suytun", category: "CAT_B", geo: [20.69, -88.12], distance_km: 120, risk_level: "low", story_hook: "Center path", vstrom_risk: "Early req", gallery: ["sy1"] },
+  { id: "2.10", name: "Suytun", category: "CAT_B", geo: [20.69, -88.12], distance_km: 120, risk_level: "low", story_hook: "Stone path", vstrom_risk: "Arrive 8AM", gallery: ["sy1"] },
 
   // Flavors (CAT_C)
-  { id: "3.1", name: "IX CAT IK", category: "CAT_C", geo: [20.69, -88.20], distance_km: 122, risk_level: "low", story_hook: "Pib Oven", vstrom_risk: "Authentic", gallery: ["ix1"] },
-  { id: "3.2", name: "D. Bates", category: "CAT_C", geo: [20.68, -88.20], distance_km: 121, risk_level: "low", story_hook: "Market colors", vstrom_risk: "Crowded", gallery: ["db1"] },
-  { id: "3.3", name: "Tia Kaua", category: "CAT_C", geo: [20.61, -88.44], distance_km: 145, risk_level: "low", story_hook: "Poc Chuc", vstrom_risk: "Wood smoke", gallery: ["tk1"] },
-  { id: "3.4", name: "Honorio", category: "CAT_C", geo: [20.21, -87.46], distance_km: 65, risk_level: "low", story_hook: "Lechon", vstrom_risk: "Early only", gallery: ["th1"] },
-  { id: "3.5", name: "Cetli", category: "CAT_C", geo: [20.22, -87.45], distance_km: 64, risk_level: "low", story_hook: "Mole art", vstrom_risk: "Reservation", gallery: ["ct1"] },
-  { id: "3.6", name: "Axiote", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Chef plating", vstrom_risk: "Playa center", gallery: ["ax1"] },
-  { id: "3.7", name: "Cochi Loka", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Fast food", vstrom_risk: "Panuchos", gallery: ["cl1"] },
-  { id: "3.8", name: "85 Diag", category: "CAT_C", geo: [20.64, -87.09], distance_km: 3, risk_level: "low", story_hook: "Night life", vstrom_risk: "Local price", gallery: ["d81"] },
-  { id: "3.9", name: "Angelito", category: "CAT_C", geo: [20.65, -87.09], distance_km: 4, risk_level: "low", story_hook: "Tacos labor", vstrom_risk: "Workers spot", gallery: ["an1"] },
-  { id: "3.10", name: "Yaxche", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Fusion Mayan", vstrom_risk: "Gourmet", gallery: ["yx1"] },
+  { id: "3.1", name: "IX CAT IK", category: "CAT_C", geo: [20.69, -88.20], distance_km: 122, risk_level: "low", story_hook: "Pib Oven", vstrom_risk: "Valladolid", gallery: ["ix1"] },
+  { id: "3.2", name: "D. Bates", category: "CAT_C", geo: [20.68, -88.20], distance_km: 121, risk_level: "low", story_hook: "Spice market", vstrom_risk: "Crowded", gallery: ["db1"] },
+  { id: "3.3", name: "Tia Kaua", category: "CAT_C", geo: [20.61, -88.44], distance_km: 145, risk_level: "low", story_hook: "Poc Chuc", vstrom_risk: "Highway icon", gallery: ["tk1"] },
+  { id: "3.4", name: "Honorio", category: "CAT_C", geo: [20.21, -87.46], distance_km: 65, risk_level: "low", story_hook: "Suckling pig", vstrom_risk: "Early Tulum", gallery: ["th1"] },
+  { id: "3.5", name: "Cetli", category: "CAT_C", geo: [20.22, -87.45], distance_km: 64, risk_level: "low", story_hook: "Mole art", vstrom_risk: "Authentic", gallery: ["ct1"] },
+  { id: "3.6", name: "Axiote", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Fusion plating", vstrom_risk: "Playa center", gallery: ["ax1"] },
+  { id: "3.7", name: "Cochi Loka", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Panuchos", vstrom_risk: "Street style", gallery: ["cl1"] },
+  { id: "3.8", name: "85 Diag", category: "CAT_C", geo: [20.64, -87.09], distance_km: 3, risk_level: "low", story_hook: "Local vein", vstrom_risk: "24 hours", gallery: ["d81"] },
+  { id: "3.9", name: "Angelito", category: "CAT_C", geo: [20.65, -87.09], distance_km: 4, risk_level: "low", story_hook: "Morning tacos", vstrom_risk: "Work crew", gallery: ["an1"] },
+  { id: "3.10", name: "Yaxche", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Mayan fusion", vstrom_risk: "High aesthetic", gallery: ["yx1"] },
 
   // Ancestral (CAT_D)
-  { id: "4.1", name: "Muyil", category: "CAT_D", geo: [20.07, -87.61], distance_km: 80, risk_level: "low", story_hook: "Canal boat", vstrom_risk: "Slow vibe", gallery: ["my1"] },
-  { id: "4.2", name: "Ek Balam", category: "CAT_D", geo: [20.89, -88.13], distance_km: 145, risk_level: "medium", story_hook: "Stucco mask", vstrom_risk: "Climb req", gallery: ["eb1"] },
-  { id: "4.3", name: "Coba", category: "CAT_D", geo: [20.48, -87.73], distance_km: 109, risk_level: "medium", story_hook: "Sacbe bike", vstrom_risk: "Shade ride", gallery: ["cb1"] },
-  { id: "4.4", name: "El Meco", category: "CAT_D", geo: [21.21, -86.80], distance_km: 80, risk_level: "low", story_hook: "Coast temple", vstrom_risk: "Quick stop", gallery: ["em1"] },
-  { id: "4.5", name: "Yaxunah", category: "CAT_D", geo: [20.55, -88.55], distance_km: 165, risk_level: "high", story_hook: "Ancient road", vstrom_risk: "Off-grid", gallery: ["yx1"] },
-  { id: "4.6", name: "San Gervasio", category: "CAT_D", geo: [20.50, -86.84], distance_km: 45, risk_level: "medium", story_hook: "Fertility", vstrom_risk: "Cozumel req", gallery: ["sg1"] },
-  { id: "4.7", name: "Balancanche", category: "CAT_D", geo: [20.66, -88.52], distance_km: 150, risk_level: "medium", story_hook: "Cave alters", vstrom_risk: "Humidity+", gallery: ["bc1"] },
-  { id: "4.8", name: "Chacchoben", category: "CAT_D", geo: [19.00, -88.23], distance_km: 220, risk_level: "high", story_hook: "Deep jungle", vstrom_risk: "South route", gallery: ["cc1"] },
+  { id: "4.1", name: "Muyil", category: "CAT_D", geo: [20.07, -87.61], distance_km: 80, risk_level: "low", story_hook: "Canal drone", vstrom_risk: "No ruins climb", gallery: ["my1"] },
+  { id: "4.2", name: "Ek Balam", category: "CAT_D", geo: [20.89, -88.13], distance_km: 145, risk_level: "medium", story_hook: "Acropolis mask", vstrom_risk: "Vertical climb", gallery: ["eb1"] },
+  { id: "4.3", name: "Coba", category: "CAT_D", geo: [20.48, -87.73], distance_km: 109, risk_level: "medium", story_hook: "Bike gimbal", vstrom_risk: "Big area", gallery: ["cb1"] },
+  { id: "4.4", name: "El Meco", category: "CAT_D", geo: [21.21, -86.80], distance_km: 80, risk_level: "low", story_hook: "Iguanas temple", vstrom_risk: "Cancun exit", gallery: ["em1"] },
+  { id: "4.5", name: "Yaxunah", category: "CAT_D", geo: [20.55, -88.55], distance_km: 165, risk_level: "high", story_hook: "Sacbe silent", vstrom_risk: "Off-road", gallery: ["yx1"] },
+  { id: "4.6", name: "S. Gervasio", category: "CAT_D", geo: [20.50, -86.84], distance_km: 45, risk_level: "medium", story_hook: "Ixchel ritual", vstrom_risk: "Island ride", gallery: ["sg1"] },
+  { id: "4.7", name: "Balancanche", category: "CAT_D", geo: [20.66, -88.52], distance_km: 150, risk_level: "medium", story_hook: "Incense caves", vstrom_risk: "LED panels req", gallery: ["bc1"] },
+  { id: "4.8", name: "Chacchoben", category: "CAT_D", geo: [19.00, -88.23], distance_km: 220, risk_level: "high", story_hook: "Deep south", vstrom_risk: "Mahogany", gallery: ["cc1"] },
   { id: "4.9", name: "Dzibanche", category: "CAT_D", geo: [18.63, -88.75], distance_km: 290, risk_level: "high", story_hook: "Snake dyn", vstrom_risk: "Remote", gallery: ["dz1"] },
-  { id: "4.10", name: "Xcabal", category: "CAT_D", geo: [18.91, -88.46], distance_km: 260, risk_level: "high", story_hook: "Hidden City", vstrom_risk: "Exploration", gallery: ["xc1"] },
+  { id: "4.10", name: "Xcabal", category: "CAT_D", geo: [18.91, -88.46], distance_km: 260, risk_level: "high", story_hook: "New ruins", vstrom_risk: "Secret city", gallery: ["xc1"] },
 
   // War & Faith (CAT_E)
-  { id: "5.1", name: "Tihosuco", category: "CAT_E", geo: [20.19, -88.37], distance_km: 160, risk_level: "high", story_hook: "War ruins", vstrom_risk: "Impactful", gallery: ["ti1"] },
+  { id: "5.1", name: "Tihosuco", category: "CAT_E", geo: [20.19, -88.37], distance_km: 160, risk_level: "high", story_hook: "War ruins", vstrom_risk: "Facade bomb", gallery: ["ti1"] },
   { id: "5.2", name: "Tepich", category: "CAT_E", geo: [20.22, -88.27], distance_km: 150, risk_level: "high", story_hook: "Rebel tomb", vstrom_risk: "Raw history", gallery: ["tp1"] },
-  { id: "5.3", name: "Uayma", category: "CAT_E", geo: [20.73, -88.31], distance_km: 130, risk_level: "low", story_hook: "Red church", vstrom_risk: "Visual gold", gallery: ["uy1"] },
-  { id: "5.4", name: "S. Bernardino", category: "CAT_E", geo: [20.68, -88.20], distance_km: 122, risk_level: "low", story_hook: "Monastery", vstrom_risk: "Valladolid", gallery: ["sb1"] },
-  { id: "5.5", name: "Izamal", category: "CAT_E", geo: [20.93, -89.01], distance_km: 180, risk_level: "medium", story_hook: "Yellow City", vstrom_risk: "Gimbal walk", gallery: ["iz1"] },
-  { id: "5.6", name: "Oxman", category: "CAT_E", geo: [20.66, -88.23], distance_km: 124, risk_level: "low", story_hook: "Hacienda", vstrom_risk: "Cenote mix", gallery: ["ox1"] },
-  { id: "5.7", name: "Xocen", category: "CAT_E", geo: [20.60, -88.17], distance_km: 125, risk_level: "medium", story_hook: "Sacred center", vstrom_risk: "Syncretism", gallery: ["xo1"] },
-  { id: "5.8", name: "Sisal Conv", category: "CAT_E", geo: [20.69, -88.21], distance_km: 123, risk_level: "low", story_hook: "Catacombs", vstrom_risk: "Low light", gallery: ["sl1"] },
-  { id: "5.9", name: "Yaxcopoil", category: "CAT_E", geo: [20.74, -89.72], distance_km: 210, risk_level: "medium", story_hook: "Machine room", vstrom_risk: "Henequen", gallery: ["yc1"] },
-  { id: "5.10", name: "Mani", category: "CAT_E", geo: [20.38, -89.31], distance_km: 170, risk_level: "low", story_hook: "Friar Diego", vstrom_risk: "Ancestral", gallery: ["mn1"] }
+  { id: "5.3", name: "Uayma", category: "CAT_E", geo: [20.73, -88.31], distance_km: 130, risk_level: "low", story_hook: "Red church", vstrom_risk: "Geometry", gallery: ["uy1"] },
+  { id: "5.4", name: "S. Bernardino", category: "CAT_E", geo: [20.68, -88.20], distance_km: 122, risk_level: "low", story_hook: "Vault shots", vstrom_risk: "Valladolid", gallery: ["sb1"] },
+  { id: "5.5", name: "Izamal", category: "CAT_E", geo: [20.93, -89.01], distance_km: 180, risk_level: "medium", story_hook: "Yellow walls", vstrom_risk: "Pyramid view", gallery: ["iz1"] },
+  { id: "5.6", name: "Oxman", category: "CAT_E", geo: [20.66, -88.23], distance_km: 124, risk_level: "low", story_hook: "Hacienda mix", vstrom_risk: "Cenote onsite", gallery: ["ox1"] },
+  { id: "5.7", name: "Xocen", category: "CAT_E", geo: [20.60, -88.17], distance_km: 125, risk_level: "medium", story_hook: "Maya center", vstrom_risk: "Syncretism", gallery: ["xo1"] },
+  { id: "5.8", name: "Sisal Conv", category: "CAT_E", geo: [20.69, -88.21], distance_km: 123, risk_level: "low", story_hook: "Worn walls", vstrom_risk: "Wide lens", gallery: ["sl1"] },
+  { id: "5.9", name: "Yaxcopoil", category: "CAT_E", geo: [20.74, -89.72], distance_km: 210, risk_level: "medium", story_hook: "Rusted metal", vstrom_risk: "Time machine", gallery: ["yc1"] },
+  { id: "5.10", name: "Mani", category: "CAT_E", geo: [20.38, -89.31], distance_km: 170, risk_level: "low", story_hook: "Diego Landa", vstrom_risk: "Burned codex", gallery: ["mn1"] }
 ];
 
 // Hotspot Mechanical Specifications
@@ -2290,46 +2290,12 @@ function startAppWelcome() {
     console.warn("AudioContext beep failed: ", e);
   }
 
-  // Welcome speech synthesis
+  // Greeting message in chat log (Voice Welcome Skipped)
   try {
     const welcomeText = projectTranslations[currentLanguage].welcomeText;
-    speakAiResponse(welcomeText);
+    addAiMessage('system', welcomeText);
   } catch (e) {
-    console.warn("welcome speak failed:", e);
-  }
-
-  try {
-    // Backup listener to ensure audio plays when autoplay policy is active
-    const speakOnInteraction = () => {
-      let isSpeakingCurrently = false;
-      try {
-        isSpeakingCurrently = window.speechSynthesis && window.speechSynthesis.speaking;
-      } catch (e) {
-        console.warn("speechSynthesis.speaking check failed:", e);
-      }
-      if (isSpeakingCurrently) {
-        // Autoplay succeeded or speech is already running, clean up
-        document.removeEventListener('click', speakOnInteraction);
-        document.removeEventListener('keydown', speakOnInteraction);
-        document.removeEventListener('touchstart', speakOnInteraction);
-        return;
-      }
-      try {
-        const welcomeText = projectTranslations[currentLanguage].welcomeText;
-        speakAiResponse(welcomeText);
-      } catch (e) {}
-      document.removeEventListener('click', speakOnInteraction);
-      document.removeEventListener('keydown', speakOnInteraction);
-      document.removeEventListener('touchstart', speakOnInteraction);
-    };
-
-    if (window.speechSynthesis) {
-      document.addEventListener('click', speakOnInteraction);
-      document.addEventListener('keydown', speakOnInteraction);
-      document.addEventListener('touchstart', speakOnInteraction);
-    }
-  } catch (e) {
-    console.warn("speech interaction binding failed:", e);
+    console.warn("welcome status write failed:", e);
   }
 
   // Fade out preloader
@@ -3072,3 +3038,124 @@ window.onRouteLocationChange = onRouteLocationChange;
 window.onRadioTrackChange = onRadioTrackChange;
 window.loadCustomPlaylist = loadCustomPlaylist;
 
+
+// FULL SCREEN HUD CONTROL & SIMULATION FOR TACTICAL INSTRUMENTATION
+let hudInterval = null;
+function toggleInstrumentHud() {
+  const hud = document.getElementById('instrument-hud-overlay');
+  if (hud) {
+    const isHidden = hud.style.display === 'none';
+    hud.style.display = isHidden ? 'block' : 'none';
+    if (isHidden) {
+      startHudSimulators();
+    } else {
+      stopHudSimulators();
+    }
+  }
+}
+
+function startHudSimulators() {
+  if (hudInterval) clearInterval(hudInterval);
+  hudInterval = setInterval(() => {
+    // 1. Telemetry updates
+    const speed = 45 + Math.round(Math.random() * 45);
+    const headingVal = Math.round(Math.random() * 360);
+    let cardinal = "N";
+    if (headingVal >= 337.5 || headingVal < 22.5) cardinal = "N";
+    else if (headingVal >= 22.5 && headingVal < 67.5) cardinal = "NE";
+    else if (headingVal >= 67.5 && headingVal < 112.5) cardinal = "E";
+    else if (headingVal >= 112.5 && headingVal < 157.5) cardinal = "SE";
+    else if (headingVal >= 157.5 && headingVal < 202.5) cardinal = "S";
+    else if (headingVal >= 202.5 && headingVal < 247.5) cardinal = "SW";
+    else if (headingVal >= 247.5 && headingVal < 292.5) cardinal = "W";
+    else if (headingVal >= 292.5 && headingVal < 337.5) cardinal = "NW";
+
+    const speedEl = document.getElementById('hud-speed');
+    const headingEl = document.getElementById('hud-heading');
+    const altitudeEl = document.getElementById('hud-altitude');
+
+    if (speedEl) speedEl.textContent = `${speed} km/h`;
+    if (headingEl) headingEl.textContent = `${cardinal} ${headingVal}°`;
+    
+    const altEl = document.getElementById('metric-altitude');
+    if (altEl && altitudeEl) {
+      altitudeEl.textContent = altEl.textContent;
+    }
+
+    // 2. Stress updates
+    const lean = -25 + Math.round(Math.random() * 50);
+    const leanBar = document.getElementById('hud-lean-bar');
+    const leanText = document.getElementById('hud-lean-text');
+    if (leanBar) {
+      leanBar.style.width = `${50 + (lean / 50) * 50}%`;
+    }
+    if (leanText) leanText.textContent = `${Math.abs(lean)}° ${lean >= 0 ? 'R' : 'L'}`;
+
+    const gforce = (0.9 + Math.random() * 0.3).toFixed(2);
+    const gforceEl = document.getElementById('hud-gforce');
+    if (gforceEl) gforceEl.textContent = `${gforce} G`;
+
+    const brake = speed > 70 ? "0.0" : (Math.random() * 3.5).toFixed(1);
+    const brakeEl = document.getElementById('hud-brake');
+    if (brakeEl) brakeEl.textContent = `${brake} bar`;
+
+    // 3. Rain updates
+    const humEl = document.getElementById('weather-humidity');
+    const rainEl = document.getElementById('weather-rain-prob');
+    const hudHumEl = document.getElementById('hud-humidity');
+    const hudPrecipEl = document.getElementById('hud-precip');
+
+    if (humEl && rainEl && hudHumEl && hudPrecipEl) {
+      const humText = humEl.textContent;
+      const rainText = rainEl.textContent;
+      hudHumEl.textContent = humText;
+      hudPrecipEl.textContent = rainText;
+
+      const rainProb = parseInt(rainText.replace('%', '')) || 0;
+      const rainPanel = document.getElementById('hud-rain-panel');
+      const rainTitle = document.getElementById('hud-rain-title');
+      const friction = document.getElementById('hud-friction');
+
+      if (rainProb > 40) {
+        if (rainPanel) {
+          rainPanel.style.background = 'rgba(234,67,53,0.05)';
+          rainPanel.style.borderColor = '#EA4335';
+          rainPanel.style.boxShadow = '0 0 15px rgba(234,67,53,0.15)';
+        }
+        if (rainTitle) {
+          rainTitle.textContent = '🌧️ RAIN STATUS: ALERT_RED';
+          rainTitle.style.color = '#EA4335';
+          rainTitle.style.borderColor = 'rgba(234,67,53,0.2)';
+        }
+        if (friction) {
+          friction.textContent = 'LOW (ALERT_RED)';
+          friction.style.color = '#EA4335';
+        }
+      } else {
+        if (rainPanel) {
+          rainPanel.style.background = 'rgba(34,168,83,0.05)';
+          rainPanel.style.borderColor = '#34A853';
+          rainPanel.style.boxShadow = '0 0 15px rgba(34,168,83,0.15)';
+        }
+        if (rainTitle) {
+          rainTitle.textContent = '🌧️ RAIN STATUS: OK_GREEN';
+          rainTitle.style.color = '#34A853';
+          rainTitle.style.borderColor = 'rgba(34,168,83,0.2)';
+        }
+        if (friction) {
+          friction.textContent = 'HIGH (OK_GREEN)';
+          friction.style.color = '#34A853';
+        }
+      }
+    }
+  }, 1000);
+}
+
+function stopHudSimulators() {
+  if (hudInterval) {
+    clearInterval(hudInterval);
+    hudInterval = null;
+  }
+}
+
+window.toggleInstrumentHud = toggleInstrumentHud;
