@@ -2584,6 +2584,26 @@ function processAiTextQuery(text) {
         : "No active destination to diagnose the route. Please select a point on the Yucatan map.";
     }
   }
+  // Voice State Swapping commands (navigation HUD toggle)
+  const lowerQuery = query.toLowerCase();
+  if (lowerQuery.includes('instrument') || lowerQuery.includes('chrono')) {
+    const hud = document.getElementById('instrument-hud-overlay');
+    if (hud && hud.style.display === 'none') {
+      toggleCockpitView();
+      reply = currentLanguage === 'es' ? "Cambiando a vista de cabina táctica." : "Swapping to tactical cockpit view.";
+      addAiMessage('ai', reply);
+      return;
+    }
+  } else if (lowerQuery.includes('volver') || lowerQuery.includes('regresar') || lowerQuery.includes('back')) {
+    const hud = document.getElementById('instrument-hud-overlay');
+    if (hud && hud.style.display !== 'none') {
+      toggleCockpitView();
+      reply = currentLanguage === 'es' ? "Regresando a navegación de mapas." : "Returning to map navigation.";
+      addAiMessage('ai', reply);
+      return;
+    }
+  }
+
   // 4. Mechanical Expert
   else if (query.includes('mecanic') || query.includes('aceite') || query.includes('cadena') || query.includes('fi code') || query.includes('presion') || query.includes('v-strom') || query.includes('altura')) {
     if (currentLanguage === 'es') {
@@ -2620,18 +2640,17 @@ function processAiTextQuery(text) {
   addAiMessage('ai', reply);
 
   // Speak AI reply ONLY on specific user request per critical_action_03
-  const lowerQuery = query.toLowerCase();
   const isSpecificRequest = 
-    lowerQuery.includes("tell me about this place") || 
-    lowerQuery.includes("hablame de este lugar") || 
-    lowerQuery.includes("cuentame de este lugar") || 
-    lowerQuery.includes("sobre este lugar") || 
-    lowerQuery.includes("give me mechanical info") || 
-    lowerQuery.includes("dame info mecanica") || 
-    lowerQuery.includes("informacion mecanica") || 
-    lowerQuery.includes("mecanica") || 
-    lowerQuery.includes("auxilios") || 
-    lowerQuery.includes("b-roll");
+    query.includes("tell me about this place") || 
+    query.includes("hablame de este lugar") || 
+    query.includes("cuentame de este lugar") || 
+    query.includes("sobre este lugar") || 
+    query.includes("give me mechanical info") || 
+    query.includes("dame info mecanica") || 
+    query.includes("informacion mecanica") || 
+    query.includes("mecanica") || 
+    query.includes("auxilios") || 
+    query.includes("b-roll");
 
   if (isSpecificRequest) {
     speakAiResponse(reply);
