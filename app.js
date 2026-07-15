@@ -139,11 +139,9 @@ const state = {
 
 // CATEGORIES DEFINITIONS
 const categories = [
-  { id: "CAT_A", name: "Secret Beaches", ui_color: "#4A80F5", route_focus: "Compact sand & coastal paths." },
-  { id: "CAT_B", name: "Cenotes & Caves", ui_color: "#34A853", route_focus: "Jungle limestone trails." },
-  { id: "CAT_C", name: "Ancestral Gastronomy", ui_color: "#FBBC05", route_focus: "Traditional local food stops." },
-  { id: "CAT_D", name: "Archaeology", ui_color: "#34A853", route_focus: "Long highway runs to historical ruins." },
-  { id: "CAT_E", name: "History & War", ui_color: "#EA4335", route_focus: "Magic towns and war monuments." }
+  { id: "CAT_A", name: "Secret Beaches", ui_color: "#4A80F5", label: "COASTAL" },
+  { id: "CAT_B", name: "Cenotes & Caves", ui_color: "#34A853", label: "WATER" },
+  { id: "CAT_E", name: "History & War", ui_color: "#EA4335", label: "HISTORY" }
 ];
 
 const locations = [
@@ -151,144 +149,66 @@ const locations = [
     id: "1.1",
     name: "Punta Bete",
     category: "CAT_A",
-    geo: [20.6833, -87.0167],
+    geo: [20.68, -87.01],
     distance_km: 15,
     risk_level: "low",
-    story_hook: "Compact sand parking.",
-    vstrom_risk: "Loose sand tracks. Avoid sudden front brake lockup.",
-    earth_prompt: "High-resolution satellite view of Punta Bete beach. Check parking soil density.",
-    historical_notes: "Quiet beach area located north of Playa del Carmen.",
-    tips: "Compact sand parking."
+    story_hook: "V-Strom on compact sand",
+    vstrom_risk: "Loose sand at entry",
+    earth_prompt: "Compact sand parking.",
+    historical_notes: "Compact sand parking.",
+    tips: "V-Strom on compact sand"
   },
   {
     id: "1.8",
     name: "Boca Paila",
     category: "CAT_A",
-    geo: [20.1033, -87.4844],
+    geo: [20.10, -87.48],
     distance_km: 95,
     risk_level: "medium",
-    story_hook: "Bridge POV shot.",
-    vstrom_risk: "Bridge crossing and coastal winds. Keep steady throttle.",
-    earth_prompt: "Track drone flight lines around the Boca Paila bridge.",
-    historical_notes: "Where the lagoon meets the Caribbean sea.",
-    tips: "Bridge POV shot."
+    story_hook: "Wooden bridge POV",
+    vstrom_risk: "Check fuel in Tulum",
+    earth_prompt: "Bridge POV shot.",
+    historical_notes: "Bridge POV shot.",
+    tips: "Wooden bridge POV"
   },
   {
     id: "1.9",
     name: "Punta Allen",
     category: "CAT_A",
-    geo: [19.7997, -87.4819],
+    geo: [19.79, -87.48],
     distance_km: 140,
     risk_level: "high",
-    story_hook: "Extreme off-road.",
-    vstrom_risk: "Deep sand dunes and rocky paths. Lube chain and lower tire PSI.",
-    earth_prompt: "Lidar scan of the narrow peninsula leading to Punta Allen.",
-    historical_notes: "Remote fishing village at the end of the Sian Ka'an reserve.",
-    tips: "Extreme off-road."
+    story_hook: "End-of-road cinematic",
+    vstrom_risk: "40km severe washboard",
+    earth_prompt: "Extreme off-road.",
+    historical_notes: "Extreme off-road.",
+    tips: "End-of-road cinematic"
   },
   {
     id: "2.1",
     name: "Taak Bi Ha",
     category: "CAT_B",
-    geo: [20.3167, -87.3833],
+    geo: [20.31, -87.38],
     distance_km: 48,
     risk_level: "medium",
-    story_hook: "Low light tripod shots.",
-    vstrom_risk: "Wet limestone access path. Ride slowly in first gear.",
-    earth_prompt: "Analyze cenote cavern roof thickness and entrance coordinates.",
-    historical_notes: "Stunning underground cave cenote with crystal clear waters.",
-    tips: "Low light tripod shots."
-  },
-  {
-    id: "2.12",
-    name: "Suytun",
-    category: "CAT_B",
-    geo: [20.6994, -88.1250],
-    distance_km: 120,
-    risk_level: "low",
-    story_hook: "Zenithal sun beam.",
-    vstrom_risk: "Paved parking. Easy access for motorbikes.",
-    earth_prompt: "Calculate sunset reflection angles through the Suytun dome opening.",
-    historical_notes: "Famous cenote with a stone platform in the center.",
-    tips: "Zenithal sun beam."
-  },
-  {
-    id: "3.1",
-    name: "IX CAT IK",
-    category: "CAT_C",
-    geo: [20.6903, -88.2011],
-    distance_km: 122,
-    risk_level: "low",
-    story_hook: "Pib oven reveal.",
-    vstrom_risk: "Urban parking. Use side stand pad on warm asphalt.",
-    earth_prompt: "Satellite visual of traditional Mayan kitchen setup in Valladolid.",
-    historical_notes: "Traditional Mayan food prepared with ancient techniques.",
-    tips: "Pib oven reveal."
-  },
-  {
-    id: "3.6",
-    name: "Taqueria Honorio",
-    category: "CAT_C",
-    geo: [20.2117, -87.4622],
-    distance_km: 65,
-    risk_level: "low",
-    story_hook: "6:30 AM arrival.",
-    vstrom_risk: "Busy town parking. Watch for traffic on main street.",
-    earth_prompt: "Map street layouts around Tulum center for early morning parking.",
-    historical_notes: "Renowned local spot for cochinita pibil and lechon tacos.",
-    tips: "6:30 AM arrival."
-  },
-  {
-    id: "4.1",
-    name: "Muyil",
-    category: "CAT_D",
-    geo: [20.0783, -87.6114],
-    distance_km: 80,
-    risk_level: "low",
-    story_hook: "Lagoon canal drone path.",
-    vstrom_risk: "Gravel parking lot. Watch for loose stones when turning.",
-    earth_prompt: "LiDAR scanning of the Muyil ruins and lagoon canal paths.",
-    historical_notes: "Ancient Mayan trading post located in Sian Ka'an.",
-    tips: "Lagoon canal drone path."
-  },
-  {
-    id: "4.3",
-    name: "Ek Balam",
-    category: "CAT_D",
-    geo: [20.8911, -88.1361],
-    distance_km: 145,
-    risk_level: "medium",
-    story_hook: "Acropolis scale shot.",
-    vstrom_risk: "Long highway run. Cruising speed 100km/h. Check tire pressure.",
-    earth_prompt: "High-resolution satellite view of the Ek Balam Acropolis structure.",
-    historical_notes: "Mayan city known for its plaster carvings and tall temple.",
-    tips: "Acropolis scale shot."
+    story_hook: "Root-framed cavern",
+    vstrom_risk: "Slippery limestone",
+    earth_prompt: "Low light tripod shots.",
+    historical_notes: "Low light tripod shots.",
+    tips: "Root-framed cavern"
   },
   {
     id: "5.1",
     name: "Tihosuco",
     category: "CAT_E",
-    geo: [20.1917, -88.3703],
+    geo: [20.19, -88.37],
     distance_km: 160,
     risk_level: "high",
-    story_hook: "Dynamited facade shot.",
-    vstrom_risk: "Secondary roads. Watch for speed bumps (topes) and potholes.",
-    earth_prompt: "Satellite mapping of colonial church ruins in Tihosuco.",
-    historical_notes: "Epicenter of the Mayan Caste War with historical structures.",
-    tips: "Dynamited facade shot."
-  },
-  {
-    id: "5.5",
-    name: "Uayma",
-    category: "CAT_E",
-    geo: [20.7308, -88.3150],
-    distance_km: 130,
-    risk_level: "low",
-    story_hook: "Thumbnail geometry.",
-    vstrom_risk: "Cobblestone streets around plaza. Ride in standing position.",
-    earth_prompt: "Calculate golden hour light angles on the facade of Uayma church.",
-    historical_notes: "Beautiful colonial church decorated with stars and rosettes.",
-    tips: "Thumbnail geometry."
+    story_hook: "Dynamited facade 4K",
+    vstrom_risk: "Vibration check: bolts",
+    earth_prompt: "Dynamited church facade.",
+    historical_notes: "Dynamited church facade.",
+    tips: "Dynamited facade 4K"
   }
 ];
 
@@ -965,9 +885,6 @@ function renderLocations(cat) {
   const filtered = locations.filter(l => cat === 'ALL' || l.category === cat);
 
   filtered.forEach(loc => {
-    const catObj = categories.find(c => c.id === loc.category);
-    const catText = catObj ? catObj.name : 'Unknown';
-
     const item = document.createElement('div');
     item.className = 'location-item';
     if (state.activeLocation && state.activeLocation.id === loc.id) {
@@ -975,11 +892,12 @@ function renderLocations(cat) {
     }
     item.setAttribute('data-id', loc.id);
     item.innerHTML = `
-      <div class="loc-meta">
-        <h4>${loc.name}</h4>
-        <span>${catText} • ${loc.geo[0]}, ${loc.geo[1]}</span>
+      <div class="loc-card-body" style="display: flex; flex-direction: column; gap: 4px; width: 100%; text-align: left; word-break: break-word; overflow-wrap: break-word; white-space: normal;">
+        <h4 style="margin: 0; font-size: 0.9rem; font-weight: bold; color: var(--primary); font-family: var(--font-display); line-height: 1.2; max-width: 100%;">${loc.name}</h4>
+        <span style="font-size: 0.7rem; color: var(--text-muted); font-family: monospace;">GPS: ${loc.geo[0].toFixed(2)}, ${loc.geo[1].toFixed(2)}</span>
+        <p style="margin: 4px 0 0 0; font-size: 0.75rem; color: #fff; line-height: 1.35; font-style: italic; max-width: 100%;">🎬 ${loc.story_hook}</p>
+        <span style="margin-top: 4px; display: inline-block; font-size: 0.7rem; color: #FBBC05; font-weight: 500; max-width: 100%;">⚠️ ${loc.vstrom_risk}</span>
       </div>
-      <span class="risk-pill risk-${loc.risk_level}">${loc.risk_level}</span>
     `;
 
     item.addEventListener('click', () => selectLocation(loc.id));
@@ -1073,28 +991,20 @@ function onRouteCategoryChange() {
   let aiMessage = "";
   if (selectedCatId === 'CAT_A') {
     aiMessage = currentLanguage === 'es'
-      ? "Súper Catarina conectada. Terreno arenoso costero. Presión recomendada: 22 PSI adelante, 25 PSI atrás. Evita frenadas bruscas con el freno delantero para no enterrar la llanta. Ciclo de hidratación intensa cada 45 min por calor húmedo."
-      : "Super Catarina linked. Coastal sandy trails. Recommended tire pressure: 22 PSI front, 25 PSI rear. Avoid heavy front braking to prevent sand entrapment. High hydration cycle every 45 min for humid heat.";
+      ? "• Terreno arenoso costero.\n• Presión recomendada: 22/25 PSI.\n• Evita frenada delantera.\n• Hidratación cada 45 min."
+      : "• Coastal sandy trails.\n• Pressure: 22/25 PSI.\n• Avoid front braking.\n• Hydrate every 45 min.";
   } else if (selectedCatId === 'CAT_B') {
     aiMessage = currentLanguage === 'es'
-      ? "Alerta de cenotes detectada. Barro y caliza resbaladiza. Revisa tensión de cadena (20-30mm) y nivel de aceite de motor (1.2L). Tratamiento inmediato de abrasión por caliza: enjuaga con agua limpia a presión."
-      : "Cenotes alert active. Wet mud & slippery limestone. Keep chain tension at 20-30mm and engine oil level at 1.2L. Immediate protocol for limestone abrasions: flush with pressurized water.";
-  } else if (selectedCatId === 'CAT_C') {
-    aiMessage = currentLanguage === 'es'
-      ? "Ruta gastronómica seleccionada. Conducción en asfalto a media distancia. Presión nominal: 29 PSI adelante, 33 PSI atrás. Revisa ajuste de tornillería de soportes de maletas. Cuidado con la exposición al sol del mediodía en Yucatán."
-      : "Gastronomic route active. Paved highway cruising. Set tires to 29 PSI front, 33 PSI rear. Verify luggage mount security bolts. Monitor heat exposure under midday Yucatan sun.";
-  } else if (selectedCatId === 'CAT_D') {
-    aiMessage = currentLanguage === 'es'
-      ? "Zona arqueológica seleccionada. Velocidad de crucero de 100 km/h. Monitorea indicador de temperatura de aceite SOCS. Revisa nivel de aceite (1.2L). Protocolo para golpe de calor: activar ruta de emergencia a Ángeles Verdes (078) o 911."
-      : "Archaeology zone synced. Cruising at 100 km/h. Keep check on SOCS oil cooler temp gauge. Verify oil level (1.2L). Heatstroke protocol active: route emergency via Green Angels (078) or 911.";
+      ? "• Caliza mojada resbaladiza.\n• Tensión cadena: 20-30mm.\n• Aceite motor: 1.2L.\n• Lavar raspadas con agua."
+      : "• Slippery wet limestone.\n• Chain play: 20-30mm.\n• Engine oil: 1.2L.\n• Clean cuts with water.";
   } else if (selectedCatId === 'CAT_E') {
     aiMessage = currentLanguage === 'es'
-      ? "Ruta de la Guerra de Castas activa. Vibración por empedrados y terracería pesada. Revisa tensión de cadena (20-30mm). Kit de trauma listo. Reporta estado de suspensiones a base."
-      : "Caste War historical route active. High vibration from cobblestone & heavy dirt. Check chain tension (20-30mm). Trauma kit prepared. Report suspension status to base.";
+      ? "• Vibración por empedrados.\n• Revisa cadena 20-30mm.\n• Ajustar tornillos maletas.\n• Kit primeros auxilios listo."
+      : "• Heavy cobblestone vibrations.\n• Check chain play.\n• Tighten luggage bolts.\n• Trauma kit ready.";
   } else {
     aiMessage = currentLanguage === 'es'
-      ? "Oráculo de Aventura Gemini activado. Sincronizando parámetros satelitales de la Súper Catarina."
-      : "Gemini Adventure Oracle synced. Synchronizing Super Catarina satellite parameters.";
+      ? "• Oráculo Gemini en línea.\n• Sincronizando parámetros Súper Catarina."
+      : "• Gemini Oracle online.\n• Syncing Super Catarina specs.";
   }
 
   addAiMessage('system', aiMessage);
@@ -2660,29 +2570,29 @@ function processAiTextQuery(text) {
         : "No active destination to diagnose the route. Please select a point on the Yucatan map.";
     }
   }
-  // 4. Voice Action: Mechanical Expert
+  // 4. Mechanical Expert
   else if (query.includes('mecanic') || query.includes('aceite') || query.includes('cadena') || query.includes('fi code') || query.includes('presion') || query.includes('v-strom') || query.includes('altura')) {
     if (currentLanguage === 'es') {
-      reply = "Soporte Técnico Suzuki V-Strom 250 SX (SOCS Enfriamiento por Aceite, 24.6HP, altura de asiento de 835mm). Diagnóstico instantáneo: Tensión recomendada de cadena es de 20-30mm; el nivel de aceite debe ser exactamente de 1.2L; si tienes un código FI activo en el tablero, realiza un escaneo de sensores del sistema de inyección electrónica. Para tu altura de 1.67m, la altura de asiento de 835mm requiere confirmar superficie plana de estacionamiento mediante Google Earth Street View antes de cada parada.";
+      reply = "• Suzuki V-Strom 250 SX.\n• Aceite motor: 1.2L.\n• Tensión cadena: 20-30mm.\n• Asiento: 835mm de altura.\n• Verificar suelo en paradas.\n• Escanear códigos FI.";
     } else {
-      reply = "Suzuki V-Strom 250 SX Technical Support (SOCS Oil-Cooling, 24.6HP, 835mm seat height). Instant diagnostics: Recommended chain tension is 20-30mm; engine oil level must be exactly 1.2L; if you have an active FI code on the instrument panel, perform a fuel injection system sensor scan. For your height of 1.67m, the seat height of 835mm requires checking flat ground surface using Google Earth Street View prior to each parking waypoint.";
+      reply = "• Suzuki V-Strom 250 SX.\n• Engine oil: 1.2L.\n• Chain tension: 20-30mm.\n• Seat height: 835mm.\n• Check ground before parking.\n• Scan active FI codes.";
     }
   }
   // 5. Voice Action: First aid & survival
   else if (query.includes('auxilio') || query.includes('calor') || query.includes('hidratacion') || query.includes('abrasion') || query.includes('emergencia') || query.includes('green angels') || query.includes('hospital')) {
     if (currentLanguage === 'es') {
-      reply = "Protocolo de Primeros Auxilios y Supervivencia Tropical: En caso de golpe de calor, activa la ruta de emergencia de inmediato redirigiendo a los Ángeles Verdes (078) o 911. Mantén un ciclo estricto de hidratación cada 45 minutos. Para abrasión por caliza en caídas, realiza hemostasia y enjuaga con agua limpia a presión para retirar restos bacterianos del poro de la piedra.";
+      reply = "• Golpe de calor: 911.\n• Ángeles Verdes: 078.\n• Hidratación: cada 45 min.\n• Cortes: lavar con agua.\n• Picaduras: usar antihistamínicos.";
     } else {
-      reply = "First Aid & Tropical Wilderness Survival Protocol: In case of heatstroke, activate emergency routing immediately by redirecting to Green Angels Road Assistance (078) or 911. Maintain a strict hydration cycle every 45 minutes. For limestone abrasions from falls, apply direct pressure for hemostasis and flush with pressurized clean water to clear porous stone bacteria.";
+      reply = "• Heatstroke: call 911.\n• Road assistance: 078.\n• Hydrate every 45 minutes.\n• Clean cuts with water.\n• Stings: use antihistamines.";
     }
   }
   // 6. Voice Action: Storytelling & video scripts
   else if (query.includes('b-roll') || query.includes('guion') || query.includes('youtube') || query.includes('dron') || query.includes('filmacion') || query.includes('histori')) {
     const loc = state.activeLocation || locations[0];
     if (currentLanguage === 'es') {
-      reply = `Guion de Filmación 4K y B-Roll para ${loc.name}: 1. Toma de establecimiento con dron en plano cenital siguiendo la ruta de la Súper Catarina. 2. Detalle medio del escape y el motor SOCS rugiendo en la terracería. 3. Gancho histórico para YouTube: '${loc.story_hook}'. Consejo de filmación: ${loc.tips}`;
+      reply = `• Guion B-Roll: ${loc.name}.\n• Toma cenital con dron.\n• Detalle de motor SOCS.\n• Gancho: ${loc.story_hook}.`;
     } else {
-      reply = `4K B-Roll Shooting Script & Drone Path for ${loc.name}: 1. Establishing drone shot in zenithal angle tracing the path of the Super Catarina. 2. Medium detail shot of exhaust and SOCS engine revving on dirt roads. 3. YouTube historical hook: '${loc.story_hook}'. Cinematic tip: ${loc.tips}`;
+      reply = `• B-Roll Script: ${loc.name}.\n• Zenithal drone path.\n• Detail SOCS engine.\n• Hook: ${loc.story_hook}.`;
     }
   }
   // Default General Response
