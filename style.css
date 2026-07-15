@@ -2018,11 +2018,19 @@ body {
   .nav-item {
     padding: 10px 14px;
     white-space: nowrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .nav-item span {
+    display: none;
+  }
+  .nav-item svg {
+    margin-right: 0 !important;
   }
   .nav-item.active {
     border-left: none;
     border-bottom: 3px solid var(--primary);
-    padding-left: 14px;
     padding-bottom: 7px;
   }
   .main-content {
