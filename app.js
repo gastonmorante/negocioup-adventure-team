@@ -139,1023 +139,156 @@ const state = {
 
 // CATEGORIES DEFINITIONS
 const categories = [
-  {
-    id: "CAT_A",
-    name: "Secret Beaches & Coasts",
-    ui_color: "#4A80F5",
-    route_focus: "Compact sand, light dirt roads, salty breeze."
-  },
-  {
-    id: "CAT_B",
-    name: "Cenotes, Caves & Wetlands",
-    ui_color: "#34A853",
-    route_focus: "Jungle trails, high humidity, limestone parking."
-  },
-  {
-    id: "CAT_C",
-    name: "Ancestral & Traditional Gastronomy",
-    ui_color: "#FBBC05",
-    route_focus: "Urban and highway stops, equipment security checks."
-  },
-  {
-    id: "CAT_D",
-    name: "Archaeology & Living Ecosystems",
-    ui_color: "#10b981",
-    route_focus: "Long highway stretches (100 km/h cruising), managed parking."
-  },
-  {
-    id: "CAT_E",
-    name: "History, Colony & Caste War",
-    ui_color: "#EA4335",
-    route_focus: "Magic towns, cobblestone plazas."
-  }
+  { id: "CAT_A", name: "Secret Beaches", ui_color: "#4A80F5", route_focus: "Compact sand & coastal paths." },
+  { id: "CAT_B", name: "Cenotes & Caves", ui_color: "#34A853", route_focus: "Jungle limestone trails." },
+  { id: "CAT_C", name: "Ancestral Gastronomy", ui_color: "#FBBC05", route_focus: "Traditional local food stops." },
+  { id: "CAT_D", name: "Archaeology", ui_color: "#34A853", route_focus: "Long highway runs to historical ruins." },
+  { id: "CAT_E", name: "History & War", ui_color: "#EA4335", route_focus: "Magic towns and war monuments." }
 ];
 
-// Yucatan Locations Database (75 Items)
 const locations = [
-  // Secret Beaches & Coasts (CAT_A)
   {
     id: "1.1",
-    name: "Playa Punta Bete",
+    name: "Punta Bete",
     category: "CAT_A",
-    geo: [20.6865, -87.0182],
+    geo: [20.6833, -87.0167],
     distance_km: 15,
-    vstrom_risk: "Loose dirt parking. Avoid sudden front brake application on soft coastal tracks.",
     risk_level: "low",
-    story_hook: "Virgin strip; evokes the 80s Riviera without commerce.",
-    earth_prompt: "High-resolution satellite scan of Playa Punta Bete coastline. Check parking soil density.",
-    historical_notes: "Evokes the 80s Riviera without commerce.",
-    tips: "Ideal for wide coastal shots. Loose dirt parking."
-  },
-  {
-    id: "1.2",
-    name: "Bahia Soliman",
-    category: "CAT_A",
-    geo: [20.2638, -87.3621],
-    distance_km: 45,
-    vstrom_risk: "Paved access, but coastal salt buildup on brakes. Lube chain post-ride.",
-    risk_level: "medium",
-    story_hook: "Semicircular bay with calm waters near Tulum.",
-    earth_prompt: "Satellite visual of Bahia Soliman coral lagoon. Track drone flight line.",
-    historical_notes: "Semicircular bay with calm waters near Tulum.",
-    tips: "Shoot stable sequences from the water. Paved access."
-  },
-  {
-    id: "1.3",
-    name: "Xcacel Reserve",
-    category: "CAT_A",
-    geo: [20.3392, -87.3503],
-    distance_km: 48,
-    vstrom_risk: "Limestone parking with light sand. Avoid deep dunes.",
-    risk_level: "medium",
-    story_hook: "Immaculate turtle sanctuary with a cenote on the beach.",
-    earth_prompt: "LiDAR scan of Xcacel nesting beaches. Map protected vegetation limits.",
-    historical_notes: "Immaculate turtle sanctuary with a cenote on the beach.",
-    tips: "No modern structures. Drone use prohibited."
-  },
-  {
-    id: "1.4",
-    name: "Paamul Beach",
-    category: "CAT_A",
-    geo: [20.5245, -87.2023],
-    distance_km: 22,
-    vstrom_risk: "Sharp limestone rocks near beach path. Keep tires at 29 PSI.",
-    risk_level: "low",
-    story_hook: "Rocky reefs peeking at the shore, rustic charm.",
-    earth_prompt: "Multi-spectral imaging of Paamul reef structure. Track tide limits.",
-    historical_notes: "Rocky reefs peeking at the shore, rustic charm.",
-    tips: "Reef shots without going into open sea."
-  },
-  {
-    id: "1.5",
-    name: "Bahia de Chemuyil",
-    category: "CAT_A",
-    geo: [20.3541, -87.3415],
-    distance_km: 42,
-    vstrom_risk: "Tight jungle path leads to sand. Stand up on V-Strom pegs.",
-    risk_level: "medium",
-    story_hook: "Drastic contrast between dense jungle and turquoise sea.",
-    earth_prompt: "Jungle canopy density scan of Chemuyil beach access road.",
-    historical_notes: "Drastic contrast between dense jungle and turquoise sea.",
-    tips: "Quick location without massive distractions."
-  },
-  {
-    id: "1.6",
-    name: "Playa Xcalacoco",
-    category: "CAT_A",
-    geo: [20.6698, -87.0267],
-    distance_km: 10,
-    vstrom_risk: "Wet slippery rocks at sunset. Use side-stand puck.",
-    risk_level: "low",
-    story_hook: "Historic rocky corner, ancient fishermen spot.",
-    earth_prompt: "Visual camera scan of Xcalacoco rocky reefs for sunset angles.",
-    historical_notes: "Historic rocky corner, ancient fishermen spot.",
-    tips: "Rocky framing at sunset."
-  },
-  {
-    id: "1.7",
-    name: "Playa Xpu-Ha (South)",
-    category: "CAT_A",
-    geo: [20.4735, -87.2625],
-    distance_km: 28,
-    vstrom_risk: "Fine white sand. Ride in 2nd gear with high RPM.",
-    risk_level: "low",
-    story_hook: "Areas away from clubs with extraordinarily white sand.",
-    earth_prompt: "Satellite map of Xpu-Ha south dirt tracks. Check sand depth.",
-    historical_notes: "Areas away from clubs with extraordinarily white sand.",
-    tips: "Spectacular zenith light for bouncing illumination."
+    story_hook: "Compact sand parking.",
+    vstrom_risk: "Loose sand tracks. Avoid sudden front brake lockup.",
+    earth_prompt: "High-resolution satellite view of Punta Bete beach. Check parking soil density.",
+    historical_notes: "Quiet beach area located north of Playa del Carmen.",
+    tips: "Compact sand parking."
   },
   {
     id: "1.8",
     name: "Boca Paila",
     category: "CAT_A",
     geo: [20.1033, -87.4844],
-    distance_km: 75,
-    vstrom_risk: "High sand density. Keep 2nd gear high RPM. Lower tire pressure (22/25 PSI).",
+    distance_km: 95,
     risk_level: "medium",
-    story_hook: "Where the Muyil lagoon bleeds into the Caribbean sea.",
-    earth_prompt: "Analyze coastline for compact sand vs. deep dunes at Boca Paila.",
-    historical_notes: "Strip where the Muyil lagoon meets the sea.",
-    tips: "Challenging dirt road for V-Strom. Lower tire pressure."
+    story_hook: "Bridge POV shot.",
+    vstrom_risk: "Bridge crossing and coastal winds. Keep steady throttle.",
+    earth_prompt: "Track drone flight lines around the Boca Paila bridge.",
+    historical_notes: "Where the lagoon meets the Caribbean sea.",
+    tips: "Bridge POV shot."
   },
   {
     id: "1.9",
     name: "Punta Allen",
     category: "CAT_A",
-    geo: [19.7997, -87.4789],
-    distance_km: 115,
-    vstrom_risk: "40 km of washboard dirt. Keep 15mm clutch lever play. Carry extra fuel.",
+    geo: [19.7997, -87.4819],
+    distance_km: 140,
     risk_level: "high",
-    story_hook: "Southern tip of Sian Ka'an, former chiclero settlement.",
-    earth_prompt: "Analyze 3D elevation profile of Punta Allen peninsula dirt road.",
-    historical_notes: "Southern tip of Sian Ka'an, former chiclero settlement.",
-    tips: "40 km of pure dirt road. Carry extra fuel."
+    story_hook: "Extreme off-road.",
+    vstrom_risk: "Deep sand dunes and rocky paths. Lube chain and lower tire PSI.",
+    earth_prompt: "Lidar scan of the narrow peninsula leading to Punta Allen.",
+    historical_notes: "Remote fishing village at the end of the Sian Ka'an reserve.",
+    tips: "Extreme off-road."
   },
-  {
-    id: "1.10",
-    name: "Isla Blanca",
-    category: "CAT_A",
-    geo: [21.3789, -86.8045],
-    distance_km: 75,
-    vstrom_risk: "Deep sand lanes and coastal winds. Park on compact grass shells.",
-    risk_level: "medium",
-    story_hook: "Narrow peninsula north of Cancun, lagoon on one side, sea on the other.",
-    earth_prompt: "Analyze water channel shapes on Isla Blanca spit. Spot sandy dunes.",
-    historical_notes: "Narrow peninsula north of Cancun, lagoon on one side, sea on the other.",
-    tips: "Aerial shots of the contrasting water bodies."
-  },
-  {
-    id: "1.11",
-    name: "Chen Rio (Cozumel)",
-    category: "CAT_A",
-    geo: [20.4497, -86.8055],
-    distance_km: 35,
-    vstrom_risk: "Requires ferry crossing. Heavy lateral winds. Hold handlebars firmly.",
-    risk_level: "low",
-    story_hook: "East coast protected by rocks; requires ferry crossing.",
-    earth_prompt: "Wind vector map of Cozumel east loop. Identify coastal shelter points.",
-    historical_notes: "East coast protected by rocks; requires ferry crossing.",
-    tips: "Beware of strong lateral crosswinds on the motorcycle."
-  },
-  {
-    id: "1.12",
-    name: "Punta Sur (Cozumel)",
-    category: "CAT_A",
-    geo: [20.2789, -86.9943],
-    distance_km: 50,
-    vstrom_risk: "Compact dirt roads. Watch out for crocodile warning areas.",
-    risk_level: "medium",
-    story_hook: "Celarain Lighthouse and Tumba del Caracol ruins.",
-    earth_prompt: "3D model render of Punta Sur lighthouse for drone path visualization.",
-    historical_notes: "Celarain Lighthouse and Tumba del Caracol ruins.",
-    tips: "Compact dirt roads inside the park."
-  },
-  {
-    id: "1.13",
-    name: "Ixchel Beach",
-    category: "CAT_A",
-    geo: [20.4200, -86.8300],
-    distance_km: 40,
-    vstrom_risk: "Rocky cliff wind gusts. Safe parking away from water splashes.",
-    risk_level: "medium",
-    story_hook: "Isolated nesting area on the island's eastern coast.",
-    earth_prompt: "Analyze rocky shore lines and wave heights at Ixchel Beach.",
-    historical_notes: "Isolated nesting area on the island's eastern coast.",
-    tips: "Excellent for documenting crashing waves."
-  },
-  {
-    id: "1.14",
-    name: "Playa Maroma (Public)",
-    category: "CAT_A",
-    geo: [20.7389, -86.9689],
-    distance_km: 20,
-    vstrom_risk: "Soft sand entry tracks. Shift weight back to lighten front wheel.",
-    risk_level: "low",
-    story_hook: "Rustic access to one of the finest sands in the world.",
-    earth_prompt: "Check morning solar angles and cloud layers over Maroma Beach.",
-    historical_notes: "Rustic access to one of the finest sands in the world.",
-    tips: "Arrive at 7:00 AM for grazing light."
-  },
-  {
-    id: "1.15",
-    name: "Xcacelito",
-    category: "CAT_A",
-    geo: [20.3370, -87.3520],
-    distance_km: 49,
-    vstrom_risk: "Dense mangrove trails. Walk with light gear. Avoid parking on roots.",
-    risk_level: "medium",
-    story_hook: "Small inlet attached to Xcacel, hidden in the mangroves.",
-    earth_prompt: "Mangrove density vegetation index scan of Xcacelito inlet.",
-    historical_notes: "Small inlet attached to Xcacel, hidden in the mangroves.",
-    tips: "Requires walking with light gear."
-  },
-
-  // Cenotes, Caves & Wetlands (CAT_B)
   {
     id: "2.1",
-    name: "Cenote Taak Bi Ha",
+    name: "Taak Bi Ha",
     category: "CAT_B",
     geo: [20.3167, -87.3833],
-    distance_km: 50,
-    vstrom_risk: "Slippery wet limestone paths. Side-stand puck highly recommended.",
+    distance_km: 48,
     risk_level: "medium",
-    story_hook: "A subterranean cathedral of crystal and roots.",
-    earth_prompt: "Identify limestone plateaus at Taak Bi Ha for motorcycle parking stability.",
-    historical_notes: "Community cave, warm lighting, exposed roots.",
-    tips: "Tripod essential. Shallow vault."
-  },
-  {
-    id: "2.2",
-    name: "Cenote Tajma Ha",
-    category: "CAT_B",
-    geo: [20.5058, -87.2289],
-    distance_km: 30,
-    vstrom_risk: "Humid forest trail. Low traction on mud and wet roots.",
-    risk_level: "low",
-    story_hook: "Advanced diving mecca, natural haloclines.",
-    earth_prompt: "Scan Tajma Ha sinkhole openings to check noon light ray positions.",
-    historical_notes: "Advanced diving mecca, natural haloclines.",
-    tips: "Shoot sun rays between 11 AM and 1 PM."
-  },
-  {
-    id: "2.3",
-    name: "El Corchal (Solferino)",
-    category: "CAT_B",
-    geo: [21.3653, -87.6258],
-    distance_km: 120,
-    vstrom_risk: "Long forest road. High humidity can cause mist on helmet visors.",
-    risk_level: "high",
-    story_hook: "Floating cork forest over the wetland.",
-    earth_prompt: "Topographical mapping of Solferino cork wetlands and access tracks.",
-    historical_notes: "Floating cork forest over the wetland.",
-    tips: "Surreal landscape. Firm dirt access road."
-  },
-  {
-    id: "2.4",
-    name: "Cenote Popol Vuh",
-    category: "CAT_B",
-    geo: [20.8655, -87.0350],
-    distance_km: 45,
-    vstrom_risk: "Potholes on Ruta de los Cenotes. Check suspension travel.",
-    risk_level: "medium",
-    story_hook: "On Ruta de los Cenotes, away from urban noise.",
-    earth_prompt: "Identify solid clearing platforms near Cenote Popol Vuh.",
-    historical_notes: "On Ruta de los Cenotes, away from urban noise.",
-    tips: "Natural platforms for static shots."
-  },
-  {
-    id: "2.5",
-    name: "Cenote Zapote",
-    category: "CAT_B",
-    geo: [20.8522, -87.0425],
-    distance_km: 55,
-    vstrom_risk: "Loose gravel tracks. Engage Dirt Mode tire pressure (22/25 PSI).",
-    risk_level: "medium",
-    story_hook: "Famous for underwater bell-shaped formations.",
-    earth_prompt: "Scan parking lot and road width leading to Cenote Zapote.",
-    historical_notes: "Famous for underwater bell-shaped formations.",
-    tips: "Jumps and action B-roll."
-  },
-  {
-    id: "2.6",
-    name: "Cenote Escondido",
-    category: "CAT_B",
-    geo: [20.1878, -87.4989],
-    distance_km: 65,
-    vstrom_risk: "Jungle track loops. Stand on pegs to absorb rock vibrations.",
-    risk_level: "medium",
-    story_hook: "Open-air in Tulum, requires jungle trekking.",
-    earth_prompt: "Track POV GoPro path through Cenote Escondido trail canopy.",
-    historical_notes: "Open-air in Tulum, requires jungle trekking.",
-    tips: "The trail is perfect for motorcycle POV (GoPro) shots."
-  },
-  {
-    id: "2.7",
-    name: "Cenotes Kin-Ha",
-    category: "CAT_B",
-    geo: [20.8583, -87.0278],
-    distance_km: 40,
-    vstrom_risk: "Wet cavern access stairs. Walk carefully in riding boots.",
-    risk_level: "low",
-    story_hook: "Cavernous vault with a single zenithal light beam.",
-    earth_prompt: "Cavern opening dimensions scan at Kin-Ha. Measure solar angles.",
-    historical_notes: "Cavernous vault with a single zenithal light beam.",
-    tips: "High photographic contrast."
-  },
-  {
-    id: "2.8",
-    name: "Cenote Chikin Ha",
-    category: "CAT_B",
-    geo: [20.4689, -87.2514],
-    distance_km: 25,
-    vstrom_risk: "Limestone slabs can be slick. Test side-stand stability before leaving bike.",
-    risk_level: "low",
-    story_hook: "Multiple biomes (open, semi, cave) in one place.",
-    earth_prompt: "LiDAR terrain modeling of Chikin Ha three main sinkhole structures.",
-    historical_notes: "Multiple biomes (open, semi, cave) in one place.",
-    tips: "Optimizes recording time for different environments."
-  },
-  {
-    id: "2.9",
-    name: "Cenote Nicte-Ha",
-    category: "CAT_B",
-    geo: [20.3189, -87.3689],
-    distance_km: 51,
-    vstrom_risk: "Wet soil around lilies. Park on hard gravel only.",
-    risk_level: "medium",
-    story_hook: "Small, surrounded by water lilies, pristine vibe.",
-    earth_prompt: "Thermal mapping of Nicte-Ha water surface to identify springs.",
-    historical_notes: "Small, surrounded by water lilies, pristine vibe.",
-    tips: "Ideal for water-level shots (dome port)."
-  },
-  {
-    id: "2.10",
-    name: "Cenote Calavera",
-    category: "CAT_B",
-    geo: [20.2289, -87.4795],
-    distance_km: 62,
-    vstrom_risk: "Traffic on Coba highway. Indicate early before turning into trail.",
-    risk_level: "medium",
-    story_hook: "Perfect circular hole with direct jumps into the water.",
-    earth_prompt: "3D volumetric scan of Calavera cave ceiling opening.",
-    historical_notes: "Perfect circular hole with direct jumps into the water.",
-    tips: "Vertical framing for YouTube Shorts/Reels."
-  },
-  {
-    id: "2.11",
-    name: "Cenote Carwash",
-    category: "CAT_B",
-    geo: [20.2731, -87.4878],
-    distance_km: 68,
-    vstrom_risk: "Paved Tulum-Coba road. Beware of speeding tourist vans.",
-    risk_level: "medium",
-    story_hook: "Former taxi carwash, now an underwater garden.",
-    earth_prompt: "Algae density index mapping at Carwash cenote water body.",
-    historical_notes: "Former taxi carwash, now an underwater garden.",
-    tips: "Red/green algae mantle looks incredible on camera."
+    story_hook: "Low light tripod shots.",
+    vstrom_risk: "Wet limestone access path. Ride slowly in first gear.",
+    earth_prompt: "Analyze cenote cavern roof thickness and entrance coordinates.",
+    historical_notes: "Stunning underground cave cenote with crystal clear waters.",
+    tips: "Low light tripod shots."
   },
   {
     id: "2.12",
-    name: "Cenote Suytun",
+    name: "Suytun",
     category: "CAT_B",
-    geo: [20.6975, -88.1258],
-    distance_km: 145,
-    vstrom_risk: "Long highway run. Keep speeds at 100km/h max. Check oil level.",
-    risk_level: "high",
-    story_hook: "The most famous stone walkway, closed vault.",
-    earth_prompt: "Analyze solar path directly over Suytun central vault ceiling crack.",
-    historical_notes: "The most famous stone walkway, closed vault.",
-    tips: "Arrive before 9 AM to avoid crowds."
+    geo: [20.6994, -88.1250],
+    distance_km: 120,
+    risk_level: "low",
+    story_hook: "Zenithal sun beam.",
+    vstrom_risk: "Paved parking. Easy access for motorbikes.",
+    earth_prompt: "Calculate sunset reflection angles through the Suytun dome opening.",
+    historical_notes: "Famous cenote with a stone platform in the center.",
+    tips: "Zenithal sun beam."
   },
-  {
-    id: "2.13",
-    name: "Cenote Zaci",
-    category: "CAT_B",
-    geo: [20.6894, -88.2014],
-    distance_km: 150,
-    vstrom_risk: "Valladolid city traffic and narrow colonial streets. Hold clutch 10-15mm play.",
-    risk_level: "high",
-    story_hook: "Huge open cenote right in the center of Valladolid.",
-    earth_prompt: "3D height map of Valladolid city block containing Cenote Zaci.",
-    historical_notes: "Huge open cenote right in the center of Valladolid.",
-    tips: "Capture the contrast of the city and natural abyss."
-  },
-  {
-    id: "2.14",
-    name: "Cenote Xkeken",
-    category: "CAT_B",
-    geo: [20.6603, -88.2439],
-    distance_km: 155,
-    vstrom_risk: "Limestone dust can coat the oil cooler fins. Wash after visiting.",
-    risk_level: "high",
-    story_hook: "Massive vault with giant stalactites.",
-    earth_prompt: "Volumetric room space mapping of Dzitnup cavern structures.",
-    historical_notes: "Massive vault with giant stalactites (Dzitnup).",
-    tips: "Installed artificial lighting helps the camera sensor."
-  },
-  {
-    id: "2.15",
-    name: "Cenote Noh-Mozon",
-    category: "CAT_B",
-    geo: [20.6278, -89.4756],
-    distance_km: 190,
-    vstrom_risk: "Extreme dirt road with rocks. Check fairing bolts post-ride. Keep speed low.",
-    risk_level: "high",
-    story_hook: "Deep pit lost in a distant Yucatecan ranch.",
-    earth_prompt: "Analyze ranch dirt tracks leading to Noh-Mozon for rocky obstacles.",
-    historical_notes: "Deep pit lost in a distant Yucatecan ranch.",
-    tips: "Extreme dirt road. Rewarded with empty, soul-less shots."
-  },
-
-  // Ancestral & Traditional Gastronomy (CAT_C)
   {
     id: "3.1",
     name: "IX CAT IK",
     category: "CAT_C",
-    geo: [20.6942, -88.1978],
-    distance_km: 150,
-    vstrom_risk: "Colonial town parking. Secure helmet and bags on V-Strom locks.",
-    risk_level: "high",
-    story_hook: "Valladolid. Milpa cuisine and earth ovens (Pib).",
-    earth_prompt: "Town outline mapping of Valladolid. Pinpoint IX CAT IK backyard gardens.",
-    historical_notes: "Milpa cuisine and earth ovens (Pib).",
-    tips: "Document the unearthing of the food."
-  },
-  {
-    id: "3.2",
-    name: "Mercado Donato Bates",
-    category: "CAT_C",
-    geo: [20.6914, -88.2019],
-    distance_km: 150,
-    vstrom_risk: "Highly congested market streets. Watch out for pedestrians.",
-    risk_level: "high",
-    story_hook: "Epicenter of Mayan spices and trade.",
-    earth_prompt: "Drone flight zoning restrictions over Valladolid downtown market.",
-    historical_notes: "Epicenter of Mayan spices and trade.",
-    tips: "Vivid colors. Keep the motorcycle in sight."
-  },
-  {
-    id: "3.3",
-    name: "La Tia De Kaua",
-    category: "CAT_C",
-    geo: [20.6178, -88.2989],
-    distance_km: 139,
-    vstrom_risk: "Highway shoulder parking. Secure side stand on flat ground.",
-    risk_level: "high",
-    story_hook: "Highway icon. Legendary Poc Chuc in wood-fired kitchens.",
-    earth_prompt: "Identify Kaua highway restaurants and parking layout.",
-    historical_notes: "Highway icon. Legendary Poc Chuc in wood-fired kitchens.",
-    tips: "Wood smoke gives visual texture. Mandatory fuel stop."
-  },
-  {
-    id: "3.4",
-    name: "El Faisan y Venado",
-    category: "CAT_C",
-    geo: [19.5783, -88.0453],
-    distance_km: 150,
-    vstrom_risk: "Federal highway traffic. Double-check mirror settings before merging.",
-    risk_level: "high",
-    story_hook: "Felipe Carrillo Puerto. Indigenous zone food, 24 hours.",
-    earth_prompt: "Scan downtown Felipe Carrillo Puerto street lights and camera angles.",
-    historical_notes: "Felipe Carrillo Puerto. Indigenous zone food, 24 hours.",
-    tips: "Record the rawness of late-night gastronomy."
-  },
-  {
-    id: "3.5",
-    name: "El Cocodrilo (Coba)",
-    category: "CAT_C",
-    geo: [20.4900, -87.7330],
-    distance_km: 105,
-    vstrom_risk: "Lake path loose dust. Keep V-Strom in 1st gear while parking.",
-    risk_level: "high",
-    story_hook: "Generational flavors facing the Coba lakes.",
-    earth_prompt: "Sunset reflections angle calculation over Coba lake shore.",
-    historical_notes: "Generational flavors facing the Coba lakes.",
-    tips: "Sunset B-Roll over the lagoon."
+    geo: [20.6903, -88.2011],
+    distance_km: 122,
+    risk_level: "low",
+    story_hook: "Pib oven reveal.",
+    vstrom_risk: "Urban parking. Use side stand pad on warm asphalt.",
+    earth_prompt: "Satellite visual of traditional Mayan kitchen setup in Valladolid.",
+    historical_notes: "Traditional Mayan food prepared with ancient techniques.",
+    tips: "Pib oven reveal."
   },
   {
     id: "3.6",
     name: "Taqueria Honorio",
     category: "CAT_C",
-    geo: [20.2106, -87.4641],
+    geo: [20.2117, -87.4622],
     distance_km: 65,
-    vstrom_risk: "Congested Tulum avenue. Watch for sudden car door openings.",
-    risk_level: "medium",
-    story_hook: "Tulum. Suckling pig baked underground for 12 hours.",
-    earth_prompt: "Tulum downtown morning light shadow analysis for street shots.",
-    historical_notes: "Tulum. Suckling pig baked underground for 12 hours.",
-    tips: "Record the steaming trays at 6:30 AM."
-  },
-  {
-    id: "3.7",
-    name: "Restaurante Cetli",
-    category: "CAT_C",
-    geo: [20.2189, -87.4589],
-    distance_km: 66,
-    vstrom_risk: "Residential road potholes. Keep front wheel alert.",
-    risk_level: "medium",
-    story_hook: "Artisanal moles and metate grinding. Mystical haute cuisine.",
-    earth_prompt: "Calculate interior lighting lumens for macro plate recording.",
-    historical_notes: "Artisanal moles and metate grinding. Mystical haute cuisine.",
-    tips: "Macro shots of spice textures."
-  },
-  {
-    id: "3.8",
-    name: "Axiote",
-    category: "CAT_C",
-    geo: [20.6289, -87.0735],
-    distance_km: 2,
-    vstrom_risk: "Playa del Carmen urban streets. Keep lock chain active.",
     risk_level: "low",
-    story_hook: "Playa. Rescue of endemic ingredients in a modern format.",
-    earth_prompt: "Calculate restaurant indoor camera setup and shadow angles.",
-    historical_notes: "Playa. Rescue of endemic ingredients in a modern format.",
-    tips: "Good light for formal tasting interviews."
+    story_hook: "6:30 AM arrival.",
+    vstrom_risk: "Busy town parking. Watch for traffic on main street.",
+    earth_prompt: "Map street layouts around Tulum center for early morning parking.",
+    historical_notes: "Renowned local spot for cochinita pibil and lechon tacos.",
+    tips: "6:30 AM arrival."
   },
-  {
-    id: "3.9",
-    name: "La Cochi Loka",
-    category: "CAT_C",
-    geo: [20.6294, -87.0714],
-    distance_km: 1,
-    vstrom_risk: "Highly active pedestrian zone. Push motorcycle if entering restricted lanes.",
-    risk_level: "low",
-    story_hook: "Playa center frenzy. Fast-paced panuchos.",
-    earth_prompt: "Capture street activity density maps in Playa central district.",
-    historical_notes: "Playa center frenzy. Fast-paced panuchos.",
-    tips: "Handheld camera, raw documentary style."
-  },
-  {
-    id: "3.10",
-    name: "La 85 Diagonal",
-    category: "CAT_C",
-    geo: [20.6415, -87.0850],
-    distance_km: 5,
-    vstrom_risk: "Poor street lighting. Turn on auxiliary fog lights.",
-    risk_level: "low",
-    story_hook: "Playa Ejido. 24-hour neighborhood spot. Urban local vein.",
-    earth_prompt: "Calculate street lamps positions on 85 Diagonal road.",
-    historical_notes: "Playa Ejido. 24-hour neighborhood spot. Urban local vein.",
-    tips: "Underground aesthetics for night shots."
-  },
-  {
-    id: "3.11",
-    name: "Antojitos Yucatecos",
-    category: "CAT_C",
-    geo: [20.6380, -87.0780],
-    distance_km: 4,
-    vstrom_risk: "Highway access mud. Watch for oil slicks near truck parking.",
-    risk_level: "low",
-    story_hook: "Peninsular frying right on the federal highway.",
-    earth_prompt: "Federal highway shoulder safety width analysis at Playa exit.",
-    historical_notes: "Peninsular frying right on the federal highway.",
-    tips: "ASMR audio of boiling lard."
-  },
-  {
-    id: "3.12",
-    name: "Taqueria Angelito",
-    category: "CAT_C",
-    geo: [20.6550, -87.0650],
-    distance_km: 6,
-    vstrom_risk: "Local neighborhood streets. Slow down at unmarked speed bumps (topes).",
-    risk_level: "low",
-    story_hook: "Bosque Real. Morning communion of the local worker.",
-    earth_prompt: "Analyze morning pedestrian density patterns in Bosque Real.",
-    historical_notes: "Bosque Real. Morning communion of the local worker.",
-    tips: "Quick portraits of urban daily life."
-  },
-  {
-    id: "3.13",
-    name: "Rinconcito Yucateco",
-    category: "CAT_C",
-    geo: [20.6620, -87.0980],
-    distance_km: 8,
-    vstrom_risk: "Villas del Sol traffic. Keep cooling fan clear of dust.",
-    risk_level: "low",
-    story_hook: "Homemade food (stuffed cheese, beans with pork).",
-    earth_prompt: "Road width and parking availability mapping at Villas del Sol.",
-    historical_notes: "Villas del Sol. Homemade food (stuffed cheese, beans with pork).",
-    tips: "Absolute focus on broths and stews."
-  },
-  {
-    id: "3.14",
-    name: "Comida Yucateca",
-    category: "CAT_C",
-    geo: [20.6480, -87.0580],
-    distance_km: 5,
-    vstrom_risk: "Colosio dust. Maintain drive chain clean (lube every 500km).",
-    risk_level: "low",
-    story_hook: "Colosio. Unpretentious food since dawn.",
-    earth_prompt: "Colosio neighborhood street grid scan. Identify secure parking hubs.",
-    historical_notes: "Colosio. Unpretentious food since dawn.",
-    tips: "Use of traditional utensils and pewter pots."
-  },
-  {
-    id: "3.15",
-    name: "Yaxche (Centro)",
-    category: "CAT_C",
-    geo: [20.6270, -87.0750],
-    distance_km: 3,
-    vstrom_risk: "Central Playa tourist zone. Stop and lock bike securely in paid parking.",
-    risk_level: "low",
-    story_hook: "Classic Mayan fusion, excellent visual representation.",
-    earth_prompt: "Determine daylight reflection levels on Yaxche outdoor terraces.",
-    historical_notes: "Classic Mayan fusion, excellent visual representation.",
-    tips: "Plates mounted with a high aesthetic level."
-  },
-
-  // Archaeology & Living Ecosystems (CAT_D)
   {
     id: "4.1",
-    name: "Zona Arqueologica Muyil",
+    name: "Muyil",
     category: "CAT_D",
-    geo: [20.0786, -87.6119],
-    distance_km: 85,
-    vstrom_risk: "Wet forest trail parking. Use side-stand puck on soft dirt.",
-    risk_level: "medium",
-    story_hook: "Ruins in Sian Ka'an, navigable Mayan canals.",
-    earth_prompt: "Jungle thickness render over Muyil ruins. Scan lagoon boat docks.",
-    historical_notes: "Ruins in Sian Ka'an, navigable Mayan canals.",
-    tips: "Contrast shots: gray ruin, green jungle, blue canal."
-  },
-  {
-    id: "4.2",
-    name: "Ruinas Xaman-Ha",
-    category: "CAT_D",
-    geo: [20.6214, -87.0842],
-    distance_km: 3,
-    vstrom_risk: "Residential gated security. Present identification to enter.",
+    geo: [20.0783, -87.6114],
+    distance_km: 80,
     risk_level: "low",
-    story_hook: "Hidden in Playacar. Clash of ancient and modern civilization.",
-    earth_prompt: "Playacar residential golf community ruins overlay visualization.",
-    historical_notes: "Hidden in Playacar. Clash of ancient and modern civilization.",
-    tips: "Quick audiovisual resource due to proximity."
+    story_hook: "Lagoon canal drone path.",
+    vstrom_risk: "Gravel parking lot. Watch for loose stones when turning.",
+    earth_prompt: "LiDAR scanning of the Muyil ruins and lagoon canal paths.",
+    historical_notes: "Ancient Mayan trading post located in Sian Ka'an.",
+    tips: "Lagoon canal drone path."
   },
   {
     id: "4.3",
     name: "Ek Balam",
     category: "CAT_D",
     geo: [20.8911, -88.1361],
-    distance_km: 155,
-    vstrom_risk: "Long highway run. Keep speeds at 100km/h cruising. Check oil capacity (1.2L).",
-    risk_level: "high",
-    story_hook: "Giant acropolis with impeccable stucco reliefs.",
-    earth_prompt: "3D visual elevation mapping of Ek Balam acropolis stairs.",
-    historical_notes: "Giant acropolis with impeccable stucco reliefs.",
-    tips: "Impressive aerial views from the top."
-  },
-  {
-    id: "4.4",
-    name: "Coba",
-    category: "CAT_D",
-    geo: [20.4911, -87.7328],
-    distance_km: 105,
-    vstrom_risk: "Limestone dust can coat the oil cooler fins. Wash after visiting.",
-    risk_level: "high",
-    story_hook: "Network of white roads (sacbeob) under the jungle shade.",
-    earth_prompt: "Scan Coba jungle paths to map the ancient Mayan sacbeob roads.",
-    historical_notes: "Network of white roads (sacbeob) under the jungle shade.",
-    tips: "Use a gimbal on a rented bicycle."
-  },
-  {
-    id: "4.5",
-    name: "El Meco",
-    category: "CAT_D",
-    geo: [21.2114, -86.8028],
-    distance_km: 69,
-    vstrom_risk: "Federal road coastal winds. Check fairing bolts and luggage mounts.",
+    distance_km: 145,
     risk_level: "medium",
-    story_hook: "Ancient commercial coastal port, imposing central structure.",
-    earth_prompt: "Analyze El Meco site proximity to coastal winds and sand particles.",
-    historical_notes: "Ancient commercial coastal port, imposing central structure.",
-    tips: "Framing of iguanas inhabiting the temples."
+    story_hook: "Acropolis scale shot.",
+    vstrom_risk: "Long highway run. Cruising speed 100km/h. Check tire pressure.",
+    earth_prompt: "High-resolution satellite view of the Ek Balam Acropolis structure.",
+    historical_notes: "Mayan city known for its plaster carvings and tall temple.",
+    tips: "Acropolis scale shot."
   },
-  {
-    id: "4.6",
-    name: "Yaxunah",
-    category: "CAT_D",
-    geo: [20.6492, -88.5833],
-    distance_km: 165,
-    vstrom_risk: "Isolated inland tracks. Do not use low-octane 'Magna' fuel; carry 'Premium'.",
-    risk_level: "high",
-    story_hook: "Ancient site with a superhighway to Chichen Itza.",
-    earth_prompt: "LiDAR mapping of the ancient Sacbe road connecting Yaxunah to Chichen Itza.",
-    historical_notes: "Ancient site with a superhighway to Chichen Itza.",
-    tips: "Clean audio with zero tourists."
-  },
-  {
-    id: "4.7",
-    name: "Ruinas Xelha",
-    category: "CAT_D",
-    geo: [20.3183, -87.3622],
-    distance_km: 46,
-    vstrom_risk: "Busy highway inlet. Reduce speed early. Watch out for tourist coaches.",
-    risk_level: "medium",
-    story_hook: "Vestiges with preserved original mural painting.",
-    earth_prompt: "Examine solar exposure at Xelha ruins to protect the mural painting.",
-    historical_notes: "Vestiges with preserved original mural painting.",
-    tips: "Macro lenses for painting details."
-  },
-  {
-    id: "4.8",
-    name: "San Gervasio",
-    category: "CAT_D",
-    geo: [20.5006, -86.8483],
-    distance_km: 35,
-    vstrom_risk: "Island jungle loop. Watch out for high humidity condensation on dashboard.",
-    risk_level: "low",
-    story_hook: "Cozumel. Center of veneration for the goddess Ixchel.",
-    earth_prompt: "Jungle trail grid layout analysis in San Gervasio archaeological park.",
-    historical_notes: "Cozumel. Center of veneration for the goddess Ixchel.",
-    tips: "Immersive walks on rustic trails."
-  },
-  {
-    id: "4.9",
-    name: "Grutas Balancanche",
-    category: "CAT_D",
-    geo: [20.6658, -88.5350],
-    distance_km: 152,
-    vstrom_risk: "Steep cavern stairs. Use caution. Ensure headlights are clean.",
-    risk_level: "high",
-    story_hook: "Portal to the Mayan underworld, intact offerings.",
-    earth_prompt: "3D room scan of Balancanche cave entrance cavern.",
-    historical_notes: "Portal to the Mayan underworld, intact offerings.",
-    tips: "Portable LED panels are mandatory."
-  },
-  {
-    id: "4.10",
-    name: "UMA Nojoch Keej",
-    category: "CAT_D",
-    geo: [20.5283, -87.6522],
-    distance_km: 53,
-    vstrom_risk: "Dirt roads in Nuevo Durango. Watch out for loose rocks.",
-    risk_level: "medium",
-    story_hook: "Nuevo Durango. Community deer rescue.",
-    earth_prompt: "Scan community deer rescue perimeter boundaries in Nuevo Durango.",
-    historical_notes: "Nuevo Durango. Community deer rescue.",
-    tips: "Interviews on ecological conservation."
-  },
-  {
-    id: "4.11",
-    name: "Punta Laguna",
-    category: "CAT_D",
-    geo: [20.6433, -87.6361],
-    distance_km: 110,
-    vstrom_risk: "Isolated jungle area. Keep speed moderate on dirt shoulders.",
-    risk_level: "high",
-    story_hook: "Community sanctuary. Free spider and howler monkeys.",
-    earth_prompt: "Determine fog density over Punta Laguna lagoon at dawn.",
-    historical_notes: "Community sanctuary. Free spider and howler monkeys.",
-    tips: "Wake up early to catch the fog over the lagoon."
-  },
-  {
-    id: "4.12",
-    name: "Chacchoben",
-    category: "CAT_D",
-    geo: [19.0017, -88.2319],
-    distance_km: 195,
-    vstrom_risk: "Very long southern route. Check fuel level. Reroute to Carrillo Puerto if <80km.",
-    risk_level: "high",
-    story_hook: "Deep south. Monumental settlement surrounded by mahogany.",
-    earth_prompt: "Verify gas station locations on highway 307 south to Chacchoben.",
-    historical_notes: "Deep south. Monumental settlement surrounded by mahogany.",
-    tips: "Long route, check gas in Carrillo Puerto."
-  },
-  {
-    id: "4.13",
-    name: "Kinichna",
-    category: "CAT_D",
-    geo: [18.5997, -88.7845],
-    distance_km: 198,
-    vstrom_risk: "Remote jungle dirt tracks. Wear full protective gear. Carry basic repair kit.",
-    risk_level: "high",
-    story_hook: "Temple of the Sun. Massive 3-level pyramidal structure.",
-    earth_prompt: "3D height scan of Kinichna sun pyramid structures.",
-    historical_notes: "Temple of the Sun. Massive 3-level pyramidal structure.",
-    tips: "Human scale: place talent at the foot of the temple."
-  },
-  {
-    id: "4.14",
-    name: "Dzibanche",
-    category: "CAT_D",
-    geo: [18.6389, -88.7561],
-    distance_km: 198,
-    vstrom_risk: "Severe track bumps. Set tires to Dirt Mode (22/25 PSI).",
-    risk_level: "high",
-    story_hook: "Capital of the Kaan (Snake) dynasty, Tikal's rival.",
-    earth_prompt: "Map forest canopy cover over Dzibanche temples.",
-    historical_notes: "Capital of the Kaan (Snake) dynasty, Tikal's rival.",
-    tips: "Document the captive glyphs on the stairs."
-  },
-  {
-    id: "4.15",
-    name: "Xcabal",
-    category: "CAT_D",
-    geo: [18.7303, -88.6414],
-    distance_km: 190,
-    vstrom_risk: "Partially paved access tracks. Watch out for heavy machinery.",
-    risk_level: "high",
-    story_hook: "Mega Mayan city still semi-hidden, recently opening.",
-    earth_prompt: "Archaeological scan maps of Xcabal newly cleared structures.",
-    historical_notes: "Mega Mayan city still semi-hidden, recently opening.",
-    tips: "The 'Holy Grail' for current explorers."
-  },
-
-  // History, Colony & Caste War (CAT_E)
   {
     id: "5.1",
-    name: "Templo Tihosuco",
+    name: "Tihosuco",
     category: "CAT_E",
     geo: [20.1917, -88.3703],
-    distance_km: 140,
-    vstrom_risk: "Rough cobblestone vibrations. Verify fairing bolts post-ride.",
+    distance_km: 160,
     risk_level: "high",
-    story_hook: "The silent stones of the Mayan rebellion. Dynamited church facade.",
-    earth_prompt: "3D model render of Tihosuco colonial church ruins for drone flight path.",
-    historical_notes: "Dynamited facade. Symbol of the Caste War.",
-    tips: "Panoramic shots of the war damage."
-  },
-  {
-    id: "5.2",
-    name: "Cruz Parlante",
-    category: "CAT_E",
-    geo: [19.5828, -88.0411],
-    distance_km: 150,
-    vstrom_risk: "Carrillo Puerto urban lanes. Keep clutch free play adjusted.",
-    risk_level: "high",
-    story_hook: "Military/religious center of the rebel Mayans.",
-    earth_prompt: "Mapping of Cruz Parlante park boundaries in Carrillo Puerto.",
-    historical_notes: "Military/religious center of the rebel Mayans.",
-    tips: "Deep respect when filming, active sacred enclosure."
-  },
-  {
-    id: "5.3",
-    name: "Panteon de Tepich",
-    category: "CAT_E",
-    geo: [20.2458, -88.2614],
-    distance_km: 130,
-    vstrom_risk: "Cobblestone streets and dirt shoulders. Keep speed at 40km/h.",
-    risk_level: "high",
-    story_hook: "Kilometer zero of the rebellion. Cecilio Chi's tomb.",
-    earth_prompt: "Identify Tepich cemetery boundary lines and V-Strom access road.",
-    historical_notes: "Kilometer zero of the rebellion. Cecilio Chi's tomb.",
-    tips: "Raw environment, perfect for historical stand-ups."
-  },
-  {
-    id: "5.4",
-    name: "Ex-Convento Chichimila",
-    category: "CAT_E",
-    geo: [20.6389, -88.1989],
-    distance_km: 115,
-    vstrom_risk: "Valladolid highway exit. Watch out for local moto-taxis.",
-    risk_level: "high",
-    story_hook: "Colonial structure with military fortress appearance.",
-    earth_prompt: "Examine colonial church walls density and shadow directions.",
-    historical_notes: "Colonial structure with military fortress appearance.",
-    tips: "Utilize vaults for high contrast."
+    story_hook: "Dynamited facade shot.",
+    vstrom_risk: "Secondary roads. Watch for speed bumps (topes) and potholes.",
+    earth_prompt: "Satellite mapping of colonial church ruins in Tihosuco.",
+    historical_notes: "Epicenter of the Mayan Caste War with historical structures.",
+    tips: "Dynamited facade shot."
   },
   {
     id: "5.5",
-    name: "Santo Domingo Uayma",
+    name: "Uayma",
     category: "CAT_E",
-    geo: [20.7333, -88.1489],
-    distance_km: 120,
-    vstrom_risk: "Cobblestone plaza. Park on flat ground using side stand. Secure gear.",
-    risk_level: "high",
-    story_hook: "Vibrant red stucco colonial facade, constructed with stones from old Mayan pyramids.",
-    earth_prompt: "Calculate afternoon sunset light paths hitting the Uayma facade.",
-    historical_notes: "Vibrant red stucco, made with pyramid stones.",
-    tips: "Perfect geometry and color for thumbnails."
-  },
-  {
-    id: "5.6",
-    name: "San Bernardino Siena",
-    category: "CAT_E",
-    geo: [20.6861, -88.2089],
-    distance_km: 105,
-    vstrom_risk: "Valladolid city loop. Stop at local red lights.",
-    risk_level: "high",
-    story_hook: "Sisal monastery, Valladolid. Strategically built over Sis-Ha cenote.",
-    earth_prompt: "Sisal monastery arched walkway 3D spatial layout modeling.",
-    historical_notes: "Valladolid. Strategically built over a cenote.",
-    tips: "Symmetrical shots in arched corridors."
-  },
-  {
-    id: "5.7",
-    name: "Convento de Izamal",
-    category: "CAT_E",
-    geo: [20.9317, -89.0183],
-    distance_km: 198,
-    vstrom_risk: "Very long loop. Monitor fuel range closely. Keep headlights active.",
-    risk_level: "high",
-    story_hook: "Giant yellow colonial atrium, built over the Pap-hol-chac pyramid.",
-    earth_prompt: "3D scan of Izamal massive yellow colonial atrium arches.",
-    historical_notes: "Giant yellow atrium, over Pap-hol-chac pyramid.",
-    tips: "Fluid movements (gimbal) between the arches."
-  },
-  {
-    id: "5.8",
-    name: "Hacienda Oxman",
-    category: "CAT_E",
-    geo: [20.6653, -88.2197],
-    distance_km: 110,
-    vstrom_risk: "Dirt road access to hacienda. Watch out for tourist coaches.",
-    risk_level: "high",
-    story_hook: "Adapted colonial henequen structure with open cenote.",
-    earth_prompt: "Hacienda Oxman site outline map. Locate main sinkhole parking.",
-    historical_notes: "Adapted colonial henequen structure.",
-    tips: "Contrast of rich architecture vs jungle."
-  },
-  {
-    id: "5.9",
-    name: "Cruz de Tun (Xocen)",
-    category: "CAT_E",
-    geo: [20.6033, -88.1633],
-    distance_km: 120,
-    vstrom_risk: "Cobblestone and loose soil. Slow down in the village.",
-    risk_level: "high",
-    story_hook: "Center of the Mayan World, deep religious syncretism.",
-    earth_prompt: "Map Xocen village central roads. Pinpoint Tun Cross chapel.",
-    historical_notes: "Center of the Mayan World, deep syncretism.",
-    tips: "Ethnographic approach, avoid invading ceremonies."
-  },
-  {
-    id: "5.10",
-    name: "Iglesia Maya Tulum",
-    category: "CAT_E",
-    geo: [20.2133, -87.4600],
-    distance_km: 65,
-    vstrom_risk: "Tulum heavy traffic. Keep lock chain active. Safe parking.",
-    risk_level: "medium",
-    story_hook: "Indigenous resistance church surrounded by massive Tulum tourism.",
-    earth_prompt: "Analyze urban development encroachment around Tulum Maya Church.",
-    historical_notes: "Indigenous resistance surrounded by mass tourism.",
-    tips: "Urban vs ancestral narrative contrast."
-  },
-  {
-    id: "5.11",
-    name: "Museo Guerra Castas",
-    category: "CAT_E",
-    geo: [20.1914, -88.3708],
-    distance_km: 140,
-    vstrom_risk: "Tihosuco village roads. Watch out for speed bumps.",
-    risk_level: "high",
-    story_hook: "Tihosuco. Old colonial mansion containing Caste War weapons.",
-    earth_prompt: "Scan historical colonial mansion museum boundaries in Tihosuco.",
-    historical_notes: "Tihosuco. Old colonial mansion with original weapons.",
-    tips: "B-Roll of real historical artifacts."
-  },
-  {
-    id: "5.12",
-    name: "Convento de Sisal",
-    category: "CAT_E",
-    geo: [20.6865, -88.2100],
-    distance_km: 105,
-    vstrom_risk: "Colonial roads. Keep clutch cable play at 10-15mm play.",
-    risk_level: "high",
-    story_hook: "Valladolid. Worn walls and closed catacombs.",
-    earth_prompt: "Examine Sisal convent exterior walls shadow layouts.",
-    historical_notes: "Valladolid. Worn walls and closed catacombs.",
-    tips: "Wide-angle lens usage."
-  },
-  {
-    id: "5.13",
-    name: "Hacienda Yaxcopoil",
-    category: "CAT_E",
-    geo: [20.6464, -89.7231],
-    distance_km: 190,
-    vstrom_risk: "Isolated highway loop. Ensure tire pressures are 29/33 PSI.",
-    risk_level: "high",
-    story_hook: "Time machine, preserves its massive colonial henequen machine room.",
-    earth_prompt: "3D spatial modeling of Yaxcopoil henequen factory engine room.",
-    historical_notes: "Time machine, preserves its henequen machine room.",
-    tips: "Textures of rusted metal and French architecture."
-  },
-  {
-    id: "5.14",
-    name: "Mani (Auto de Fe)",
-    category: "CAT_E",
-    geo: [20.3928, -89.3178],
-    distance_km: 195,
-    vstrom_risk: "Very long inland route. Check fuel level. Reroute to nearest Pemex if <80km.",
-    risk_level: "high",
-    story_hook: "Place where Friar Diego de Landa burned the Mayan codices in 1562.",
-    earth_prompt: "Colonial convent scale mapping at Mani village center.",
-    historical_notes: "Place where Friar Diego de Landa burned the Mayan codices.",
-    tips: "Immense historical weight for documentaries."
-  },
-  {
-    id: "5.15",
-    name: "Fuerte San Felipe",
-    category: "CAT_E",
-    geo: [18.6778, -88.3908],
-    distance_km: 199,
-    vstrom_risk: "Extremely long southern highway. Cruise at 100km/h. Check chain lubrication.",
-    risk_level: "high",
-    story_hook: "Bacalar. Defensive fortress against English pirate invasions.",
-    earth_prompt: "Calculate sunset reflection angles over Bacalar 7-color lagoon.",
-    historical_notes: "Bacalar. Defensive fortress against English pirates.",
-    tips: "Bastions pointing to the lagoon of 7 colors."
+    geo: [20.7308, -88.3150],
+    distance_km: 130,
+    risk_level: "low",
+    story_hook: "Thumbnail geometry.",
+    vstrom_risk: "Cobblestone streets around plaza. Ride in standing position.",
+    earth_prompt: "Calculate golden hour light angles on the facade of Uayma church.",
+    historical_notes: "Beautiful colonial church decorated with stars and rosettes.",
+    tips: "Thumbnail geometry."
   }
 ];
 
@@ -1886,6 +1019,16 @@ function initRoutePlanner() {
   onRouteCategoryChange();
 }
 
+function getThreeClosestLocations(startCoords, categoryId) {
+  const filtered = locations.filter(loc => categoryId === 'ALL' || loc.category === categoryId);
+  const withDistance = filtered.map(loc => ({
+    loc,
+    dist: haversineDistance(startCoords, loc.geo)
+  }));
+  withDistance.sort((a, b) => a.dist - b.dist);
+  return withDistance.slice(0, 3).map(x => x.loc);
+}
+
 function onRouteCategoryChange() {
   const catSelect = document.getElementById('route-category-select');
   const locSelect = document.getElementById('route-location-select');
@@ -1902,6 +1045,60 @@ function onRouteCategoryChange() {
     opt.textContent = `${loc.name} (${loc.distance_km}km from baseline)`;
     locSelect.appendChild(opt);
   });
+
+  // Hide all non-selected category markers
+  markers.forEach(m => {
+    if (selectedCatId === 'ALL' || m.category === selectedCatId) {
+      if (map && !map.hasLayer(m.marker)) {
+        m.marker.addTo(map);
+      }
+    } else {
+      if (map) {
+        map.removeLayer(m.marker);
+      }
+    }
+  });
+
+  // Update the primary theme color dynamically to match the selected category
+  const catObj = categories.find(c => c.id === selectedCatId);
+  if (catObj) {
+    document.documentElement.style.setProperty('--primary', catObj.ui_color);
+    document.documentElement.style.setProperty('--primary-glow', catObj.ui_color + '40');
+  }
+
+  // Update locations list UI (Hide non-selected category nodes)
+  renderLocations(selectedCatId);
+
+  // Trigger Gemini AI Core voice transmission for this category
+  let aiMessage = "";
+  if (selectedCatId === 'CAT_A') {
+    aiMessage = currentLanguage === 'es'
+      ? "Súper Catarina conectada. Terreno arenoso costero. Presión recomendada: 22 PSI adelante, 25 PSI atrás. Evita frenadas bruscas con el freno delantero para no enterrar la llanta. Ciclo de hidratación intensa cada 45 min por calor húmedo."
+      : "Super Catarina linked. Coastal sandy trails. Recommended tire pressure: 22 PSI front, 25 PSI rear. Avoid heavy front braking to prevent sand entrapment. High hydration cycle every 45 min for humid heat.";
+  } else if (selectedCatId === 'CAT_B') {
+    aiMessage = currentLanguage === 'es'
+      ? "Alerta de cenotes detectada. Barro y caliza resbaladiza. Revisa tensión de cadena (20-30mm) y nivel de aceite de motor (1.2L). Tratamiento inmediato de abrasión por caliza: enjuaga con agua limpia a presión."
+      : "Cenotes alert active. Wet mud & slippery limestone. Keep chain tension at 20-30mm and engine oil level at 1.2L. Immediate protocol for limestone abrasions: flush with pressurized water.";
+  } else if (selectedCatId === 'CAT_C') {
+    aiMessage = currentLanguage === 'es'
+      ? "Ruta gastronómica seleccionada. Conducción en asfalto a media distancia. Presión nominal: 29 PSI adelante, 33 PSI atrás. Revisa ajuste de tornillería de soportes de maletas. Cuidado con la exposición al sol del mediodía en Yucatán."
+      : "Gastronomic route active. Paved highway cruising. Set tires to 29 PSI front, 33 PSI rear. Verify luggage mount security bolts. Monitor heat exposure under midday Yucatan sun.";
+  } else if (selectedCatId === 'CAT_D') {
+    aiMessage = currentLanguage === 'es'
+      ? "Zona arqueológica seleccionada. Velocidad de crucero de 100 km/h. Monitorea indicador de temperatura de aceite SOCS. Revisa nivel de aceite (1.2L). Protocolo para golpe de calor: activar ruta de emergencia a Ángeles Verdes (078) o 911."
+      : "Archaeology zone synced. Cruising at 100 km/h. Keep check on SOCS oil cooler temp gauge. Verify oil level (1.2L). Heatstroke protocol active: route emergency via Green Angels (078) or 911.";
+  } else if (selectedCatId === 'CAT_E') {
+    aiMessage = currentLanguage === 'es'
+      ? "Ruta de la Guerra de Castas activa. Vibración por empedrados y terracería pesada. Revisa tensión de cadena (20-30mm). Kit de trauma listo. Reporta estado de suspensiones a base."
+      : "Caste War historical route active. High vibration from cobblestone & heavy dirt. Check chain tension (20-30mm). Trauma kit prepared. Report suspension status to base.";
+  } else {
+    aiMessage = currentLanguage === 'es'
+      ? "Oráculo de Aventura Gemini activado. Sincronizando parámetros satelitales de la Súper Catarina."
+      : "Gemini Adventure Oracle synced. Synchronizing Super Catarina satellite parameters.";
+  }
+
+  addAiMessage('system', aiMessage);
+  speakAiResponse(aiMessage);
 
   onRouteLocationChange();
 }
@@ -3461,6 +2658,31 @@ function processAiTextQuery(text) {
       reply = currentLanguage === 'es'
         ? "No hay ningún destino activo para diagnosticar la ruta. Selecciona un punto en el mapa de Yucatán."
         : "No active destination to diagnose the route. Please select a point on the Yucatan map.";
+    }
+  }
+  // 4. Voice Action: Mechanical Expert
+  else if (query.includes('mecanic') || query.includes('aceite') || query.includes('cadena') || query.includes('fi code') || query.includes('presion') || query.includes('v-strom') || query.includes('altura')) {
+    if (currentLanguage === 'es') {
+      reply = "Soporte Técnico Suzuki V-Strom 250 SX (SOCS Enfriamiento por Aceite, 24.6HP, altura de asiento de 835mm). Diagnóstico instantáneo: Tensión recomendada de cadena es de 20-30mm; el nivel de aceite debe ser exactamente de 1.2L; si tienes un código FI activo en el tablero, realiza un escaneo de sensores del sistema de inyección electrónica. Para tu altura de 1.67m, la altura de asiento de 835mm requiere confirmar superficie plana de estacionamiento mediante Google Earth Street View antes de cada parada.";
+    } else {
+      reply = "Suzuki V-Strom 250 SX Technical Support (SOCS Oil-Cooling, 24.6HP, 835mm seat height). Instant diagnostics: Recommended chain tension is 20-30mm; engine oil level must be exactly 1.2L; if you have an active FI code on the instrument panel, perform a fuel injection system sensor scan. For your height of 1.67m, the seat height of 835mm requires checking flat ground surface using Google Earth Street View prior to each parking waypoint.";
+    }
+  }
+  // 5. Voice Action: First aid & survival
+  else if (query.includes('auxilio') || query.includes('calor') || query.includes('hidratacion') || query.includes('abrasion') || query.includes('emergencia') || query.includes('green angels') || query.includes('hospital')) {
+    if (currentLanguage === 'es') {
+      reply = "Protocolo de Primeros Auxilios y Supervivencia Tropical: En caso de golpe de calor, activa la ruta de emergencia de inmediato redirigiendo a los Ángeles Verdes (078) o 911. Mantén un ciclo estricto de hidratación cada 45 minutos. Para abrasión por caliza en caídas, realiza hemostasia y enjuaga con agua limpia a presión para retirar restos bacterianos del poro de la piedra.";
+    } else {
+      reply = "First Aid & Tropical Wilderness Survival Protocol: In case of heatstroke, activate emergency routing immediately by redirecting to Green Angels Road Assistance (078) or 911. Maintain a strict hydration cycle every 45 minutes. For limestone abrasions from falls, apply direct pressure for hemostasis and flush with pressurized clean water to clear porous stone bacteria.";
+    }
+  }
+  // 6. Voice Action: Storytelling & video scripts
+  else if (query.includes('b-roll') || query.includes('guion') || query.includes('youtube') || query.includes('dron') || query.includes('filmacion') || query.includes('histori')) {
+    const loc = state.activeLocation || locations[0];
+    if (currentLanguage === 'es') {
+      reply = `Guion de Filmación 4K y B-Roll para ${loc.name}: 1. Toma de establecimiento con dron en plano cenital siguiendo la ruta de la Súper Catarina. 2. Detalle medio del escape y el motor SOCS rugiendo en la terracería. 3. Gancho histórico para YouTube: '${loc.story_hook}'. Consejo de filmación: ${loc.tips}`;
+    } else {
+      reply = `4K B-Roll Shooting Script & Drone Path for ${loc.name}: 1. Establishing drone shot in zenithal angle tracing the path of the Super Catarina. 2. Medium detail shot of exhaust and SOCS engine revving on dirt roads. 3. YouTube historical hook: '${loc.story_hook}'. Cinematic tip: ${loc.tips}`;
     }
   }
   // Default General Response
