@@ -139,77 +139,73 @@ const state = {
 
 // CATEGORIES DEFINITIONS
 const categories = [
-  { id: "CAT_A", name: "Secret Beaches", ui_color: "#4A80F5", label: "COASTAL" },
-  { id: "CAT_B", name: "Cenotes & Caves", ui_color: "#34A853", label: "WATER" },
-  { id: "CAT_E", name: "History & War", ui_color: "#EA4335", label: "HISTORY" }
+  { id: "CAT_A", name: "Secret Coasts", ui_color: "#4A80F5", label: "SECRET COASTS" },
+  { id: "CAT_B", name: "Underworld", ui_color: "#34A853", label: "UNDERWORLD" },
+  { id: "CAT_C", name: "Flavors", ui_color: "#FBBC05", label: "FLAVORS" },
+  { id: "CAT_D", name: "Ancestral", ui_color: "#34A853", label: "ANCESTRAL" },
+  { id: "CAT_E", name: "War & Faith", ui_color: "#EA4335", label: "WAR & FAITH" }
 ];
 
 const locations = [
-  {
-    id: "1.1",
-    name: "Punta Bete",
-    category: "CAT_A",
-    geo: [20.68, -87.01],
-    distance_km: 15,
-    risk_level: "low",
-    story_hook: "V-Strom on compact sand",
-    vstrom_risk: "Loose sand at entry",
-    earth_prompt: "Compact sand parking.",
-    historical_notes: "Compact sand parking.",
-    tips: "V-Strom on compact sand"
-  },
-  {
-    id: "1.8",
-    name: "Boca Paila",
-    category: "CAT_A",
-    geo: [20.10, -87.48],
-    distance_km: 95,
-    risk_level: "medium",
-    story_hook: "Wooden bridge POV",
-    vstrom_risk: "Check fuel in Tulum",
-    earth_prompt: "Bridge POV shot.",
-    historical_notes: "Bridge POV shot.",
-    tips: "Wooden bridge POV"
-  },
-  {
-    id: "1.9",
-    name: "Punta Allen",
-    category: "CAT_A",
-    geo: [19.79, -87.48],
-    distance_km: 140,
-    risk_level: "high",
-    story_hook: "End-of-road cinematic",
-    vstrom_risk: "40km severe washboard",
-    earth_prompt: "Extreme off-road.",
-    historical_notes: "Extreme off-road.",
-    tips: "End-of-road cinematic"
-  },
-  {
-    id: "2.1",
-    name: "Taak Bi Ha",
-    category: "CAT_B",
-    geo: [20.31, -87.38],
-    distance_km: 48,
-    risk_level: "medium",
-    story_hook: "Root-framed cavern",
-    vstrom_risk: "Slippery limestone",
-    earth_prompt: "Low light tripod shots.",
-    historical_notes: "Low light tripod shots.",
-    tips: "Root-framed cavern"
-  },
-  {
-    id: "5.1",
-    name: "Tihosuco",
-    category: "CAT_E",
-    geo: [20.19, -88.37],
-    distance_km: 160,
-    risk_level: "high",
-    story_hook: "Dynamited facade 4K",
-    vstrom_risk: "Vibration check: bolts",
-    earth_prompt: "Dynamited church facade.",
-    historical_notes: "Dynamited church facade.",
-    tips: "Dynamited facade 4K"
-  }
+  // Secret Coasts (CAT_A)
+  { id: "1.1", name: "Punta Bete", category: "CAT_A", geo: [20.68, -87.01], distance_km: 15, risk_level: "low", story_hook: "Coastal B-roll", vstrom_risk: "Sand parking", gallery: ["pb01", "pb02", "pb03"] },
+  { id: "1.2", name: "Bahia Soliman", category: "CAT_A", geo: [20.27, -87.35], distance_km: 75, risk_level: "low", story_hook: "Water sequences", vstrom_risk: "Paved entry", gallery: ["bs01", "bs02", "bs03"] },
+  { id: "1.3", name: "Xcacel Reserve", category: "CAT_A", geo: [20.33, -87.34], distance_km: 72, risk_level: "medium", story_hook: "Zenith drone shots", vstrom_risk: "No modern gear", gallery: ["xc01", "xc02", "xc03"] },
+  { id: "1.4", name: "Paamul Beach", category: "CAT_A", geo: [20.52, -87.19], distance_km: 30, risk_level: "low", story_hook: "Reef macro shots", vstrom_risk: "Rocky shore", gallery: ["pm01", "pm02", "pm03"] },
+  { id: "1.5", name: "Chemuyil", category: "CAT_A", geo: [20.35, -87.35], distance_km: 70, risk_level: "low", story_hook: "Jungle-sea contrast", vstrom_risk: "Quick location", gallery: ["cm01", "cm02", "cm03"] },
+  { id: "1.6", name: "Xcalacoco", category: "CAT_A", geo: [20.67, -87.03], distance_km: 8, risk_level: "low", story_hook: "Ancient port vibes", vstrom_risk: "Sunset focus", gallery: ["xl01", "xl02", "xl03"] },
+  { id: "1.7", name: "Xpu-Ha South", category: "CAT_A", geo: [20.47, -87.25], distance_km: 40, risk_level: "low", story_hook: "Pure white sand", vstrom_risk: "Grazing light", gallery: ["xp01", "xp02", "xp03"] },
+  { id: "1.8", name: "Boca Paila", category: "CAT_A", geo: [20.10, -87.48], distance_km: 95, risk_level: "medium", story_hook: "Wooden bridge POV", vstrom_risk: "Deep sand path", gallery: ["bp01", "bp02", "bp03"] },
+  { id: "1.9", name: "Punta Allen", category: "CAT_A", geo: [19.79, -87.48], distance_km: 140, risk_level: "high", story_hook: "Expedition vlog", vstrom_risk: "Critical fuel stop", gallery: ["pa01", "pa02", "pa03"] },
+  { id: "1.10", name: "Isla Blanca", category: "CAT_A", geo: [21.37, -86.81], distance_km: 90, risk_level: "high", story_hook: "Dual water bodies", vstrom_risk: "Lagoon mud", gallery: ["ib01", "ib02", "ib03"] },
+
+  // Underworld (CAT_B)
+  { id: "2.1", name: "Taak Bi Ha", category: "CAT_B", geo: [20.31, -87.38], distance_km: 48, risk_level: "medium", story_hook: "Warm root frame", vstrom_risk: "Slippery floor", gallery: ["th01", "th02"] },
+  { id: "2.2", name: "Tajma Ha", category: "CAT_B", geo: [20.48, -87.23], distance_km: 44, risk_level: "high", story_hook: "Sunlight rays", vstrom_risk: "High contrast", gallery: ["tj01", "tj02"] },
+  { id: "2.3", name: "Zapote", category: "CAT_B", geo: [20.84, -87.04], distance_km: 55, risk_level: "high", story_hook: "Action jumps", vstrom_risk: "Deep water", gallery: ["zp01", "zp02"] },
+  { id: "2.4", name: "Escondido", category: "CAT_B", geo: [20.18, -87.49], distance_km: 68, risk_level: "medium", story_hook: "GoPro jungle path", vstrom_risk: "Trek with gear", gallery: ["es01", "es02"] },
+  { id: "2.5", name: "Kin-Ha", category: "CAT_B", geo: [20.85, -87.03], distance_km: 56, risk_level: "medium", story_hook: "Single beam light", vstrom_risk: "Dark cavern", gallery: ["kh01", "kh02"] },
+  { id: "2.6", name: "Chikin Ha", category: "CAT_B", geo: [20.49, -87.22], distance_km: 45, risk_level: "medium", story_hook: "Multiple biomes", vstrom_risk: "High humidity", gallery: ["ch01", "ch02"] },
+  { id: "2.7", name: "Nicte-Ha", category: "CAT_B", geo: [20.31, -87.36], distance_km: 47, risk_level: "low", story_hook: "Water lily macro", vstrom_risk: "Pristine vibes", gallery: ["nh01", "nh02"] },
+  { id: "2.8", name: "Calavera", category: "CAT_B", geo: [20.22, -87.46], distance_km: 62, risk_level: "low", story_hook: "Vertical Reels", vstrom_risk: "Small parking", gallery: ["cv01", "cv02"] },
+  { id: "2.9", name: "Carwash", category: "CAT_B", geo: [20.21, -87.48], distance_km: 64, risk_level: "low", story_hook: "Underwater garden", vstrom_risk: "Algae textures", gallery: ["cw01", "cw02"] },
+  { id: "2.10", name: "Suytun", category: "CAT_B", geo: [20.69, -88.12], distance_km: 120, risk_level: "low", story_hook: "Stone walkway", vstrom_risk: "9:00 AM arrival", gallery: ["sy01", "sy02"] },
+
+  // Flavors (CAT_C)
+  { id: "3.1", name: "IX CAT IK", category: "CAT_C", geo: [20.69, -88.20], distance_km: 122, risk_level: "low", story_hook: "Pib oven reveal", vstrom_risk: "Valladolid city", gallery: ["ix01", "ix02"] },
+  { id: "3.2", name: "Donato Bates", category: "CAT_C", geo: [20.68, -88.20], distance_km: 121, risk_level: "low", story_hook: "Spice market colors", vstrom_risk: "V-Strom security", gallery: ["db01", "db02"] },
+  { id: "3.3", name: "Tia De Kaua", category: "CAT_C", geo: [20.61, -88.44], distance_km: 145, risk_level: "low", story_hook: "Wood-fire smoke", vstrom_risk: "Iconic stop", gallery: ["tk01", "tk02"] },
+  { id: "3.4", name: "Taqueria Honorio", category: "CAT_C", geo: [20.21, -87.46], distance_km: 65, risk_level: "low", story_hook: "Lechon steaming", vstrom_risk: "Tulum crowd", gallery: ["th01", "th02"] },
+  { id: "3.5", name: "Rest. Cetli", category: "CAT_C", geo: [20.22, -87.45], distance_km: 64, risk_level: "low", story_hook: "Mole macro shots", vstrom_risk: "Tulum art-vibe", gallery: ["ct01", "ct02"] },
+  { id: "3.6", name: "Axiote", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Plating details", vstrom_risk: "Playa center", gallery: ["ax01", "ax02"] },
+  { id: "3.7", name: "Cochi Loka", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Docu-style panuchos", vstrom_risk: "Fast-paced", gallery: ["cl01", "cl02"] },
+  { id: "3.8", name: "85 Diagonal", category: "CAT_C", geo: [20.64, -87.09], distance_km: 3, risk_level: "low", story_hook: "Night urban vibes", vstrom_risk: "Local spot", gallery: ["d801", "d802"] },
+  { id: "3.9", name: "Angelito", category: "CAT_C", geo: [20.65, -87.09], distance_km: 4, risk_level: "low", story_hook: "Workday portraits", vstrom_risk: "Morning only", gallery: ["an01", "an02"] },
+  { id: "3.10", name: "Yaxche", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Mayan fusion", vstrom_risk: "High aesthetic", gallery: ["yx01", "yx02"] },
+
+  // Ancestral (CAT_D)
+  { id: "4.1", name: "Muyil", category: "CAT_D", geo: [20.07, -87.61], distance_km: 80, risk_level: "low", story_hook: "Mayan canal boat", vstrom_risk: "Zero drones", gallery: ["my01", "my02"] },
+  { id: "4.2", name: "Ek Balam", category: "CAT_D", geo: [20.89, -88.13], distance_km: 145, risk_level: "medium", story_hook: "Acropolis height", vstrom_risk: "Stucco reliefs", gallery: ["eb01", "eb02"] },
+  { id: "4.3", name: "Coba", category: "CAT_D", geo: [20.48, -87.73], distance_km: 109, risk_level: "medium", story_hook: "Bicycle gimbal", vstrom_risk: "Under jungle shade", gallery: ["cb01", "cb02"] },
+  { id: "4.4", name: "El Meco", category: "CAT_D", geo: [21.21, -86.80], distance_km: 80, risk_level: "low", story_hook: "Temple iguanas", vstrom_risk: "Coastal ruins", gallery: ["em01", "em02"] },
+  { id: "4.5", name: "Yaxunah", category: "CAT_D", geo: [20.55, -88.55], distance_km: 165, risk_level: "high", story_hook: "Sacbe silent audio", vstrom_risk: "Remote road", gallery: ["yx01", "yx02"] },
+  { id: "4.6", name: "San Gervasio", category: "CAT_D", geo: [20.50, -86.84], distance_km: 45, risk_level: "medium", story_hook: "Ixchel shrine", vstrom_risk: "Cozumel island", gallery: ["sg01", "sg02"] },
+  { id: "4.7", name: "Balancanche", category: "CAT_D", geo: [20.66, -88.52], distance_km: 150, risk_level: "medium", story_hook: "Incense burners", vstrom_risk: "Caves (LED req)", gallery: ["bc01", "bc02"] },
+  { id: "4.8", name: "Chacchoben", category: "CAT_D", geo: [19.00, -88.23], distance_km: 220, risk_level: "high", story_hook: "Mahogany forest", vstrom_risk: "Deep south route", gallery: ["cc01", "cc02"] },
+  { id: "4.9", name: "Dzibanche", category: "CAT_D", geo: [18.63, -88.75], distance_km: 290, risk_level: "high", story_hook: "Captive glyphs", vstrom_risk: "Snake dynasty", gallery: ["dz01", "dz02"] },
+  { id: "4.10", name: "Xcabal", category: "CAT_D", geo: [18.91, -88.46], distance_km: 260, risk_level: "high", story_hook: "Unopened secrets", vstrom_risk: "The Holy Grail", gallery: ["xc01", "xc02"] },
+
+  // War & Faith (CAT_E)
+  { id: "5.1", name: "Tihosuco", category: "CAT_E", geo: [20.19, -88.37], distance_km: 160, risk_level: "high", story_hook: "Dynamited facade", vstrom_risk: "Caste War symbol", gallery: ["ti01", "ti02"] },
+  { id: "5.2", name: "Tepich Panteon", category: "CAT_E", geo: [20.22, -88.27], distance_km: 150, risk_level: "high", story_hook: "Cecilio Chi tomb", vstrom_risk: "Historical weight", gallery: ["tp01", "tp02"] },
+  { id: "5.3", name: "Uayma Templo", category: "CAT_E", geo: [20.73, -88.31], distance_km: 130, risk_level: "low", story_hook: "Red geometry", vstrom_risk: "Thumbnail gold", gallery: ["uy01", "uy02"] },
+  { id: "5.4", name: "S. Bernardino", category: "CAT_E", geo: [20.68, -88.20], distance_km: 122, risk_level: "low", story_hook: "Convent arches", vstrom_risk: "Cenote beneath", gallery: ["sb01", "sb02"] },
+  { id: "5.5", name: "Izamal Convent", category: "CAT_E", geo: [20.93, -89.01], distance_km: 180, risk_level: "medium", story_hook: "Yellow walls POV", vstrom_risk: "Gimbal walkthrough", gallery: ["iz01", "iz02"] },
+  { id: "5.6", name: "Oxman", category: "CAT_E", geo: [20.66, -88.23], distance_km: 124, risk_level: "low", story_hook: "Henequen hacienda", vstrom_risk: "Colonial textures", gallery: ["ox01", "ox02"] },
+  { id: "5.7", name: "Xocen", category: "CAT_E", geo: [20.60, -88.17], distance_km: 125, risk_level: "medium", story_hook: "Mayan center cross", vstrom_risk: "Deep respect", gallery: ["xo01", "xo02"] },
+  { id: "5.8", name: "Sisal Convent", category: "CAT_E", geo: [20.69, -88.21], distance_km: 123, risk_level: "low", story_hook: "Catacombs shots", vstrom_risk: "Low light wide", gallery: ["sl01", "sl02"] },
+  { id: "5.9", name: "Yaxcopoil", category: "CAT_E", geo: [20.74, -89.72], distance_km: 210, risk_level: "medium", story_hook: "Industrial rusted", vstrom_risk: "Time machine", gallery: ["yc01", "yc02"] },
+  { id: "5.10", name: "Mani", category: "CAT_E", geo: [20.38, -89.31], distance_km: 170, risk_level: "low", story_hook: "Diego Landa history", vstrom_risk: "Magic town", gallery: ["mn01", "mn02"] }
 ];
 
 // Hotspot Mechanical Specifications
@@ -849,6 +845,33 @@ function selectLocation(id) {
 
   // Draw route and calculate stats
   calculateExpeditionRoute();
+
+  // Trigger Gemini Expert real-time terrain & mechanical monitoring advice based on the selected location
+  let aiAdvice = "";
+  if (loc.category === 'CAT_A') {
+    aiAdvice = currentLanguage === 'es'
+      ? `• Coasts: ${loc.name}.\\n• Terreno: ${loc.vstrom_risk}.\\n• Toma: ${loc.story_hook}.\\n• Llantas: 22F/25R Dirt.\\n• Lubricar cadena diario cerca del mar.\\n• Asiento: 835mm - verificar inclinación de suelo.`
+      : `• Coasts: ${loc.name}.\\n• Terrain: ${loc.vstrom_risk}.\\n• Shoot: ${loc.story_hook}.\\n• Tires: 22F/25R Dirt.\\n• Lube chain daily near salt water.\\n• Seat: 835mm - check ground slope.`;
+  } else if (loc.category === 'CAT_B') {
+    aiAdvice = currentLanguage === 'es'
+      ? `• Underworld: ${loc.name}.\\n• Terreno: ${loc.vstrom_risk}.\\n• Toma: ${loc.story_hook}.\\n• Llantas: 22F/25R Dirt.\\n• Caliza resbaladiza - usar primera marcha.\\n• Hidratación: 1L por hora en selva.`
+      : `• Underworld: ${loc.name}.\\n• Terrain: ${loc.vstrom_risk}.\\n• Shoot: ${loc.story_hook}.\\n• Tires: 22F/25R Dirt.\\n• Slippery limestone - use 1st gear.\\n• Hydrate: 1L per hour in jungle.`;
+  } else if (loc.category === 'CAT_C') {
+    aiAdvice = currentLanguage === 'es'
+      ? `• Flavors: ${loc.name}.\\n• Terreno: ${loc.vstrom_risk}.\\n• Toma: ${loc.story_hook}.\\n• Llantas: 29F/33R Road.\\n• Estacionar firme en calzada urbana.\\n• Evitar golpe calor - hidratar.`
+      : `• Flavors: ${loc.name}.\\n• Terrain: ${loc.vstrom_risk}.\\n• Shoot: ${loc.story_hook}.\\n• Tires: 29F/33R Road.\\n• Park securely in city center.\\n• Avoid heatstroke - keep hydrating.`;
+  } else if (loc.category === 'CAT_D') {
+    aiAdvice = currentLanguage === 'es'
+      ? `• Ancestral: ${loc.name}.\\n• Terreno: ${loc.vstrom_risk}.\\n• Toma: ${loc.story_hook}.\\n• Llantas: 25F/28R Mix.\\n• Autopista larga - crucero 100km/h.\\n• Calor extremo: parar bajo la sombra.`
+      : `• Ancestral: ${loc.name}.\\n• Terrain: ${loc.vstrom_risk}.\\n• Shoot: ${loc.story_hook}.\\n• Tires: 25F/28R Mix.\\n• Long highway - cruise at 100km/h.\\n• Extreme heat: rest in shade.`;
+  } else if (loc.category === 'CAT_E') {
+    aiAdvice = currentLanguage === 'es'
+      ? `• War & Faith: ${loc.name}.\\n• Terreno: ${loc.vstrom_risk}.\\n• Toma: ${loc.story_hook}.\\n• Llantas: 25F/28R Mix.\\n• Vibración fuerte - revisar pernos.\\n• Kit de trauma y primeros auxilios.`
+      : `• War & Faith: ${loc.name}.\\n• Terrain: ${loc.vstrom_risk}.\\n• Shoot: ${loc.story_hook}.\\n• Tires: 25F/28R Mix.\\n• High vibration - check all bolts.\\n• Trauma and first-aid kit ready.`;
+  }
+
+  addAiMessage('system', aiAdvice);
+  speakAiResponse(aiAdvice);
 }
 
 // LOCATION FILTERING
