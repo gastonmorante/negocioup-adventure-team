@@ -108,12 +108,16 @@
       <!-- TOP HEADER -->
       <header class="top-header">
         <div class="header-left" style="display: flex; align-items: center; gap: 20px;">
-          <div>
-            <span class="breadcrumb">NUP ADVENTURE // V-STROM 250 SX // STATUS: ONLINE</span>
-            <h2 id="page-title" style="margin: 0;">Command Dashboard</h2>
+          <div style="font-family: sans-serif; font-weight: 900; font-size: 1.2rem; color: #4A80F5; letter-spacing: 0.5px; text-transform: uppercase;">
+            NUP ADVENTURE
           </div>
-          <button id="btn_instrumentation" class="btn btn-outline" onclick="toggleInstrumentHud()" style="font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; border-color: var(--primary); color: #fff; padding: 6px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; cursor: pointer; transition: all 0.2s; white-space: nowrap; height: fit-content; align-self: flex-end; margin-bottom: 4px;">
-            ⚙️ INSTRUMENTACION
+          <button id="btn_cockpit_toggle" class="btn btn-outline" onclick="toggleCockpitView()" style="font-family: sans-serif; font-size: 0.72rem; font-weight: bold; border-color: #4A80F5; color: #4a80f5; padding: 6px 12px; background: rgba(0,0,0,0.3); border-radius: 4px; cursor: pointer; transition: all 0.2s; white-space: nowrap; height: fit-content; display: flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 15 15"/>
+              <path d="M12 2v2M12 20v2M4 12H2M22 12h-2"/>
+            </svg>
+            <span>INSTRUMENTACION</span>
           </button>
         </div>
         <div class="header-right">
@@ -1143,69 +1147,77 @@
   <script type="module" src="app.js"></script>
 </body>
 </html>
-  <!-- TACTICAL FULL SCREEN HUD OVERLAY -->
-  <div id="instrument-hud-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #020204; z-index: 20000; box-sizing: border-box; padding: 24px; font-family: monospace; color: #fff; overflow-y: auto;">
+    <!-- TACTICAL FULL SCREEN HUD OVERLAY -->
+  <div id="instrument-hud-overlay" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, rgba(10, 12, 18, 0.96) 25%, rgba(20, 24, 34, 0.96) 100%); z-index: 20000; box-sizing: border-box; padding: 24px; font-family: monospace; color: #fff; overflow-y: auto; background-image: radial-gradient(rgba(74, 128, 245, 0.05) 1px, transparent 1px); background-size: 16px 16px;">
     <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 24px;">
       <div>
-        <span style="font-size: 0.72rem; color: #FBBC05; letter-spacing: 1px;">CHRONO_DARK_MODE // INSTRUMENTATION VIEW</span>
-        <h2 style="margin: 4px 0 0 0; font-size: 1.4rem; font-family: var(--font-display); font-weight: bold; color: var(--primary);">TACTICAL HUD SYSTEM</h2>
+        <span style="font-size: 0.72rem; color: #FBBC05; letter-spacing: 1px;">CHRONO_DARK_MODE // CARBON_FIBER_COCKPIT</span>
+        <h2 id="hud-scramble-title" style="margin: 4px 0 0 0; font-size: 1.4rem; font-family: var(--font-display); font-weight: bold; color: var(--primary);">INSTRUMENTATION COCKPIT</h2>
       </div>
-      <button class="btn btn-outline" onclick="toggleInstrumentHud()" style="border-color: #EA4335; color: #EA4335; font-size: 0.75rem; padding: 8px 16px; cursor: pointer;">
-        ✕ CERRAR HUD
+      <!-- Chrono exit button inside HUD -->
+      <button id="btn_cockpit_toggle_hud" class="btn btn-outline" onclick="toggleCockpitView()" style="font-family: sans-serif; font-size: 0.72rem; font-weight: bold; border-color: #EA4335; color: #EA4335; padding: 8px 16px; border-radius: 4px; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 14px; height: 14px;">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 15 15"/>
+          <path d="M12 2v2M12 20v2M4 12H2M22 12h-2"/>
+        </svg>
+        <span>CERRAR HUD</span>
       </button>
     </div>
 
     <!-- HUD Grid -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-      <!-- PANEL 1: EXPEDITION TELEMETRY -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
-        <h4 style="margin: 0 0 16px 0; font-size: 0.85rem; color: var(--primary); letter-spacing: 0.5px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px;">📊 EXPEDITION TELEMETRY</h4>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
+      <!-- PANEL 1: EXPEDITION TELEMETRY (CIRCULAR ANALOG DIAL) -->
+      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.5); display: flex; flex-direction: column; align-items: center;">
+        <h4 style="margin: 0 0 16px 0; font-size: 0.85rem; color: var(--primary); letter-spacing: 0.5px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px; width: 100%;">📊 EXPEDITION TELEMETRY</h4>
+        
+        <!-- Circular Dial Simulation -->
+        <div style="width: 140px; height: 140px; border-radius: 50%; border: 4px solid var(--primary); display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; margin-bottom: 16px; background: rgba(0,0,0,0.4); box-shadow: 0 0 20px rgba(74, 128, 245, 0.2);">
+          <div id="hud-circular-pointer" style="position: absolute; width: 2px; height: 60px; background: #fff; top: 10px; transform-origin: bottom center; transition: transform 0.3s; transform: rotate(0deg); z-index: 1;"></div>
+          <span style="font-size: 1.5rem; font-weight: bold; color: #fff; z-index: 2;" id="hud-speed">0 km/h</span>
+          <span style="font-size: 0.7rem; color: var(--text-muted); z-index: 2; text-transform: uppercase;" id="hud-heading">N 0°</span>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Digital Speedometer</span>
-            <span style="font-size: 1.6rem; font-weight: bold; color: #fff;" id="hud-speed">0 km/h</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Compass Heading</span>
-            <span style="font-size: 1.4rem; font-weight: bold; color: #fff;" id="hud-heading">N 0°</span>
-          </div>
-          <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Altitude</span>
-            <span style="font-size: 1.4rem; font-weight: bold; color: #fff;" id="hud-altitude">-- m</span>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">Vertical Altitude</span>
+            <span style="font-size: 1.1rem; font-weight: bold; color: #fff;" id="hud-altitude">-- m</span>
           </div>
         </div>
       </div>
 
-      <!-- PANEL 2: STRESS CONTROL -->
-      <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.5);">
+      <!-- PANEL 2: STRESS CONTROL (LEVEL INDICATOR ANALOG) -->
+      <div id="hud-stress-panel" style="background: rgba(255,255,255,0.02); border: 1px solid var(--border-color); padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.5); transition: all 0.3s;">
         <h4 style="margin: 0 0 16px 0; font-size: 0.85rem; color: var(--primary); letter-spacing: 0.5px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 8px;">🏍️ STRESS CONTROL</h4>
         <div style="display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Lean Angle</span>
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <div style="width: 100px; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; position: relative;">
-                <div id="hud-lean-bar" style="width: 50%; height: 100%; background: var(--primary); transition: all 0.3s; margin: 0 auto;"></div>
-              </div>
+          <!-- Level Indicator Analog -->
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <span style="color: var(--text-muted); font-size: 0.75rem;">Lean Angle L/R</span>
               <span style="font-size: 1.1rem; font-weight: bold;" id="hud-lean-text">0°</span>
+            </div>
+            <div style="width: 100%; height: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.15); border-radius: 6px; overflow: hidden; position: relative;">
+              <div id="hud-lean-bar" style="width: 50%; height: 100%; background: var(--primary); transition: all 0.3s; margin: 0 auto; border-radius: 2px;"></div>
             </div>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">G Force</span>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">G-Force Lateral</span>
             <span style="font-size: 1.2rem; font-weight: bold; color: #fff;" id="hud-gforce">1.0 G</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Brake Pressure</span>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">Brake Load</span>
             <span style="font-size: 1.2rem; font-weight: bold; color: #fff;" id="hud-brake">0.0 bar</span>
           </div>
         </div>
       </div>
 
-      <!-- PANEL 3: RAIN ALERT -->
-      <div id="hud-rain-panel" style="background: rgba(34,168,83,0.05); border: 1px solid #34A853; padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(52,168,83,0.15); transition: all 0.3s;">
-        <h4 style="margin: 0 0 16px 0; font-size: 0.85rem; color: #34A853; letter-spacing: 0.5px; border-bottom: 1px dashed rgba(52,168,83,0.2); padding-bottom: 8px;" id="hud-rain-title">🌧️ RAIN STATUS: OK</h4>
-        <div style="display: flex; flex-direction: column; gap: 14px;">
+      <!-- PANEL 3: RAIN ALERT (HYGROMETER STYLE DIAL) -->
+      <div id="hud-rain-panel" style="background: rgba(34,168,83,0.05); border: 1px solid #34A853; padding: 18px; border-radius: 8px; box-shadow: 0 0 15px rgba(52,168,83,0.15); transition: all 0.3s; display: flex; flex-direction: column;">
+        <h4 style="margin: 0 0 16px 0; font-size: 0.85rem; color: #34A853; letter-spacing: 0.5px; border-bottom: 1px dashed rgba(52,168,83,0.2); padding-bottom: 8px; width: 100%;" id="hud-rain-title">🌧️ RAIN STATUS: OK</h4>
+        
+        <div style="display: flex; flex-direction: column; gap: 14px; width: 100%;">
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Humidity</span>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">Humidity Percentage</span>
             <span style="font-size: 1.2rem; font-weight: bold; color: #fff;" id="hud-humidity">--%</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
@@ -1213,12 +1225,10 @@
             <span style="font-size: 1.2rem; font-weight: bold; color: #fff;" id="hud-precip">--%</span>
           </div>
           <div style="display: flex; justify-content: space-between; align-items: baseline;">
-            <span style="color: var(--text-muted); font-size: 0.75rem;">Road Friction</span>
+            <span style="color: var(--text-muted); font-size: 0.75rem;">Friction Coefficient</span>
             <span style="font-size: 1.2rem; font-weight: bold;" id="hud-friction">HIGH</span>
           </div>
         </div>
       </div>
     </div>
   </div>
-
-  
