@@ -3081,7 +3081,9 @@ function toggleCockpitView() {
   const hud = document.getElementById('instrument-hud-overlay');
   const appContainer = document.querySelector('.app-container');
   if (hud && appContainer) {
-    const isHidden = hud.style.display === 'none';
+    // Read computed style to bypass empty inline string quirks
+    const currentDisplay = window.getComputedStyle(hud).display;
+    const isHidden = currentDisplay === 'none';
     hud.style.display = isHidden ? 'block' : 'none';
     
     if (isHidden) {
