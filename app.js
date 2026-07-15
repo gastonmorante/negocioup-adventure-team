@@ -147,25 +147,65 @@ const categories = [
 ];
 
 const locations = [
-  // Secret Coasts (CAT_A)
-  { id: "1.1", name: "P. Bete", category: "CAT_A", geo: [20.68, -87.01], distance_km: 15, risk_level: "low", story_hook: "Sand B-roll", vstrom_risk: "Sand park", gallery: ["pb1", "pb2"] },
-  { id: "1.2", name: "B. Paila", category: "CAT_A", geo: [20.10, -87.48], distance_km: 95, risk_level: "medium", story_hook: "Bridge POV", vstrom_risk: "Deep sand", gallery: ["bp1", "bp2"] },
+  // Secret Beach (CAT_A)
+  { id: "1.1", name: "P. Bete", category: "CAT_A", geo: [20.68, -87.01], distance_km: 15, risk_level: "low", story_hook: "Sand B-roll", vstrom_risk: "Loose sand", gallery: ["pb1"] },
+  { id: "1.2", name: "B. Soliman", category: "CAT_A", geo: [20.27, -87.35], distance_km: 75, risk_level: "low", story_hook: "Calm water", vstrom_risk: "Paved", gallery: ["bs1"] },
+  { id: "1.3", name: "Xcacel", category: "CAT_A", geo: [20.33, -87.34], distance_km: 72, risk_level: "medium", story_hook: "Turtle Nest", vstrom_risk: "No drones", gallery: ["xc1"] },
+  { id: "1.4", name: "Paamul", category: "CAT_A", geo: [20.52, -87.19], distance_km: 30, risk_level: "low", story_hook: "Reef macro", vstrom_risk: "Rocky", gallery: ["pm1"] },
+  { id: "1.5", name: "Chemuyil", category: "CAT_A", geo: [20.35, -87.35], distance_km: 70, risk_level: "low", story_hook: "Jungle Edge", vstrom_risk: "Hidden", gallery: ["cm1"] },
+  { id: "1.6", name: "Xcalacoco", category: "CAT_A", geo: [20.67, -87.03], distance_km: 8, risk_level: "low", story_hook: "Sunset port", vstrom_risk: "Rocky", gallery: ["xl1"] },
+  { id: "1.7", name: "Xpu-Ha S.", category: "CAT_A", geo: [20.47, -87.25], distance_km: 40, risk_level: "low", story_hook: "White sand", vstrom_risk: "Private", gallery: ["xp1"] },
+  { id: "1.8", name: "Boca Paila", category: "CAT_A", geo: [20.10, -87.48], distance_km: 95, risk_level: "medium", story_hook: "Wooden bridge", vstrom_risk: "Sand trap", gallery: ["bp1"] },
+  { id: "1.9", name: "P. Allen", category: "CAT_A", geo: [19.79, -87.48], distance_km: 140, risk_level: "high", story_hook: "Village vlog", vstrom_risk: "Fuel req", gallery: ["pa1"] },
+  { id: "1.10", name: "I. Blanca", category: "CAT_A", geo: [21.37, -86.81], distance_km: 90, risk_level: "high", story_hook: "Lagoon contrast", vstrom_risk: "Muddy", gallery: ["ib1"] },
 
   // Cenotes (CAT_B)
-  { id: "2.1", name: "Taak Bi Ha", category: "CAT_B", geo: [20.31, -87.38], distance_km: 48, risk_level: "medium", story_hook: "Roots frame", vstrom_risk: "Slippery", gallery: ["th1"] },
-  { id: "2.2", name: "Suytun", category: "CAT_B", geo: [20.69, -88.12], distance_km: 120, risk_level: "low", story_hook: "Path shot", vstrom_risk: "Early req", gallery: ["sy1"] },
+  { id: "2.1", name: "Taak Bi Ha", category: "CAT_B", geo: [20.31, -87.38], distance_km: 48, risk_level: "medium", story_hook: "Roots", vstrom_risk: "Wet floor", gallery: ["th1"] },
+  { id: "2.2", name: "Tajma Ha", category: "CAT_B", geo: [20.48, -87.23], distance_km: 44, risk_level: "high", story_hook: "Light rays", vstrom_risk: "Deep", gallery: ["tj1"] },
+  { id: "2.3", name: "Zapote", category: "CAT_B", geo: [20.84, -87.04], distance_km: 55, risk_level: "high", story_hook: "Bells", vstrom_risk: "Jump", gallery: ["zp1"] },
+  { id: "2.4", name: "Escondido", category: "CAT_B", geo: [20.18, -87.49], distance_km: 68, risk_level: "medium", story_hook: "Trek", vstrom_risk: "Humidity", gallery: ["es1"] },
+  { id: "2.5", name: "Kin-Ha", category: "CAT_B", geo: [20.85, -87.03], distance_km: 56, risk_level: "medium", story_hook: "Zenith", vstrom_risk: "Dark", gallery: ["kh1"] },
+  { id: "2.6", name: "Chikin Ha", category: "CAT_B", geo: [20.49, -87.22], distance_km: 45, risk_level: "medium", story_hook: "Biomes", vstrom_risk: "Walk", gallery: ["ch1"] },
+  { id: "2.7", name: "Nicte-Ha", category: "CAT_B", geo: [20.31, -87.36], distance_km: 47, risk_level: "low", story_hook: "Lilies", vstrom_risk: "Clear", gallery: ["nh1"] },
+  { id: "2.8", name: "Calavera", category: "CAT_B", geo: [20.22, -87.46], distance_km: 62, risk_level: "low", story_hook: "Reels", vstrom_risk: "Small", gallery: ["cv1"] },
+  { id: "2.9", name: "Carwash", category: "CAT_B", geo: [20.21, -87.48], distance_km: 64, risk_level: "low", story_hook: "Garden", vstrom_risk: "Algae", gallery: ["cw1"] },
+  { id: "2.10", name: "Suytun", category: "CAT_B", geo: [20.69, -88.12], distance_km: 120, risk_level: "low", story_hook: "Walkway", vstrom_risk: "Early", gallery: ["sy1"] },
 
-  // Flavors (CAT_C)
-  { id: "3.1", name: "Honorio", category: "CAT_C", geo: [20.21, -87.46], distance_km: 65, risk_level: "low", story_hook: "Lechon", vstrom_risk: "Early only", gallery: ["th1"] },
-  { id: "3.2", name: "IX CAT IK", category: "CAT_C", geo: [20.69, -88.20], distance_km: 122, risk_level: "low", story_hook: "Pib Oven", vstrom_risk: "Authentic", gallery: ["ix1"] },
+  // Gastro (CAT_C)
+  { id: "3.1", name: "IX CAT IK", category: "CAT_C", geo: [20.69, -88.20], distance_km: 122, risk_level: "low", story_hook: "Pib", vstrom_risk: "Valla", gallery: ["ix1"] },
+  { id: "3.2", name: "D. Bates", category: "CAT_C", geo: [20.68, -88.20], distance_km: 121, risk_level: "low", story_hook: "Market", vstrom_risk: "Crowd", gallery: ["db1"] },
+  { id: "3.3", name: "Tia Kaua", category: "CAT_C", geo: [20.61, -88.44], distance_km: 145, risk_level: "low", story_hook: "Smoke", vstrom_risk: "Highway", gallery: ["tk1"] },
+  { id: "3.4", name: "Honorio", category: "CAT_C", geo: [20.21, -87.46], distance_km: 65, risk_level: "low", story_hook: "Lechon", vstrom_risk: "Tulum", gallery: ["th1"] },
+  { id: "3.5", name: "Cetli", category: "CAT_C", geo: [20.22, -87.45], distance_km: 64, risk_level: "low", story_hook: "Mole", vstrom_risk: "Art", gallery: ["ct1"] },
+  { id: "3.6", name: "Axiote", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Plating", vstrom_risk: "Center", gallery: ["ax1"] },
+  { id: "3.7", name: "Cochi Loka", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Street", vstrom_risk: "Fast", gallery: ["cl1"] },
+  { id: "3.8", name: "85 Diag", category: "CAT_C", geo: [20.64, -87.09], distance_km: 3, risk_level: "low", story_hook: "Local", vstrom_risk: "Night", gallery: ["d81"] },
+  { id: "3.9", name: "Angelito", category: "CAT_C", geo: [20.65, -87.09], distance_km: 4, risk_level: "low", story_hook: "Tacos", vstrom_risk: "Morning", gallery: ["an1"] },
+  { id: "3.10", name: "Yaxche", category: "CAT_C", geo: [20.62, -87.07], distance_km: 1, risk_level: "low", story_hook: "Fusion", vstrom_risk: "Visual", gallery: ["yx1"] },
 
-  // Ancestral (CAT_D)
-  { id: "4.1", name: "Muyil", category: "CAT_D", geo: [20.07, -87.61], distance_km: 80, risk_level: "low", story_hook: "Canal boat", vstrom_risk: "Slow vibe", gallery: ["my1"] },
-  { id: "4.2", name: "Coba", category: "CAT_D", geo: [20.48, -87.73], distance_km: 109, risk_level: "medium", story_hook: "Bike Sacbe", vstrom_risk: "Shade ride", gallery: ["cb1"] },
+  // Archeo (CAT_D)
+  { id: "4.1", name: "Muyil", category: "CAT_D", geo: [20.07, -87.61], distance_km: 80, risk_level: "low", story_hook: "Canal", vstrom_risk: "SianK", gallery: ["my1"] },
+  { id: "4.2", name: "Ek Balam", category: "CAT_D", geo: [20.89, -88.13], distance_km: 145, risk_level: "medium", story_hook: "Mask", vstrom_risk: "Stucco", gallery: ["eb1"] },
+  { id: "4.3", name: "Coba", category: "CAT_D", geo: [20.48, -87.73], distance_km: 109, risk_level: "medium", story_hook: "Bike", vstrom_risk: "Shade", gallery: ["cb1"] },
+  { id: "4.4", name: "El Meco", category: "CAT_D", geo: [21.21, -86.80], distance_km: 80, risk_level: "low", story_hook: "Temple", vstrom_risk: "Coast", gallery: ["em1"] },
+  { id: "4.5", name: "Yaxunah", category: "CAT_D", geo: [20.55, -88.55], distance_km: 165, risk_level: "high", story_hook: "Sacbe", vstrom_risk: "Remote", gallery: ["yx1"] },
+  { id: "4.6", name: "S. Gervasio", category: "CAT_D", geo: [20.50, -86.84], distance_km: 45, risk_level: "medium", story_hook: "Island", vstrom_risk: "Ferry", gallery: ["sg1"] },
+  { id: "4.7", name: "Balancanche", category: "CAT_D", geo: [20.66, -88.52], distance_km: 150, risk_level: "medium", story_hook: "Cave", vstrom_risk: "Humidity", gallery: ["bc1"] },
+  { id: "4.8", name: "Chacchoben", category: "CAT_D", geo: [19.00, -88.23], distance_km: 220, risk_level: "high", story_hook: "Forest", vstrom_risk: "South", gallery: ["cc1"] },
+  { id: "4.9", name: "Dzibanche", category: "CAT_D", geo: [18.63, -88.75], distance_km: 290, risk_level: "high", story_hook: "Snake", vstrom_risk: "Remote", gallery: ["dz1"] },
+  { id: "4.10", name: "Xcabal", category: "CAT_D", geo: [18.91, -88.46], distance_km: 260, risk_level: "high", story_hook: "Hidden", vstrom_risk: "New", gallery: ["xc1"] },
 
-  // War & Faith (CAT_E)
-  { id: "5.1", name: "Tihosuco", category: "CAT_E", geo: [20.19, -88.37], distance_km: 160, risk_level: "high", story_hook: "War ruins", vstrom_risk: "Impactful", gallery: ["ti1"] },
-  { id: "5.2", name: "Uayma", category: "CAT_E", geo: [20.73, -88.31], distance_km: 130, risk_level: "low", story_hook: "Red church", vstrom_risk: "Geometry", gallery: ["uy1"] }
+  // History (CAT_E)
+  { id: "5.1", name: "Tihosuco", category: "CAT_E", geo: [20.19, -88.37], distance_km: 160, risk_level: "high", story_hook: "War", vstrom_risk: "Facade", gallery: ["ti1"] },
+  { id: "5.2", name: "Tepich", category: "CAT_E", geo: [20.22, -88.27], distance_km: 150, risk_level: "high", story_hook: "Rebel", vstrom_risk: "History", gallery: ["tp1"] },
+  { id: "5.3", name: "Uayma", category: "CAT_E", geo: [20.73, -88.31], distance_km: 130, risk_level: "low", story_hook: "Red", vstrom_risk: "Visual", gallery: ["uy1"] },
+  { id: "5.4", name: "S. Bernardino", category: "CAT_E", geo: [20.68, -88.20], distance_km: 122, risk_level: "low", story_hook: "Convent", vstrom_risk: "Vault", gallery: ["sb1"] },
+  { id: "5.5", name: "Izamal", category: "CAT_E", geo: [20.93, -89.01], distance_km: 180, risk_level: "medium", story_hook: "Yellow", vstrom_risk: "Walls", gallery: ["iz1"] },
+  { id: "5.6", name: "Oxman", category: "CAT_E", geo: [20.66, -88.23], distance_km: 124, risk_level: "low", story_hook: "Hacienda", vstrom_risk: "Cenote", gallery: ["ox1"] },
+  { id: "5.7", name: "Xocen", category: "CAT_E", geo: [20.60, -88.17], distance_km: 125, risk_level: "medium", story_hook: "Center", vstrom_risk: "Maya", gallery: ["xo1"] },
+  { id: "5.8", name: "Sisal Conv", category: "CAT_E", geo: [20.69, -88.21], distance_km: 123, risk_level: "low", story_hook: "Walls", vstrom_risk: "Dark", gallery: ["sl1"] },
+  { id: "5.9", name: "Yaxcopoil", category: "CAT_E", geo: [20.74, -89.72], distance_km: 210, risk_level: "medium", story_hook: "Machine", vstrom_risk: "Rust", gallery: ["yc1"] },
+  { id: "5.10", name: "Mani", category: "CAT_E", geo: [20.38, -89.31], distance_km: 170, risk_level: "low", story_hook: "Codex", vstrom_risk: "Ancestral", gallery: ["mn1"] }
 ];
 
 // Hotspot Mechanical Specifications
@@ -831,7 +871,7 @@ function selectLocation(id) {
   }
 
   addAiMessage('system', aiAdvice);
-  speakAiResponse(aiAdvice);
+  // speakAiResponse suppressed per AUDIO policy (only on specific user request)
 
   // Update bottom ticker marquee dynamically with active destination fuel/mechanics/tires status
   try {
@@ -1016,7 +1056,7 @@ function onRouteCategoryChange() {
   }
 
   addAiMessage('system', aiMessage);
-  speakAiResponse(aiMessage);
+  // speakAiResponse suppressed per AUDIO policy (only on specific user request)
 
   onRouteLocationChange();
 }
@@ -2579,8 +2619,25 @@ function processAiTextQuery(text) {
   // Add AI reply to log
   addAiMessage('ai', reply);
 
-  // Speak AI reply
-  speakAiResponse(reply);
+  // Speak AI reply ONLY on specific user request per critical_action_03
+  const lowerQuery = query.toLowerCase();
+  const isSpecificRequest = 
+    lowerQuery.includes("tell me about this place") || 
+    lowerQuery.includes("hablame de este lugar") || 
+    lowerQuery.includes("cuentame de este lugar") || 
+    lowerQuery.includes("sobre este lugar") || 
+    lowerQuery.includes("give me mechanical info") || 
+    lowerQuery.includes("dame info mecanica") || 
+    lowerQuery.includes("informacion mecanica") || 
+    lowerQuery.includes("mecanica") || 
+    lowerQuery.includes("auxilios") || 
+    lowerQuery.includes("b-roll");
+
+  if (isSpecificRequest) {
+    speakAiResponse(reply);
+  } else {
+    console.log("Speech output skipped: query does not match explicit request criteria.");
+  }
 }
 
 function addAiMessage(sender, text) {
